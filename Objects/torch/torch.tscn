@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://b2ff08031msdc"]
+
+[ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="1_c2jc7"]
+[ext_resource type="Script" path="res://Objects/torch/torch.gd" id="1_mcafl"]
+[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_ysmj6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_buu5h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_asqve"]
+atlas = ExtResource("1_c2jc7")
+region = Rect2(96, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67um1"]
+atlas = ExtResource("1_c2jc7")
+region = Rect2(128, 320, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u83b1"]
+atlas = ExtResource("1_c2jc7")
+region = Rect2(160, 320, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jlcj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_asqve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67um1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u83b1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_utpru"]
+size = Vector2(31.8, 31.8)
+
+[node name="Torch" type="CollisionShape2D"]
+shape = SubResource("RectangleShape2D_buu5h")
+script = ExtResource("1_mcafl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jlcj4")
+frame_progress = 0.902689
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 1, 1, 0.584314)
+energy = 0.5
+texture = ExtResource("3_ysmj6")
+texture_scale = 0.45
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_utpru")
+
+[node name="Timer" type="Timer" parent="."]

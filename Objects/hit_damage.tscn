@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://crabfdfxrvxon"]
+
+[ext_resource type="Script" path="res://Objects/hit_damage.gd" id="1_cdyim"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qa2c"]
+font_size = 13
+font_color = Color(0.967434, 0.237571, 0.212405, 1)
+
+[node name="Label" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+label_settings = SubResource("LabelSettings_1qa2c")
+script = ExtResource("1_cdyim")
+
+[node name="AutoDelete" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="AutoDelete" to="." method="_on_auto_delete_timer_timeout"]

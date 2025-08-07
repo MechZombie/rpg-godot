@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckcv38bnaj0dc"]
+
+[ext_resource type="Script" path="res://Objects/dummy/dummy.gd" id="1_8frxb"]
+[ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="2_a8kdq"]
+[ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="3_ongoo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcd1s"]
+atlas = ExtResource("2_a8kdq")
+region = Rect2(192, 31, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kcd3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcd1s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smset"]
+size = Vector2(31, 31)
+
+[node name="Dummy" type="CharacterBody2D" groups=["Creatures"]]
+script = ExtResource("1_8frxb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
+sprite_frames = SubResource("SpriteFrames_kcd3d")
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(0, 20)
+scale = Vector2(2, 2)
+texture = ExtResource("3_ongoo")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -38.0
+offset_right = 24.0
+offset_bottom = 2.0
+scale = Vector2(0.800001, 1)
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.159999)
+color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[node name="Foreground" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.159999)
+color = Color(0, 0.784314, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_smset")
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="DummyBody" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 20)
+shape = SubResource("RectangleShape2D_smset")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
