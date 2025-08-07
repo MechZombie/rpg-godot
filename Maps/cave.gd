@@ -22,3 +22,7 @@ func spawn_dummy(position: Vector2):
 	dummy_instances.append(dummy_instance)
 	
 	add_child(dummy_instance)
+
+
+func _input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	pass # Replace with function body.

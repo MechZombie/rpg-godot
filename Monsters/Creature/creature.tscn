@@ -1,0 +1,89 @@
+[gd_scene load_steps=8 format=3 uid="uid://rv0tkbg2op8n"]
+
+[ext_resource type="Script" path="res://Monsters/Creature/creature.gd" id="1_eyf56"]
+[ext_resource type="Texture2D" uid="uid://c2orknlw8j3m7" path="res://Sprites/bard-32x32.png" id="1_kf862"]
+[ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="3_mgrsk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlxu3"]
+atlas = ExtResource("1_kf862")
+region = Rect2(52, 296, 52, 74)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_u2o00"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlxu3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fqk62"]
+size = Vector2(31.9, 31.9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_11q12"]
+size = Vector2(32, 32)
+
+[node name="Creature" type="CharacterBody2D" groups=["Creatures"]]
+script = ExtResource("1_eyf56")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_u2o00")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_fqk62")
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, 12)
+target_position = Vector2(0, 32)
+collide_with_areas = true
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+position = Vector2(0, 12)
+target_position = Vector2(0, -32)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 12)
+target_position = Vector2(32, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 12)
+target_position = Vector2(-32, 0)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -16.0
+offset_top = -46.0
+offset_right = 24.0
+offset_bottom = -6.0
+scale = Vector2(0.800001, 1)
+
+[node name="Background" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.159999)
+color = Color(0.190762, 0.190762, 0.190762, 1)
+
+[node name="Foreground" type="ColorRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1, 0.159999)
+color = Color(0, 0.784314, 0, 1)
+
+[node name="Target" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+scale = Vector2(2, 2)
+texture = ExtResource("3_mgrsk")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 12)
+shape = SubResource("RectangleShape2D_11q12")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]

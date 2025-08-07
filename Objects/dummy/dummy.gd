@@ -26,8 +26,8 @@ var max_health := 100
 var current_health := 100
 
 var is_target: bool = false
-var atk_timer: Timer = null 
 var dmg_label = null
+var atk_timer: Timer = null 
 
 func _ready() -> void:
 	target.visible = false
@@ -67,7 +67,6 @@ func on_show_hit(damage):
 func update_health_bar():
 	if(current_health <= 0):
 		current_health = 100
-	
 		
 	var percent: float = float(current_health) / float(max_health)
 	var full_width: float = health_bar_backeground.size.x  

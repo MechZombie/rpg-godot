@@ -229,3 +229,20 @@ color = Color(0, 0.784314, 0, 1)
 [node name="Spell" parent="." instance=ExtResource("3_fv6u6")]
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="RayCastDown" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
+target_position = Vector2(0, 32)
+collide_with_areas = true
+
+[node name="RayCastUp" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
+target_position = Vector2(0, -32)
+
+[node name="RayCastRight" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
+target_position = Vector2(32, 0)
+
+[node name="RayCastLeft" type="RayCast2D" parent="."]
+position = Vector2(0, 20)
+target_position = Vector2(-32, 0)

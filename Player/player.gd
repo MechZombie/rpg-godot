@@ -12,6 +12,11 @@ const SPEED = 100
 @onready var health_bar_backeground = $Control/Background
 @onready var target = $Target
 
+@onready var ray_down = $RayCastDown
+@onready var ray_up = $RayCastUp
+@onready var ray_left = $RayCastLeft
+@onready var ray_right = $RayCastRight
+
 
 var info := {
 	"id": 1,
@@ -40,6 +45,11 @@ func _ready():
 	agent.target_position = global_position
 	update_health_bar()
 	
+func set_target_position(pos: Vector2):
+	moviment_position = pos
+	is_moving = true
+	print("Target definido via clique:", pos)
+	
 func _physics_process(delta):
 	if is_moving:
 		var direction = (moviment_position - global_position).normalized()
@@ -61,29 +71,35 @@ func _physics_process(delta):
 			var collision = move_and_collide(direction * distance)
 			if collision:
 				is_moving = false
-				play_idle()  # interrompe o movimento se colidir
+				play_idle()
 	else:
 		var input_vector = Vector2.ZERO
+		var ray = null
+
 		if Input.is_action_pressed("ui_right"):
 			input_vector.x += 1
+			ray = ray_right
 		elif Input.is_action_pressed("ui_left"):
 			input_vector.x -= 1
+			ray = ray_left
 		elif Input.is_action_pressed("ui_down"):
 			input_vector.y += 1
+			ray = ray_down
 		elif Input.is_action_pressed("ui_up"):
 			input_vector.y -= 1
+			ray = ray_up
 
-		if input_vector != Vector2.ZERO:
+		# só anda se o RayCast não estiver colidindo
+		if input_vector != Vector2.ZERO and ray and not ray.is_colliding():
 			var test_target = global_position + input_vector * tile_size
-
-			# Testa se haverá colisão antes de definir como target
-			var collision = move_and_collide((test_target - global_position).normalized() * 1)
-			if not collision:
-				is_moving = true
-				moviment_position = test_target
-				play_walk(input_vector)
-
+			is_moving = true
+			moviment_position = test_target
+			play_walk(input_vector)
+	
+	
 func play_walk(dir: Vector2):
+	var tilemap = get_parent().get_node("TileMap")
+	print(tilemap)
 	if abs(dir.x) > abs(dir.y):
 		if dir.x > 0:
 			anim.play("walk_right")
