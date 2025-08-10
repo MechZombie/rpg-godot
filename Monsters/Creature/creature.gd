@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
-const FloatingText = preload("res://Objects/hit_damage.tscn")
+const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
 
-const SPEED = 50.0
+var speed = 40.0
 @export var tile_size := 32
 
+var push_force := 200.0
+var push_vector := Vector2.ZERO
+var push_time := 0.15
+var push_timer := 0.0
 
 var player: Node2D
 var target_position: Vector2
@@ -25,55 +29,112 @@ var dmg_label = null
 @onready var health_bar_foreground = $Control/Foreground
 @onready var health_bar_backeground = $Control/Background
 
+@onready var agent: NavigationAgent2D
+
 @onready var target = $Target
+
+var atk_timer: Timer
+
+var astar_grid := AStarGrid2D.new()
 
 var info := {
 	"id": 1,
-	"def": 3
+	"def": 3,
+	"atk_min": 2,
+	"atk_max": 5
 }
+
+
 
 func _ready() -> void:
 	target.visible = false
 	update_health_bar()
+	
+	player = get_parent().get_node("Player")
+	agent = get_node("NavigationAgent2D")
+	
+	agent.avoidance_enabled = true
+	agent.radius = 31.9  # Ajuste de acordo com o tamanho do seu CollisionShape2D
+	agent.max_speed = speed
+	
+	atk_timer = Timer.new()
+	atk_timer.wait_time = 2.0
+	atk_timer.one_shot = false
+	atk_timer.connect("timeout", Callable(self, "on_calculate_damage"))
+	add_child(atk_timer)
+
+func _physics_process(delta):
+	if push_timer > 0:
+		push_timer -= delta
+		velocity = push_vector
+		move_and_slide()
+		return
+		
+	if not player:
+		return
+
+	agent.target_position = player.global_position
+
+	if agent.is_navigation_finished():
+		velocity = Vector2.ZERO
+		#$AnimatedSprite2D.play("idle_up")
+	else:
+		var next_position = agent.get_next_path_position()
+		var direction = (next_position - global_position).normalized()
+		velocity = direction * speed
+		
+		if abs(direction.x) > abs(direction.y):
+			if direction.x > 0:
+				$AnimatedSprite2D.play("walk_right")
+			else:
+				$AnimatedSprite2D.play("walk_left")
+		else:
+			if direction.y > 0:
+				$AnimatedSprite2D.play("walk_down")
+			else:
+				$AnimatedSprite2D.play("walk_up")
+				
+		move_and_slide()
+		
+	if global_position.distance_to(player.global_position) <= 50:
+		if not atk_timer.is_stopped():
+			return # já está atacando
+		atk_timer.start()
+	else:
+		atk_timer.stop()
+
+func apply_pushback(from_position: Vector2):
+	push_vector = (global_position - from_position).normalized() * push_force
+	push_timer = push_time
 
 func on_detect_player():
 	player = get_parent().get_node("Player")
-	if(!player):
+	if not player:
 		return
-		
-	# calcular vetor até o player
+
 	var diff = player.global_position - global_position
 	var input_vector = Vector2.ZERO
 
-	# prioriza eixo X, depois Y
+	# Prioriza X
 	if abs(diff.x) > abs(diff.y):
-		input_vector.x = sign(diff.x)
+		input_vector = Vector2(sign(diff.x), 0)
 	else:
-		input_vector.y = sign(diff.y)
+		input_vector = Vector2(0, sign(diff.y))
 
 	var ray = get_ray_for_direction(input_vector)
-		
-	if input_vector != Vector2.ZERO and ray and not ray.is_colliding():
+	
+	if ray and not ray.is_colliding():
 		target_position = global_position + input_vector * tile_size
 		is_moving = true
 
-func _physics_process(delta: float) -> void:
-	var player = get_node("Player")
 	
-	if is_moving:
-		var direction = (target_position - global_position).normalized()
-		var distance = SPEED * delta
-		var to_target = target_position - global_position
-
-		if to_target.length() <= distance:
-			global_position = target_position
-			is_moving = false
-		else:
-			velocity = direction * SPEED
-			move_and_slide()
-	else:
-		on_detect_player()
-
+func on_calculate_damage():
+	if global_position.distance_to(player.global_position) > 50:
+		return
+		
+	var atk = randi_range(info.atk_min, info.atk_max)
+	player.on_receive_damage(atk)
+	
 
 func get_ray_for_direction(direction: Vector2) -> RayCast2D:
 	if direction == Vector2.RIGHT:
@@ -108,7 +169,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		player.clear_target()
 		
 		var cav = get_parent()
-		var dummies = cav.dummy_instances
+		var dummies = cav.creature_instances
 		
 		for dummy in dummies:
 			if(dummy.info.id != info.id):
@@ -119,4 +180,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		target.visible = is_target
 		
 		player.has_target = is_target
-		player.on_atk(global_position, info.id)
+		player.target_id = info.id
+
+		player.on_atk()

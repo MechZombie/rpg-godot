@@ -1,5 +1,5 @@
 extends CharacterBody2D
-const FloatingText = preload("res://Objects/hit_damage.tscn")
+const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
 
 @onready var anim = $AnimatedSprite2D
@@ -42,7 +42,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		player.clear_target()
 		
 		var cav = get_parent()
-		var dummies = cav.dummy_instances
+		var dummies = cav.creature_instances
 		
 		for dummy in dummies:
 			if(dummy.info.id != info.id):
@@ -53,7 +53,8 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		target.visible = is_target
 		
 		player.has_target = is_target
-		player.on_atk(global_position, info.id)
+		player.target_id = info.id
+		player.on_atk()
 
 
 func on_show_hit(damage):

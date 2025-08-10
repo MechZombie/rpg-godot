@@ -21,3 +21,7 @@ project/assembly_name="DemoRPG"
 [global_group]
 
 Creatures=""
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://crabfdfxrvxon"]
 
-[ext_resource type="Script" path="res://Objects/hit_damage.gd" id="1_cdyim"]
+[ext_resource type="Script" path="res://Objects/Hit/hit_damage.gd" id="1_cdyim"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1qa2c"]
 font_size = 13

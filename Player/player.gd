@@ -1,6 +1,7 @@
 extends CharacterBody2D
+const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
-const SPEED = 100
+var speed = 70
 @export var SpellScene: PackedScene
 
 
@@ -17,12 +18,14 @@ const SPEED = 100
 @onready var ray_left = $RayCastLeft
 @onready var ray_right = $RayCastRight
 
+var dmg_label = null
 
 var info := {
 	"id": 1,
 	"atk_min": 5,
 	"atk_max": 10,
-	"range": 3
+	"range": 3,
+	"def": 1
 }
 
 
@@ -39,67 +42,48 @@ var atk_timer: Timer
 var has_target: bool
 
 func _ready():
-	spell.visible = false
 	target.visible = false
 	moviment_position = global_position
 	agent.target_position = global_position
+	
+	agent.avoidance_enabled = true
+	agent.radius = 15.9
+	agent.max_speed = speed
+	
 	update_health_bar()
 	
-func set_target_position(pos: Vector2):
-	moviment_position = pos
-	is_moving = true
-	print("Target definido via clique:", pos)
+
 	
 func _physics_process(delta):
-	if is_moving:
-		var direction = (moviment_position - global_position).normalized()
-		var distance = SPEED * delta
-		var to_target = moviment_position - global_position
+	var input_vector = Vector2.ZERO
+	if Input.is_action_pressed("ui_right"):
+		input_vector.x += 1
+	if Input.is_action_pressed("ui_left"):
+		input_vector.x -= 1
+	if Input.is_action_pressed("ui_down"):
+		input_vector.y += 1
+	if Input.is_action_pressed("ui_up"):
+		input_vector.y -= 1
 
-		if to_target.length() <= distance:
-			global_position = moviment_position
-			is_moving = false
+	input_vector = input_vector.normalized()
 
-			if not (
-				Input.is_action_pressed("ui_right") or
-				Input.is_action_pressed("ui_left") or
-				Input.is_action_pressed("ui_up") or
-				Input.is_action_pressed("ui_down")
-			):
-				play_idle()
-		else:
-			var collision = move_and_collide(direction * distance)
-			if collision:
-				is_moving = false
-				play_idle()
+	if input_vector != Vector2.ZERO:
+		# movimentação direta sem colisão grudenta
+		velocity = input_vector * speed
+		move_and_slide()
+		play_walk(input_vector)
 	else:
-		var input_vector = Vector2.ZERO
-		var ray = null
-
-		if Input.is_action_pressed("ui_right"):
-			input_vector.x += 1
-			ray = ray_right
-		elif Input.is_action_pressed("ui_left"):
-			input_vector.x -= 1
-			ray = ray_left
-		elif Input.is_action_pressed("ui_down"):
-			input_vector.y += 1
-			ray = ray_down
-		elif Input.is_action_pressed("ui_up"):
-			input_vector.y -= 1
-			ray = ray_up
-
-		# só anda se o RayCast não estiver colidindo
-		if input_vector != Vector2.ZERO and ray and not ray.is_colliding():
-			var test_target = global_position + input_vector * tile_size
-			is_moving = true
-			moviment_position = test_target
-			play_walk(input_vector)
+		velocity = Vector2.ZERO
+		play_idle()
 	
+	
+func on_receive_damage(atk: float):
+	var damage = atk - info.def
+	current_health -= damage
+	update_health_bar()
+	on_show_hit(damage)
 	
 func play_walk(dir: Vector2):
-	var tilemap = get_parent().get_node("TileMap")
-	print(tilemap)
 	if abs(dir.x) > abs(dir.y):
 		if dir.x > 0:
 			anim.play("walk_right")
@@ -122,11 +106,8 @@ func move_to_tile(pos: Vector2):
 	moviment_position = pos
 	is_moving = true
 
-func on_atk(dummy_position: Vector2, dummy_id: int): 
+func on_atk(): 
 	if(has_target):
-		target_position = dummy_position
-		target_id = dummy_id
-		
 		atk_timer = Timer.new()
 		atk_timer.wait_time = 2.0
 		atk_timer.one_shot = false
@@ -142,8 +123,21 @@ func clear_target():
 		atk_timer.queue_free()
 		atk_timer = null
 	
+func on_show_hit(damage):
+	dmg_label = FloatingText.instantiate()
+	dmg_label.text = "-" + str(damage)
+	dmg_label.global_position = global_position + Vector2(0, -55)  
+	current_health -= damage
+	get_tree().current_scene.add_child(dmg_label)
 
 func shoot_projectile():	
+	var cav = get_parent()
+	var creatures = cav.creature_instances
+	
+	for creature in creatures:
+		if(creature.info.id == target_id):
+			target_position = creature.global_position
+			
 	var is_out = is_out_of_range()
 	var is_way = is_shootable()
 	
@@ -191,3 +185,8 @@ func update_health_bar():
 	var percent: float = float(current_health) / float(max_health)
 	var full_width: float = health_bar_backeground.size.x  # Use o nome real do nó de fundo
 	health_bar_foreground.size.x = full_width * percent
+	
+func set_target_position(pos: Vector2):
+	moviment_position = pos
+	is_moving = true
+	print("Target definido via clique:", pos)
