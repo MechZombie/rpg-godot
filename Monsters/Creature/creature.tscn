@@ -164,6 +164,7 @@ safe_margin = 0.008
 script = ExtResource("1_eyf56")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_u2o00")
 animation = &"idle_up"
 frame_progress = 0.199138
@@ -194,6 +195,7 @@ target_position = Vector2(-32, 0)
 collide_with_areas = true
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = -16.0
@@ -217,8 +219,8 @@ scale = Vector2(1, 0.159999)
 color = Color(0, 0.784314, 0, 1)
 
 [node name="Target" type="Sprite2D" parent="."]
-position = Vector2(0, 7.5)
-scale = Vector2(2, 3.5625)
+position = Vector2(0, 21.5)
+scale = Vector2(2, 1.8125)
 texture = ExtResource("3_mgrsk")
 
 [node name="Area2D" type="Area2D" parent="."]

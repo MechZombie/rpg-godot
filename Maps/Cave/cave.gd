@@ -8,18 +8,17 @@ var creature_instances = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var spawn = get_node("Respawn")
-	spawn_creature(spawn.position)
-	spawn_creature(Vector2(688, 188))
+	spawn_creature()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
-func spawn_creature(position: Vector2):
+func spawn_creature():
+	var spawn = get_node("Respawn")
 	var creature_instance = creature.instantiate()
-	creature_instance.position = position
+	creature_instance.position = spawn.position
 	creature_instance.info.id = creature_instances.size() + 1
 	creature_instances.append(creature_instance)
 	

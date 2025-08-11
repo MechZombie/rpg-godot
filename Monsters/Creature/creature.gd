@@ -17,6 +17,8 @@ var is_moving = false
 
 var max_health := 100
 var current_health := 100
+signal health_changed(new_health)
+
 
 var is_target: bool = false
 var dmg_label = null
@@ -48,7 +50,6 @@ var info := {
 
 func _ready() -> void:
 	target.visible = false
-	update_health_bar()
 	
 	player = get_parent().get_node("Player")
 	agent = get_node("NavigationAgent2D")
@@ -149,12 +150,17 @@ func get_ray_for_direction(direction: Vector2) -> RayCast2D:
 
 
 func update_health_bar():
+	var cav = get_parent()
+	
 	if(current_health <= 0):
-		current_health = 100
+		cav.spawn_creature()
+		player.clear_target()
+		queue_free()
 		
 	var percent: float = float(current_health) / float(max_health)
-	var full_width: float = health_bar_backeground.size.x  
-	health_bar_foreground.size.x = full_width * percent
+	var HUD = player.get_node("HUD")
+	HUD.set_enemy_health(percent)
+
 
 func on_show_hit(damage):
 	dmg_label = FloatingText.instantiate()
@@ -172,7 +178,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		var dummies = cav.creature_instances
 		
 		for dummy in dummies:
-			if(dummy.info.id != info.id):
+			if(is_instance_valid(dummy) and dummy.info.id != info.id):
 				dummy.is_target = false
 				dummy.target.visible = false
 		
@@ -181,5 +187,10 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		
 		player.has_target = is_target
 		player.target_id = info.id
+		player.enemy_life_bar.visible = is_target
+		
+		var percent: float = float(current_health) / float(max_health)
+		var HUD = player.get_node("HUD")
+		HUD.set_enemy_health(percent)
 
 		player.on_atk()

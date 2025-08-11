@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bdrfgbq0ucxmg"]
+[gd_scene load_steps=19 format=3 uid="uid://bdrfgbq0ucxmg"]
 
 [ext_resource type="Script" path="res://Maps/Cave/cave.gd" id="1_aqe4h"]
 [ext_resource type="Texture2D" uid="uid://bj6hgxtma8bb3" path="res://Sprites/8_cave.png" id="1_betb3"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://ckcv38bnaj0dc" path="res://Objects/Dummy/dummy.tscn" id="7_sv0pv"]
 [ext_resource type="PackedScene" uid="uid://dyrfbf1pq2eqx" path="res://Objects/Respawn/respawn.tscn" id="11_hiny4"]
 [ext_resource type="PackedScene" uid="uid://rv0tkbg2op8n" path="res://Monsters/Creature/creature.tscn" id="11_mgvdi"]
-[ext_resource type="PackedScene" uid="uid://cqigq2ub721ka" path="res://Player/character_body_2d.tscn" id="12_4kf54"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eoh7g"]
 vertices = PackedVector2Array(1334.95, 632.977, 1327, 632.969, 1327, 177, 1333.04, 177, 475, 632.023, 465.023, 632.008, 465.977, 177, 475, 177, 731, 218, 731, 230, 539, 230, 527, 218, 527, 262, 539, 262, 1275, 218, 1275, 582, 955, 582, 921.062, 509.773, 919.938, 326.117, 783, 218, 783, 282, 591, 282, 731.242, 323.883, 591, 314, 955, 632.562, 879, 632.469, 879, 582, 726.758, 514.242, 527, 582, 527, 314)
@@ -591,6 +590,3 @@ position = Vector2(745, 153)
 scale = Vector2(3.92, 1)
 color = Color(0.522493, 0.393068, 0.581052, 1)
 polygon = PackedVector2Array(-2.29591, 5, 40.8163, 7, 41.0714, 171, -3.31633, 175)
-
-[node name="CharacterBody2D" parent="." instance=ExtResource("12_4kf54")]
-position = Vector2(801, 44)

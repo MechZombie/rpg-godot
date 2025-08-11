@@ -9,14 +9,13 @@ var speed = 70
 @onready var spell = $Spell
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
 @onready var anim = $AnimatedSprite2D
-@onready var health_bar_foreground = $Control/Foreground
-@onready var health_bar_backeground = $Control/Background
 @onready var target = $Target
 
 @onready var ray_down = $RayCastDown
 @onready var ray_up = $RayCastUp
 @onready var ray_left = $RayCastLeft
 @onready var ray_right = $RayCastRight
+@onready var enemy_life_bar: Control = $HUD/MarginContainer/EnemyContainer/LifeBar
 
 var dmg_label = null
 
@@ -31,6 +30,7 @@ var info := {
 
 var max_health := 100
 var current_health := 100
+signal health_changed(new_health)
 
 var last_direction = "down"
 var is_moving = false
@@ -50,6 +50,7 @@ func _ready():
 	agent.radius = 15.9
 	agent.max_speed = speed
 	
+	enemy_life_bar.visible = false
 	update_health_bar()
 	
 
@@ -122,6 +123,7 @@ func clear_target():
 		atk_timer.stop()
 		atk_timer.queue_free()
 		atk_timer = null
+		enemy_life_bar.visible = false
 	
 func on_show_hit(damage):
 	dmg_label = FloatingText.instantiate()
@@ -135,7 +137,7 @@ func shoot_projectile():
 	var creatures = cav.creature_instances
 	
 	for creature in creatures:
-		if(creature.info.id == target_id):
+		if(is_instance_valid(creature) and creature.info.id == target_id):
 			target_position = creature.global_position
 			
 	var is_out = is_out_of_range()
@@ -183,8 +185,7 @@ func is_out_of_range():
 	
 func update_health_bar():
 	var percent: float = float(current_health) / float(max_health)
-	var full_width: float = health_bar_backeground.size.x  # Use o nome real do nó de fundo
-	health_bar_foreground.size.x = full_width * percent
+	emit_signal("health_changed", percent)
 	
 func set_target_position(pos: Vector2):
 	moviment_position = pos
