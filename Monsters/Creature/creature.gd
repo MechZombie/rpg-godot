@@ -2,9 +2,13 @@ extends CharacterBody2D
 
 const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
+@export var HolyWave: PackedScene
+@export var tile_size := 32
+
+
+@onready var wave: Control = $Wave
 
 var speed = 40.0
-@export var tile_size := 32
 
 var push_force := 200.0
 var push_vector := Vector2.ZERO
@@ -18,6 +22,8 @@ var is_moving = false
 var max_health := 100
 var current_health := 100
 signal health_changed(new_health)
+
+var last_direction := Vector2.DOWN # direção padrão inicial
 
 
 var is_target: bool = false
@@ -43,7 +49,9 @@ var info := {
 	"id": 1,
 	"def": 3,
 	"atk_min": 2,
-	"atk_max": 5
+	"atk_max": 5,
+	"atk_range": 70,
+	"wave_rng": [0,3]
 }
 
 
@@ -63,6 +71,13 @@ func _ready() -> void:
 	atk_timer.one_shot = false
 	atk_timer.connect("timeout", Callable(self, "on_calculate_damage"))
 	add_child(atk_timer)
+	atk_timer.start()
+	
+	
+func on_call_spell():
+	var holy_wave = HolyWave.instantiate()
+	holy_wave.global_position = global_position
+	get_parent().add_child(holy_wave)
 
 func _physics_process(delta):
 	if push_timer > 0:
@@ -73,16 +88,32 @@ func _physics_process(delta):
 		
 	if not player:
 		return
+		
+	var direction_player = (player.global_position - global_position).normalized()
+	var target_side = player.global_position - (direction_player * 32)
 
-	agent.target_position = player.global_position
+	agent.target_position = target_side
+	
 
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
-		#$AnimatedSprite2D.play("idle_up")
+		if abs(last_direction.x) > abs(last_direction.y):
+			if last_direction.x > 0:
+				$AnimatedSprite2D.play("idle_right")
+			else:
+				$AnimatedSprite2D.play("idle_left")
+		else:
+			if last_direction.y > 0:
+				$AnimatedSprite2D.play("idle_up")
+			else:
+				$AnimatedSprite2D.play("idle_up")
 	else:
 		var next_position = agent.get_next_path_position()
 		var direction = (next_position - global_position).normalized()
 		velocity = direction * speed
+		
+		last_direction = direction
+		print(direction)
 		
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
@@ -97,12 +128,7 @@ func _physics_process(delta):
 				
 		move_and_slide()
 		
-	if global_position.distance_to(player.global_position) <= 50:
-		if not atk_timer.is_stopped():
-			return # já está atacando
-		atk_timer.start()
-	else:
-		atk_timer.stop()
+	
 
 func apply_pushback(from_position: Vector2):
 	push_vector = (global_position - from_position).normalized() * push_force
@@ -125,16 +151,20 @@ func on_detect_player():
 	var ray = get_ray_for_direction(input_vector)
 	
 	if ray and not ray.is_colliding():
-		target_position = global_position + input_vector * tile_size
+		target_position = global_position + input_vector 
 		is_moving = true
 
 	
 func on_calculate_damage():
-	if global_position.distance_to(player.global_position) > 50:
-		return
+	if global_position.distance_to(player.global_position) <= info.atk_range:
+		var atk = randi_range(info.atk_min, info.atk_max)
+		player.on_receive_damage(atk, Color.RED, 0)
+	
+	var spell_random = randi_range(info.wave_rng[0], info.wave_rng[1])
+	print(spell_random)
+	if spell_random == 1:
+		on_call_spell()
 		
-	var atk = randi_range(info.atk_min, info.atk_max)
-	player.on_receive_damage(atk)
 	
 
 func get_ray_for_direction(direction: Vector2) -> RayCast2D:
@@ -162,11 +192,15 @@ func update_health_bar():
 	HUD.set_enemy_health(percent)
 
 
-func on_show_hit(damage):
+func on_show_hit(damage, color: Color):
 	dmg_label = FloatingText.instantiate()
 	dmg_label.text = "-" + str(damage)
-	dmg_label.global_position = global_position + Vector2(0, -55)  
+	dmg_label.global_position = global_position + Vector2(0, -35)  
 	current_health -= damage
+	
+	dmg_label.label_settings = dmg_label.label_settings.duplicate() # cria cópia
+	dmg_label.label_settings.font_color = color
+	
 	get_tree().current_scene.add_child(dmg_label)
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

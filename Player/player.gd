@@ -17,14 +17,14 @@ var speed = 70
 @onready var ray_right = $RayCastRight
 @onready var enemy_life_bar: Control = $HUD/MarginContainer/EnemyContainer/LifeBar
 
-var dmg_label = null
+
 
 var info := {
 	"id": 1,
 	"atk_min": 5,
 	"atk_max": 10,
 	"range": 3,
-	"def": 1
+	"def": 3
 }
 
 
@@ -78,11 +78,11 @@ func _physics_process(delta):
 		play_idle()
 	
 	
-func on_receive_damage(atk: float):
+func on_receive_damage(atk: float, color: Color, left_position: float):
 	var damage = atk - info.def
 	current_health -= damage
 	update_health_bar()
-	on_show_hit(damage)
+	on_show_hit(damage, color, left_position)
 	
 func play_walk(dir: Vector2):
 	if abs(dir.x) > abs(dir.y):
@@ -125,12 +125,21 @@ func clear_target():
 		atk_timer = null
 		enemy_life_bar.visible = false
 	
-func on_show_hit(damage):
-	dmg_label = FloatingText.instantiate()
-	dmg_label.text = "-" + str(damage)
-	dmg_label.global_position = global_position + Vector2(0, -55)  
+func on_show_hit(damage, color: Color, left_position: float):
+	var dmg_label = FloatingText.instantiate()
+	dmg_label.label_settings = dmg_label.label_settings.duplicate() # cria cópia
+	dmg_label.label_settings.font_color = color
+	
+	if damage > 0:
+		dmg_label.text = "-" + str(damage)
+	else:
+		dmg_label.text = "Miss"
+		
+	dmg_label.global_position = global_position + Vector2(left_position, -35)  
 	current_health -= damage
 	get_tree().current_scene.add_child(dmg_label)
+	
+
 
 func shoot_projectile():	
 	var cav = get_parent()
@@ -151,11 +160,11 @@ func shoot_projectile():
 	var atk = randi_range(atk_min, atk_max)
 	
 	var new_spell = SpellScene.instantiate()
+	new_spell.set_as_top_level(true)
 	new_spell.target_id = target_id
 	new_spell.visible = true
 	new_spell.damage = atk
 	new_spell.global_position = global_position
-	new_spell.set_as_top_level(true)
 	
 	var direction = (target_position - global_position).normalized()
 	new_spell.set("direction", direction)

@@ -21,6 +21,7 @@ project/assembly_name="DemoRPG"
 [global_group]
 
 Creatures=""
+Player=""
 
 [rendering]
 

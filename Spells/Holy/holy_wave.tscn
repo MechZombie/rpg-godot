@@ -1,0 +1,137 @@
+[gd_scene load_steps=16 format=3 uid="uid://15ipgiq6uow2"]
+
+[ext_resource type="Script" path="res://Spells/Holy/holy_wave.gd" id="1_q2ara"]
+[ext_resource type="Texture2D" uid="uid://eh5t56dcx1h0" path="res://Sprites/holy-explosion.png" id="2_0fc6w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mgg8"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kblyx"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpvsu"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oifhn"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2o20"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pn5yo"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_em6sv"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w82qb"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35ep2"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulx53"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj46a"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a63k1"]
+atlas = ExtResource("2_0fc6w")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vc52i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kblyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpvsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oifhn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2o20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pn5yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_em6sv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w82qb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35ep2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulx53")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj46a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a63k1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(11, 0)
+script = ExtResource("1_q2ara")
+
+[node name="Left" type="CollisionShape2D" parent="."]
+position = Vector2(-32, 0)
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left"]
+sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="Up" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Up"]
+sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="Down" type="CollisionShape2D" parent="."]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Down"]
+sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="Right" type="CollisionShape2D" parent="."]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right"]
+sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="Center" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Center"]
+sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="Down2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_5mgg8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Down2"]
+sprite_frames = SubResource("SpriteFrames_vc52i")

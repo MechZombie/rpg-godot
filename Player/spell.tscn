@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/spell.gd" id="1_ohee3"]
 [ext_resource type="Texture2D" uid="uid://brbxdelxyjn5p" path="res://Sprites/spell-holy.png" id="2_xwvbu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k36ij"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gf32"]
 atlas = ExtResource("2_xwvbu")
 region = Rect2(0, 0, 32, 32)
 
@@ -11,11 +11,11 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k36ij")
+"texture": SubResource("AtlasTexture_2gf32")
 }],
 "loop": true,
 "name": &"default",
-"speed": 8.0
+"speed": 10.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_174e8"]
@@ -28,7 +28,7 @@ script = ExtResource("1_ohee3")
 z_index = 1
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_5pi04")
-frame_progress = 0.876314
+frame_progress = 0.266152
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_174e8")

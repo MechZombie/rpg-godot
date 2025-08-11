@@ -1,14 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://crabfdfxrvxon"]
+[gd_scene load_steps=4 format=3 uid="uid://crabfdfxrvxon"]
 
 [ext_resource type="Script" path="res://Objects/Hit/hit_damage.gd" id="1_cdyim"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="1_o3m6u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1qa2c"]
 font_size = 13
 font_color = Color(0.967434, 0.237571, 0.212405, 1)
 
 [node name="Label" type="Label"]
+z_index = 10
 offset_right = 40.0
 offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_o3m6u")
+theme_override_font_sizes/font_size = 20
 text = "0"
 label_settings = SubResource("LabelSettings_1qa2c")
 script = ExtResource("1_cdyim")
