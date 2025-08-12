@@ -92,9 +92,6 @@ func _physics_process(delta):
 	on_detect_player()
 	on_moviment()
 	
-
-	
-		
 	
 func on_moviment():
 	if agent.is_navigation_finished():
@@ -154,6 +151,10 @@ func apply_pushback(from_position: Vector2):
 
 	
 func on_calculate_damage():
+	if not is_folow:
+		return
+		
+	
 	if global_position.distance_to(player.global_position) <= info.atk_range:
 		var atk = randi_range(info.atk_min, info.atk_max)
 		player.on_receive_damage(atk, Color.RED, 0)

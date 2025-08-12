@@ -24,7 +24,8 @@ var info := {
 	"atk_min": 5,
 	"atk_max": 10,
 	"range": 3,
-	"def": 3
+	"def": 3,
+	"magic_power": 5
 }
 
 
@@ -107,6 +108,17 @@ func move_to_tile(pos: Vector2):
 	moviment_position = pos
 	is_moving = true
 
+func on_heal():
+	var heal = info.magic_power + ( max_health / 10)
+	var totalLife = current_health + heal
+	
+	if(totalLife  >= max_health):
+		current_health = max_health
+	else:
+		current_health = totalLife
+		
+	update_health_bar()
+	
 func on_atk(): 
 	if(has_target):
 		atk_timer = Timer.new()
