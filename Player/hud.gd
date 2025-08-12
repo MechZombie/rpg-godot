@@ -5,6 +5,7 @@ extends CanvasLayer
 
 @onready var enemy_health_bar_foreground: ColorRect = $MarginContainer/EnemyContainer/LifeBar/Foreground
 @onready var enemy_health_bar_backeground: ColorRect = $MarginContainer/EnemyContainer/LifeBar/Background
+@onready var creature_name: Label = $MarginContainer/EnemyContainer/LifeBar/Name
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,3 +25,6 @@ func set_health(value):
 func set_enemy_health(value):
 	var full_width: float = enemy_health_bar_backeground.size.x  
 	enemy_health_bar_foreground.size.x = full_width * value
+
+func set_enemy_name(name):
+	creature_name.text = name

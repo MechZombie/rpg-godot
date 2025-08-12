@@ -1,10 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://15ipgiq6uow2"]
+[gd_scene load_steps=21 format=3 uid="uid://15ipgiq6uow2"]
 
 [ext_resource type="Script" path="res://Spells/Holy/holy_wave.gd" id="1_q2ara"]
 [ext_resource type="Texture2D" uid="uid://eh5t56dcx1h0" path="res://Sprites/holy-explosion.png" id="2_0fc6w"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5mgg8"]
-size = Vector2(32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kblyx"]
 atlas = ExtResource("2_0fc6w")
@@ -91,47 +88,83 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u8ksf"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ivg4d"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ifjmi"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jwfak"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2hho"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qjfqg"]
+size = Vector2(32, 32)
+
 [node name="Area2D" type="Area2D"]
 position = Vector2(11, 0)
 script = ExtResource("1_q2ara")
 
-[node name="Left" type="CollisionShape2D" parent="."]
+[node name="Wave" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" type="Area2D" parent="Wave"]
 position = Vector2(-32, 0)
-shape = SubResource("RectangleShape2D_5mgg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Left"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Left"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
 
-[node name="Up" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Left"]
+shape = SubResource("RectangleShape2D_u8ksf")
+
+[node name="Up" type="Area2D" parent="Wave"]
 position = Vector2(0, -32)
-shape = SubResource("RectangleShape2D_5mgg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Up"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Up"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
 
-[node name="Down" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Up"]
+shape = SubResource("RectangleShape2D_ivg4d")
+
+[node name="Down" type="Area2D" parent="Wave"]
 position = Vector2(0, 32)
-shape = SubResource("RectangleShape2D_5mgg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Down"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Down"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
 
-[node name="Right" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Down"]
+shape = SubResource("RectangleShape2D_ifjmi")
+
+[node name="Right" type="Area2D" parent="Wave"]
 position = Vector2(32, 0)
-shape = SubResource("RectangleShape2D_5mgg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Right"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Right"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
 
-[node name="Center" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_5mgg8")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Right"]
+shape = SubResource("RectangleShape2D_jwfak")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Center"]
+[node name="Center" type="Area2D" parent="Wave"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Center"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
 
-[node name="Down2" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Center"]
+shape = SubResource("RectangleShape2D_j2hho")
+
+[node name="Down2" type="Area2D" parent="Wave"]
 position = Vector2(0, 64)
-shape = SubResource("RectangleShape2D_5mgg8")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Down2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wave/Down2"]
 sprite_frames = SubResource("SpriteFrames_vc52i")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wave/Down2"]
+shape = SubResource("RectangleShape2D_qjfqg")

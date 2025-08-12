@@ -42,16 +42,19 @@ var dmg_label = null
 @onready var target = $Target
 
 var atk_timer: Timer
+var is_folow: bool
 
 var astar_grid := AStarGrid2D.new()
 
 var info := {
 	"id": 1,
+	"name": "Reaper",
 	"def": 3,
 	"atk_min": 2,
 	"atk_max": 5,
 	"atk_range": 70,
-	"wave_rng": [0,3]
+	"wave_rng": [0,2],
+	"aggro": 200
 }
 
 
@@ -86,15 +89,14 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 		
-	if not player:
-		return
-		
-	var direction_player = (player.global_position - global_position).normalized()
-	var target_side = player.global_position - (direction_player * 32)
-
-	agent.target_position = target_side
+	on_detect_player()
+	on_moviment()
 	
 
+	
+		
+	
+func on_moviment():
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
 		if abs(last_direction.x) > abs(last_direction.y):
@@ -113,7 +115,6 @@ func _physics_process(delta):
 		velocity = direction * speed
 		
 		last_direction = direction
-		print(direction)
 		
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
@@ -127,32 +128,29 @@ func _physics_process(delta):
 				$AnimatedSprite2D.play("walk_up")
 				
 		move_and_slide()
-		
 	
+func on_detect_player():
+	if not player:
+		return
+		
+	var dist_to_player = global_position.distance_to(player.global_position)
+	
+	
+	if dist_to_player <= info.aggro:
+		is_folow = true
+	
+	if is_folow:
+		var direction_player = (player.global_position - global_position).normalized()
+		var target_side = player.global_position - (direction_player * 32)
+		agent.target_position = target_side
+	else:
+		agent.target_position = global_position
 
 func apply_pushback(from_position: Vector2):
 	push_vector = (global_position - from_position).normalized() * push_force
 	push_timer = push_time
 
-func on_detect_player():
-	player = get_parent().get_node("Player")
-	if not player:
-		return
 
-	var diff = player.global_position - global_position
-	var input_vector = Vector2.ZERO
-
-	# Prioriza X
-	if abs(diff.x) > abs(diff.y):
-		input_vector = Vector2(sign(diff.x), 0)
-	else:
-		input_vector = Vector2(0, sign(diff.y))
-
-	var ray = get_ray_for_direction(input_vector)
-	
-	if ray and not ray.is_colliding():
-		target_position = global_position + input_vector 
-		is_moving = true
 
 	
 func on_calculate_damage():
@@ -226,5 +224,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		var percent: float = float(current_health) / float(max_health)
 		var HUD = player.get_node("HUD")
 		HUD.set_enemy_health(percent)
+		HUD.set_enemy_name(info.name)
 
 		player.on_atk()
