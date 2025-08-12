@@ -1,10 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://b3x80ld3moion"]
+[gd_scene load_steps=25 format=3 uid="uid://b3x80ld3moion"]
 
 [ext_resource type="Texture2D" uid="uid://bvytcr026wt26" path="res://Sprites/bard-32x32.png" id="1_q52ol"]
 [ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="2_81g41"]
 [ext_resource type="Script" path="res://Player/hud.gd" id="3_1hcok"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_vawsd"]
 [ext_resource type="Texture2D" uid="uid://goxxx271av5l" path="res://Sprites/life_pot.png" id="5_5sycj"]
+[ext_resource type="PackedScene" uid="uid://b03gfr4fl6m5v" path="res://HUD/ActionBarSlot/actionbar_slot.tscn" id="6_nuj7i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]
 size = Vector2(15.9, 15.9)
@@ -223,6 +224,7 @@ target_position = Vector2(-32, 0)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("3_1hcok")
+slot_scene = ExtResource("6_nuj7i")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 15
@@ -353,98 +355,8 @@ theme_override_fonts/font = ExtResource("4_vawsd")
 text = "Creature"
 
 [node name="SkillsBar" type="HBoxContainer" parent="HUD/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-
-[node name="Slot1" type="Panel" parent="HUD/MarginContainer/SkillsBar"]
-clip_contents = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/SkillsBar/Slot1"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/SkillsBar/Slot1/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-alignment = 1
-
-[node name="Heal" type="TextureButton" parent="HUD/MarginContainer/SkillsBar/Slot1/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture_normal = ExtResource("5_5sycj")
-
-[node name="Label" type="Label" parent="HUD/MarginContainer/SkillsBar/Slot1/MarginContainer/HBoxContainer/Heal"]
-layout_mode = 2
-offset_left = 25.0
-offset_top = -2.0
-offset_right = 35.0
-offset_bottom = 10.0
-theme_override_fonts/font = ExtResource("4_vawsd")
-theme_override_font_sizes/font_size = 12
-text = "5"
-
-[node name="Cooldown" type="ColorRect" parent="HUD/MarginContainer/SkillsBar/Slot1"]
-visible = false
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(1, 0.266667, 0.258824, 0.278431)
-
-[node name="Slot2" type="Panel" parent="HUD/MarginContainer/SkillsBar"]
-clip_contents = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/SkillsBar/Slot2"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/SkillsBar/Slot2/MarginContainer"]
-layout_mode = 2
-
-[node name="Heal" type="TextureButton" parent="HUD/MarginContainer/SkillsBar/Slot2/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Slot3" type="Panel" parent="HUD/MarginContainer/SkillsBar"]
-clip_contents = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/SkillsBar/Slot3"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/SkillsBar/Slot3/MarginContainer"]
-layout_mode = 2
-
-[node name="Heal" type="TextureButton" parent="HUD/MarginContainer/SkillsBar/Slot3/MarginContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Slot4" type="Panel" parent="HUD/MarginContainer/SkillsBar"]
-clip_contents = true
-custom_minimum_size = Vector2(40, 40)
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/MarginContainer/SkillsBar/Slot4"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer/SkillsBar/Slot4/MarginContainer"]
-layout_mode = 2
-
-[node name="Heal" type="TextureButton" parent="HUD/MarginContainer/SkillsBar/Slot4/MarginContainer/HBoxContainer"]
-layout_mode = 2
