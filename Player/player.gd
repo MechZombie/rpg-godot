@@ -2,7 +2,8 @@ extends CharacterBody2D
 const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
 var speed = 70
-@export var SpellScene: PackedScene
+@export var BasicAtkScene: PackedScene
+@export var GreatFireBallScene: PackedScene
 
 
 @export var tile_size := Vector2(32,32)
@@ -167,11 +168,47 @@ func shoot_projectile():
 	if(is_out || is_way):
 		return
 		
+	on_basic_atk()
+
+func shoot_spell(type: String):
+	var cav = get_parent()
+	var creatures = cav.creature_instances
+	
+	for creature in creatures:
+		if(is_instance_valid(creature) and creature.info.id == target_id):
+			target_position = creature.global_position
+			
+	var is_out = is_out_of_range()
+	var is_way = is_shootable()
+	
+	if(is_out || is_way):
+		return
+		
+	if(type == "great_fire_ball"):
+		on_great_fire_ball()
+
+
+func on_great_fire_ball():
+	var atk = info.magic_power + randi_range(info.atk_min, info.atk_max)
+	var gfb = GreatFireBallScene.instantiate()
+	
+	gfb.set_as_top_level(true)
+	gfb.target_id = target_id
+	gfb.damage = atk
+	gfb.global_position = global_position
+	gfb.target_position = target_position
+	
+	var direction = (target_position - global_position).normalized()
+	gfb.set("direction", direction)
+	get_parent().add_child(gfb) 
+	
+
+func on_basic_atk():
 	var atk_min = info.atk_min
 	var atk_max = info.atk_max
 	var atk = randi_range(atk_min, atk_max)
 	
-	var new_spell = SpellScene.instantiate()
+	var new_spell = BasicAtkScene.instantiate()
 	new_spell.set_as_top_level(true)
 	new_spell.target_id = target_id
 	new_spell.visible = true
@@ -181,6 +218,7 @@ func shoot_projectile():
 	var direction = (target_position - global_position).normalized()
 	new_spell.set("direction", direction)
 	get_parent().add_child(new_spell) 
+
 
 func is_shootable():
 	var ray = RayCast2D.new()

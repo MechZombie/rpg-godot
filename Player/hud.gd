@@ -30,7 +30,7 @@ func on_prepare_action_bar():
 			"locked_time": 5.0,
 			"texture": preload("res://Sprites/hud_spell_fire_3.png"),
 			"count": null,
-			"cb":  player.on_heal
+			"cb": func(): player.shoot_spell("great_fire_ball")
 		},
 		{
 			"name": "Poção de vida",

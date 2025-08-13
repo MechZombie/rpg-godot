@@ -147,8 +147,6 @@ func apply_pushback(from_position: Vector2):
 	push_vector = (global_position - from_position).normalized() * push_force
 	push_timer = push_time
 
-
-
 	
 func on_calculate_damage():
 	if not is_folow:

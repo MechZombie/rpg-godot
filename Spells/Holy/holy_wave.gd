@@ -50,7 +50,6 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body):
-	print("tome")
 	if body.is_in_group("Player"):
 		var damage = randi_range(info.wave_min_damage, info.wave_max_damage)
 		body.on_receive_damage(damage, Color.GOLD, -20)
