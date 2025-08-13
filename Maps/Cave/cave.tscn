@@ -560,6 +560,7 @@ creature = ExtResource("11_mgvdi")
 position = Vector2(592, 92)
 
 [node name="Torch" parent="." instance=ExtResource("5_6afn1")]
+z_index = 10
 position = Vector2(528, 144)
 
 [node name="Respawn" parent="." instance=ExtResource("11_hiny4")]

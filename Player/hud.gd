@@ -37,9 +37,10 @@ func on_prepare_action_bar():
 			"locked_time": 5.0,
 			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
 			"count": null,
-			"cb": null
+			"cb": func(): player.shoot_spell("on_ultimate_explosion")
 		},
 	]
+	
 	
 	for item in action_bar_items:
 		var action_item = slot_scene.instantiate()

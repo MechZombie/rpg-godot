@@ -1,0 +1,235 @@
+[gd_scene load_steps=17 format=3 uid="uid://cppj018t6q7dm"]
+
+[ext_resource type="Script" path="res://Spells/UltimateExplosion/ultimate_explosion.gd" id="1_1ncsc"]
+[ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="2_k3kbj"]
+[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_nivo3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xin8"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uefo4"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfy0u"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knm5n"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uotyf"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wj0n7"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihrwl"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bshom"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_amya0"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qkw6l"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vennf"]
+atlas = ExtResource("2_k3kbj")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t6pig"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8xin8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uefo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfy0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knm5n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uotyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wj0n7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihrwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bshom")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_amya0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qkw6l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vennf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bfuqq"]
+size = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D"]
+script = ExtResource("1_1ncsc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Fire1" type="Area2D" parent="Control"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire1"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire1"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire2" type="Area2D" parent="Control"]
+position = Vector2(32, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire2"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire2"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire3" type="Area2D" parent="Control"]
+position = Vector2(-32, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire3"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire3"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire4" type="Area2D" parent="Control"]
+position = Vector2(0, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire4"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire4"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire5" type="Area2D" parent="Control"]
+position = Vector2(0, -32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire5"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire5"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire6" type="Area2D" parent="Control"]
+position = Vector2(32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire6"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire6"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire7" type="Area2D" parent="Control"]
+position = Vector2(32, -32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire7"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire7"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire8" type="Area2D" parent="Control"]
+position = Vector2(-32, -32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire8"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire8"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire9" type="Area2D" parent="Control"]
+position = Vector2(-32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire9"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire9"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire10" type="Area2D" parent="Control"]
+position = Vector2(64, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire10"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire10"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire11" type="Area2D" parent="Control"]
+position = Vector2(0, 64)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire11"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire11"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire12" type="Area2D" parent="Control"]
+position = Vector2(-64, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire12"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire12"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="Fire13" type="Area2D" parent="Control"]
+position = Vector2(-1, -64)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire13"]
+sprite_frames = SubResource("SpriteFrames_t6pig")
+frame_progress = 0.645244
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Fire13"]
+shape = SubResource("RectangleShape2D_bfuqq")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.1
+texture = ExtResource("3_nivo3")
+texture_scale = 0.35

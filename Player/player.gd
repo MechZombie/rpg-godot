@@ -4,6 +4,7 @@ const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 var speed = 70
 @export var BasicAtkScene: PackedScene
 @export var GreatFireBallScene: PackedScene
+@export var UltimateExplosionScene: PackedScene
 
 
 @export var tile_size := Vector2(32,32)
@@ -181,20 +182,21 @@ func shoot_spell(type: String):
 	var is_out = is_out_of_range()
 	var is_way = is_shootable()
 	
-	if(is_out || is_way):
-		return
 		
-	if(type == "great_fire_ball"):
+	if(type == "great_fire_ball" and not is_out and not is_way):
 		on_great_fire_ball()
+	
+	if(type == "on_ultimate_explosion"):
+		on_ultimate_explosion()
 
 
 func on_great_fire_ball():
-	var atk = info.magic_power + randi_range(info.atk_min, info.atk_max)
+	var damage = info.magic_power + randi_range(info.atk_min, info.atk_max)
 	var gfb = GreatFireBallScene.instantiate()
 	
 	gfb.set_as_top_level(true)
 	gfb.target_id = target_id
-	gfb.damage = atk
+	gfb.damage = damage
 	gfb.global_position = global_position
 	gfb.target_position = target_position
 	
@@ -202,6 +204,18 @@ func on_great_fire_ball():
 	gfb.set("direction", direction)
 	get_parent().add_child(gfb) 
 	
+func on_ultimate_explosion():
+	var damage = info.magic_power + randi_range(info.atk_min, info.atk_max)
+	var ultimate = UltimateExplosionScene.instantiate()
+	
+	ultimate.set_as_top_level(true)
+	ultimate.target_id = target_id
+	ultimate.damage = damage
+	ultimate.global_position = global_position
+	
+	var direction = (target_position - global_position).normalized()
+	get_parent().add_child(ultimate) 
+
 
 func on_basic_atk():
 	var atk_min = info.atk_min
@@ -238,9 +252,12 @@ func is_shootable():
 	return false
 	
 func is_out_of_range():
+	if target_position == Vector2.ZERO:
+		return true
+		
 	var distance_in_pixels = global_position.distance_to(target_position)
 	var distance_in_tiles = int(distance_in_pixels / 32) - 1
-	return distance_in_tiles > info.range
+	return distance_in_tiles > info.range 
 	
 func update_health_bar():
 	var percent: float = float(current_health) / float(max_health)
