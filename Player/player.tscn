@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b3x80ld3moion"]
+[gd_scene load_steps=31 format=3 uid="uid://b3x80ld3moion"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_pxivw"]
 [ext_resource type="Texture2D" uid="uid://bvytcr026wt26" path="res://Sprites/bard-32x32.png" id="1_q52ol"]
@@ -10,6 +10,8 @@
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_vawsd"]
 [ext_resource type="Texture2D" uid="uid://goxxx271av5l" path="res://Sprites/life_pot.png" id="5_5sycj"]
 [ext_resource type="PackedScene" uid="uid://b03gfr4fl6m5v" path="res://HUD/ActionBarSlot/actionbar_slot.tscn" id="6_nuj7i"]
+[ext_resource type="PackedScene" uid="uid://bsv1rbchymmsv" path="res://HUD/inventory.tscn" id="11_78fjn"]
+[ext_resource type="PackedScene" uid="uid://1whxeh42wdp7" path="res://HUD/equipments.tscn" id="12_w02io"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]
 size = Vector2(15.9, 15.9)
@@ -232,7 +234,7 @@ target_position = Vector2(-32, 0)
 
 [node name="HUD" type="CanvasLayer" parent="."]
 script = ExtResource("3_1hcok")
-slot_scene = ExtResource("6_nuj7i")
+SlotScene = ExtResource("6_nuj7i")
 
 [node name="MarginContainer" type="MarginContainer" parent="HUD"]
 anchors_preset = 15
@@ -368,3 +370,27 @@ custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+alignment = 2
+
+[node name="inventory" type="Control" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Inventory" parent="HUD/MarginContainer/HBoxContainer/inventory" instance=ExtResource("11_78fjn")]
+layout_mode = 0
+offset_left = -217.0
+offset_right = 10.0
+
+[node name="equipments" type="Control" parent="HUD/MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Equipments" parent="HUD/MarginContainer/HBoxContainer/equipments" instance=ExtResource("12_w02io")]
+layout_mode = 0
+offset_left = -221.0
+offset_top = -72.0
+offset_right = 6.0
+offset_bottom = -3.0

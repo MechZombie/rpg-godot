@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Player/spell.gd" id="1_ohee3"]
 [ext_resource type="Texture2D" uid="uid://brbxdelxyjn5p" path="res://Sprites/spell-holy.png" id="2_xwvbu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2gf32"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_q6l0a"]
 atlas = ExtResource("2_xwvbu")
 region = Rect2(0, 0, 32, 32)
 
@@ -11,7 +11,7 @@ region = Rect2(0, 0, 32, 32)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2gf32")
+"texture": SubResource("AtlasTexture_q6l0a")
 }],
 "loop": true,
 "name": &"default",

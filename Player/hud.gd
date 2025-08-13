@@ -9,7 +9,7 @@ extends CanvasLayer
 
 
 @onready var skills_bar: HBoxContainer = $MarginContainer/SkillsBar
-@export var slot_scene: PackedScene
+@export var SlotScene: PackedScene
 
 var is_slot1_cdr: bool
 
@@ -43,7 +43,7 @@ func on_prepare_action_bar():
 	
 	
 	for item in action_bar_items:
-		var action_item = slot_scene.instantiate()
+		var action_item = SlotScene.instantiate()
 		action_item.texture = item.texture
 		if(item.count):
 			action_item.label_value = item.count

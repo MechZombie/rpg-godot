@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://boivt54h80ar"]
+
+[ext_resource type="Script" path="res://HUD/inventory_item.gd" id="1_va6cw"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_mec1v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l3ora"]
+font = ExtResource("2_mec1v")
+font_size = 15
+
+[node name="InventoryItem" type="Panel"]
+custom_minimum_size = Vector2(40, 40)
+script = ExtResource("1_va6cw")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 36.0
+offset_bottom = 36.0
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 25.0
+offset_top = 1.0
+offset_right = 38.0
+offset_bottom = 16.0
+text = "0"
+label_settings = SubResource("LabelSettings_l3ora")
