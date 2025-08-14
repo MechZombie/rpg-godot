@@ -187,6 +187,6 @@ sprite_frames = SubResource("SpriteFrames_pdrb3")
 frame_progress = 0.947661
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.1
+energy = 0.3
 texture = ExtResource("4_eq0g3")
 texture_scale = 0.3

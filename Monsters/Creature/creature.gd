@@ -3,6 +3,7 @@ extends CharacterBody2D
 const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
 @export var HolyWave: PackedScene
+@export var DropBag: PackedScene
 @export var tile_size := 32
 
 
@@ -56,6 +57,24 @@ var info := {
 	"wave_rng": [0,2],
 	"aggro": 200
 }
+
+var drops = [
+		{
+			"name": "Poção vazia",
+			"texture": preload("res://Sprites/empty_vial.png"),
+			"count": 1,
+		},
+		{
+			"name": "Gema verde",
+			"texture": preload("res://Sprites/green_gem.png"),
+			"count": 2,
+		},
+		{
+			"name": "Flexa de madeira",
+			"texture": preload("res://Sprites/arrows_group.png"),
+			"count": 10,
+		},
+	]
 
 
 
@@ -180,14 +199,25 @@ func update_health_bar():
 	var cav = get_parent()
 	
 	if(current_health <= 0):
+		on_drop_loot()
+		on_dead()
+		
 		cav.spawn_creature()
-		player.clear_target()
-		queue_free()
 		
 	var percent: float = float(current_health) / float(max_health)
 	var HUD = player.get_node("HUD")
 	HUD.set_enemy_health(percent)
 
+func on_dead():
+	player.clear_target()
+	queue_free()
+
+func on_drop_loot():
+	var loot = DropBag.instantiate()
+	loot.position = global_position
+	
+	loot.items = drops
+	get_parent().add_child(loot) 
 
 func on_show_hit(damage, color: Color):
 	dmg_label = FloatingText.instantiate()

@@ -153,8 +153,6 @@ func on_show_hit(damage, color: Color, left_position: float):
 	current_health -= damage
 	get_tree().current_scene.add_child(dmg_label)
 	
-
-
 func shoot_projectile():	
 	var cav = get_parent()
 	var creatures = cav.creature_instances

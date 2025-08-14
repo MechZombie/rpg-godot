@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dksglfeh8ca1c"]
 
-[ext_resource type="Script" path="res://HUD/equipment_item.gd" id="1_4aore"]
+[ext_resource type="Script" path="res://HUD/EquipmentItem/equipment_item.gd" id="1_4aore"]
 
 [node name="EquipmentItem" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
@@ -9,6 +9,7 @@ offset_bottom = 40.0
 script = ExtResource("1_4aore")
 
 [node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
 offset_right = 36.0

@@ -230,6 +230,6 @@ frame_progress = 0.645244
 shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-energy = 0.1
+energy = 0.3
 texture = ExtResource("3_nivo3")
 texture_scale = 0.35

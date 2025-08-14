@@ -7,65 +7,155 @@ extends CanvasLayer
 @onready var enemy_health_bar_backeground: ColorRect = $MarginContainer/EnemyContainer/LifeBar/Background
 @onready var creature_name: Label = $MarginContainer/EnemyContainer/LifeBar/Name
 
+@onready var action_bar: Panel = $MarginContainer/SkillsBar/Control/ActionBar
+@onready var control: Control = $MarginContainer/SkillsBar/Control
+@onready var inventory_container: VBoxContainer = $MarginContainer/Inventory
+@onready var inventory_handler: TextureButton = $MarginContainer/OptionsContainer/Panel/InventoryHandler
 
-@onready var skills_bar: HBoxContainer = $MarginContainer/SkillsBar
-@export var SlotScene: PackedScene
 
-var is_slot1_cdr: bool
+@export var ActionBarScene: PackedScene
+@export var InventoryScene: PackedScene
+@export var EquipmentsScene: PackedScene
+
 
 var action_bar_items = []
-var player
-
-func on_prepare_action_bar():
-	action_bar_items = [
+var inventory_items = [
 		{
-			"name": "Poção de vida",
+			"name": "Poção vazia",
 			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_heal_1.png"),
-			"count": null,
-			"cb": player.on_heal
+			"texture": preload("res://Sprites/empty_vial.png"),
+			"count": 1,
+			"cb": null
 		},
 		{
-			"name": "Bola de fogo",
+			"name": "Gema verde",
 			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_fire_3.png"),
-			"count": null,
-			"cb": func(): player.shoot_spell("great_fire_ball")
+			"texture": preload("res://Sprites/green_gem.png"),
+			"count": 2,
+			"cb": null
 		},
 		{
-			"name": "Poção de vida",
+			"name": "Flexa de madeira",
 			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
-			"count": null,
-			"cb": func(): player.shoot_spell("on_ultimate_explosion")
+			"texture": preload("res://Sprites/arrows_group.png"),
+			"count": 10,
+			"cb": null
 		},
 	]
 	
-	
-	for item in action_bar_items:
-		var action_item = SlotScene.instantiate()
-		action_item.texture = item.texture
-		if(item.count):
-			action_item.label_value = item.count
-			
-		if(item.cb):
-			action_item.cb = item.cb
-		skills_bar.add_child(action_item)
+var equipment_items = [
+		{
+			"name": "Brincos 1",
+			"texture": preload("res://Sprites/feather_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Capacete",
+			"texture": preload("res://Sprites/helmet_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Brincos 2",
+			"texture": preload("res://Sprites/feather_2.png"),
+			"cb": null
+		},
+		{
+			"name": "Arma",
+			"texture": preload("res://Sprites/weapon_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Armadura",
+			"texture": preload("res://Sprites/armor_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Escudo",
+			"texture": preload("res://Sprites/book_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Botas",
+			"texture": preload("res://Sprites/shoes_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Calças",
+			"texture": preload("res://Sprites/legs_1.png"),
+			"cb": null
+		},
+		{
+			"name": "Luvas",
+			"texture": preload("res://Sprites/gloves_1.png"),
+			"cb": null
+		},
+	]
+
+var player
+
+
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = get_parent()
 	player.connect("health_changed", Callable(self, "set_health"))
+	inventory_handler.pressed.connect(on_handle_inventory)
 	
-	call_deferred("on_prepare_action_bar")
+	on_prepare_equipments()
+	on_prepare_inventory()
+	on_prepare_action_bar()
+	
 
+func on_handle_inventory():
+	inventory_container.visible = not inventory_container.visible
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+func on_prepare_inventory():
+	var inventory = InventoryScene.instantiate()
+	inventory.items = inventory_items
+	inventory_container.add_child(inventory)
+	
+func on_prepare_equipments():
+	var equipments = EquipmentsScene.instantiate()
+	equipments.items = equipment_items
+	inventory_container.add_child(equipments)
+	
+func on_prepare_action_bar():
+	action_bar_items = [
+		{
+			"name": "Heal Speal",
+			"locked_time": 5.0,
+			"texture": preload("res://Sprites/hud_spell_heal_1.png"),
+			"count": null,
+			"cb": player.on_heal
+		},
+		{
+			"name": "Great Fire Ball",
+			"locked_time": 5.0,
+			"texture": preload("res://Sprites/hud_spell_fire_3.png"),
+			"count": null,
+			"cb": func(): player.shoot_spell("great_fire_ball")
+		},
+		{
+			"name": "Ultimate Explosion",
+			"locked_time": 5.0,
+			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
+			"count": null,
+			"cb": func(): player.shoot_spell("on_ultimate_explosion")
+		},
+		{
+			"name": "Espaço vazio",
+			"locked_time": 5.0,
+			"texture": null,
+			"count": null,
+			"cb": null
+		}
+	]
+	
+	var action_bar = ActionBarScene.instantiate()
+	action_bar.items = action_bar_items
+	inventory_container.add_child(action_bar)
+	
 func set_health(value):
 	var full_width: float = health_bar_backeground.size.x  
 	health_bar_foreground.size.x = full_width * value

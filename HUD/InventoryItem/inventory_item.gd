@@ -2,6 +2,7 @@ extends Panel
 
 @onready var texture_button: TextureButton = $TextureButton
 @onready var label: Label = $Label
+@onready var info: Panel = $Info
 
 var texture
 var label_value
@@ -9,6 +10,10 @@ var label_value
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	label.visible = false
+	info.visible = false
+	
+	texture_button.connect("pressed",Callable(self, "on_handle_info"))
+
 	
 	if texture:
 		texture_button.texture_normal = texture
@@ -21,3 +26,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+
+func on_handle_info():
+	info.visible = not info.visible

@@ -68,3 +68,4 @@ func _on_body_explode_entered(body):
 	if(body.info.id not in target_hits):
 			target_hits.append(body.info.id)
 			body.on_show_hit(damage, Color.ORANGE)
+			body.update_health_bar()

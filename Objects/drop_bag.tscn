@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxo32ktciifpn"]
+
+[ext_resource type="Texture2D" uid="uid://buygnh0ncun7e" path="res://Sprites/bag.png" id="1_igt4a"]
+[ext_resource type="Script" path="res://Objects/drop_bag.gd" id="2_0gg3y"]
+[ext_resource type="PackedScene" uid="uid://boivt54h80ar" path="res://HUD/InventoryItem/inventory_item.tscn" id="2_3e6rd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7qqua"]
+size = Vector2(32, 32)
+
+[node name="DropBag" type="Area2D"]
+z_index = 2
+script = ExtResource("2_0gg3y")
+InventoryItem = ExtResource("2_3e6rd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7qqua")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("1_igt4a")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = -112.0
+offset_top = -68.0
+offset_right = 114.0
+offset_bottom = -18.0
+mouse_filter = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 0
+offset_right = 225.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+columns = 5

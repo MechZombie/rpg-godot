@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch3sgqqvayfdu"]
+
+[ext_resource type="Texture2D" uid="uid://bok2xhagdqna5" path="res://Sprites/bag_dolar.png" id="1_namc6"]
+
+[node name="InventoryButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_namc6")
