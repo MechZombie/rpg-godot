@@ -152,11 +152,7 @@ layout_mode = 2
 
 [node name="Virtual Joystick" parent="MarginContainer/Joystick/Control" instance=ExtResource("6_cbw3p")]
 layout_mode = 1
-offset_left = 1.0
-offset_top = -266.0
-offset_right = 243.0
-offset_bottom = -46.0
-joystick_mode = 1
+pressed_color = Color(0.582703, 0.768828, 0.929546, 1)
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

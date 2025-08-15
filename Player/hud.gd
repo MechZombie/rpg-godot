@@ -101,6 +101,9 @@ func on_prepare_inventory():
 	inventory = InventoryScene.instantiate()
 	inventory.items = inventory_items
 	inventory_container.add_child(inventory)
+	inventory.visible = true
+	equipments.visible = true
+	
 	
 func on_prepare_equipments():
 	equipments = EquipmentsScene.instantiate()

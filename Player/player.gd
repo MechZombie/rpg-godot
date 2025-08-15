@@ -23,7 +23,6 @@ var speed = 70
 var HUD: CanvasLayer
 
 
-
 var info := {
 	"id": 1,
 	"atk_min": 10,
@@ -50,20 +49,12 @@ var has_target: bool
 var inventory_items = [
 		{
 			"id": 1,
-			"name": "Poção vazia",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/empty_vial.png"),
-			"count": 1,
+			"name": "Fire Sword",
+			"locked_time": 0.0,
+			"texture": preload("res://Sprites/fire_sword.png"),
+			"count": null,
 			"cb": null
 		},
-		#{
-			#"id": 2,
-			#"name": "Gema verde",
-			#"locked_time": 5.0,
-			#"texture": preload("res://Sprites/green_gem.png"),
-			#"count": 2,
-			#"cb": null
-		#}
 	]
 
 func _ready():
@@ -94,9 +85,6 @@ func on_update_inventory(items: Array):
 		print("Inventory full")
 		return
 		
-	print("previous", inventory_items)
-	print("new", items)
-		
 		
 	for item in items:
 		var found = false
@@ -118,16 +106,20 @@ func on_update_inventory(items: Array):
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
-	if Input.is_action_pressed("ui_right"):
-		input_vector.x += 1
-	if Input.is_action_pressed("ui_left"):
-		input_vector.x -= 1
-	if Input.is_action_pressed("ui_down"):
-		input_vector.y += 1
-	if Input.is_action_pressed("ui_up"):
-		input_vector.y -= 1
-
-	input_vector = input_vector.normalized()
+	#if Input.is_action_pressed("ui_right"):
+		#input_vector.x += 1
+	#if Input.is_action_pressed("ui_left"):
+		#input_vector.x -= 1
+	#if Input.is_action_pressed("ui_down"):
+		#input_vector.y += 1
+	#if Input.is_action_pressed("ui_up"):
+		#input_vector.y -= 1
+		#
+	#input_vector = input_vector.normalized()
+	
+	input_vector = Vector2.ZERO
+	input_vector = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
+	#position += input_vector * speed * delta
 
 	if input_vector != Vector2.ZERO:
 		# movimentação direta sem colisão grudenta

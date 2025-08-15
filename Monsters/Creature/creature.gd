@@ -63,23 +63,35 @@ var drops = [
 			"id": 1,
 			"name": "Poção vazia",
 			"texture": preload("res://Sprites/empty_vial.png"),
-			"count": 1,
+			"count": [0,0,0,1],
 		},
 		{
 			"id": 2,
 			"name": "Gema verde",
 			"texture": preload("res://Sprites/green_gem.png"),
-			"count": 2,
+			"count": [0,1],
 		},
 		{
 			"id": 3,
 			"name": "Flexa de madeira",
 			"texture": preload("res://Sprites/arrows_group.png"),
-			"count": 10,
+			"count": [0,7],
 		},
 	]
 
-
+func on_drop_loot():
+	var loot = DropBag.instantiate()
+	loot.position = global_position
+	
+	for drop in drops:
+		var is_drop = randi_range(drop.count[0], drop.count[1])
+		if is_drop > 0:
+			drop.count = is_drop
+			loot.items.append(drop)
+		
+		
+	loot.player = player
+	get_parent().add_child(loot) 
 
 func _ready() -> void:
 	target.visible = false
@@ -214,13 +226,7 @@ func on_dead():
 	player.clear_target()
 	queue_free()
 
-func on_drop_loot():
-	var loot = DropBag.instantiate()
-	loot.position = global_position
-	
-	loot.items = drops
-	loot.player = player
-	get_parent().add_child(loot) 
+
 
 func on_show_hit(damage, color: Color):
 	dmg_label = FloatingText.instantiate()

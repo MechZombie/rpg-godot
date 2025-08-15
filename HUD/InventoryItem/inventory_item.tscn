@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://boivt54h80ar"]
+[gd_scene load_steps=10 format=3 uid="uid://boivt54h80ar"]
 
 [ext_resource type="Script" path="res://HUD/InventoryItem/inventory_item.gd" id="1_va6cw"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_mec1v"]
+[ext_resource type="Texture2D" uid="uid://my1nyc6awngv" path="res://Icons/delete.png" id="3_gw4iy"]
+[ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_86pje"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ora"]
 font = ExtResource("2_mec1v")
@@ -9,15 +11,15 @@ font_size = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_r74su"]
 font = ExtResource("2_mec1v")
-font_size = 12
+font_size = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_dst7m"]
 font = ExtResource("2_mec1v")
-font_size = 8
+font_size = 10
 
 [sub_resource type="LabelSettings" id="LabelSettings_ohd3e"]
 font = ExtResource("2_mec1v")
-font_size = 9
+font_size = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_swc7f"]
 font = ExtResource("2_mec1v")
@@ -45,54 +47,73 @@ text = "0"
 label_settings = SubResource("LabelSettings_l3ora")
 
 [node name="Info" type="Panel" parent="."]
-visible = false
 layout_mode = 0
-offset_left = -91.0
-offset_top = -89.0
+offset_left = -152.0
+offset_top = -140.0
 offset_right = 19.0
 offset_bottom = 19.0
 
 [node name="Name" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 14.0
-offset_top = 9.0
-offset_right = 96.0
-offset_bottom = 21.0
-text = "Serpent Sword"
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 132.0
+offset_bottom = 22.0
+text = "Fire Sword"
 label_settings = SubResource("LabelSettings_r74su")
 
 [node name="Level" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 41.0
-offset_top = 26.0
-offset_right = 66.0
-offset_bottom = 36.0
+offset_left = 49.0
+offset_top = 30.0
+offset_right = 74.0
+offset_bottom = 40.0
 text = "Lvl 10"
 label_settings = SubResource("LabelSettings_dst7m")
 
 [node name="Atk" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 32.0
-offset_top = 43.0
-offset_right = 75.0
-offset_bottom = 57.0
+offset_left = 50.0
+offset_top = 56.0
+offset_right = 93.0
+offset_bottom = 70.0
 text = "Atk 10 ~ 15"
 label_settings = SubResource("LabelSettings_ohd3e")
 
 [node name="Def" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 33.0
-offset_top = 61.0
-offset_right = 73.0
-offset_bottom = 75.0
+offset_left = 50.0
+offset_top = 76.0
+offset_right = 108.0
+offset_bottom = 90.0
 text = "Def 5 ~ 10"
 label_settings = SubResource("LabelSettings_ohd3e")
 
 [node name="Label" type="Label" parent="Info"]
 layout_mode = 0
-offset_left = 26.0
-offset_top = 85.0
-offset_right = 85.0
-offset_bottom = 108.0
+offset_left = 50.0
+offset_top = 124.0
+offset_right = 109.0
+offset_bottom = 138.0
 text = "[ Warrior ]"
 label_settings = SubResource("LabelSettings_swc7f")
+
+[node name="DeleteButton" type="TextureButton" parent="Info"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 10.0
+offset_right = 30.0
+offset_bottom = 32.0
+texture_normal = ExtResource("3_gw4iy")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="DropItem" type="TextureButton" parent="Info"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 39.0
+offset_right = 28.0
+offset_bottom = 61.0
+texture_normal = ExtResource("4_86pje")
+ignore_texture_size = true
+stretch_mode = 0
