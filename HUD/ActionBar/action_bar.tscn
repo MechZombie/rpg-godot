@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b03gfr4fl6m5v" path="res://HUD/ActionBarSlot/actionbar_slot.tscn" id="2_31tjr"]
 
 [node name="ActionBar" type="Panel"]
-custom_minimum_size = Vector2(0, 55)
+custom_minimum_size = Vector2(227, 55)
 offset_top = 4.0
 offset_right = 182.0
 offset_bottom = 59.0

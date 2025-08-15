@@ -60,16 +60,19 @@ var info := {
 
 var drops = [
 		{
+			"id": 1,
 			"name": "Poção vazia",
 			"texture": preload("res://Sprites/empty_vial.png"),
 			"count": 1,
 		},
 		{
+			"id": 2,
 			"name": "Gema verde",
 			"texture": preload("res://Sprites/green_gem.png"),
 			"count": 2,
 		},
 		{
+			"id": 3,
 			"name": "Flexa de madeira",
 			"texture": preload("res://Sprites/arrows_group.png"),
 			"count": 10,
@@ -205,8 +208,7 @@ func update_health_bar():
 		cav.spawn_creature()
 		
 	var percent: float = float(current_health) / float(max_health)
-	var HUD = player.get_node("HUD")
-	HUD.set_enemy_health(percent)
+	player.HUD.set_enemy_health(percent)
 
 func on_dead():
 	player.clear_target()
@@ -217,6 +219,7 @@ func on_drop_loot():
 	loot.position = global_position
 	
 	loot.items = drops
+	loot.player = player
 	get_parent().add_child(loot) 
 
 func on_show_hit(damage, color: Color):
@@ -248,11 +251,11 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		
 		player.has_target = is_target
 		player.target_id = info.id
-		player.enemy_life_bar.visible = is_target
+		player.HUD.enemy_life_bar.visible = is_target
 		
 		var percent: float = float(current_health) / float(max_health)
-		var HUD = player.get_node("HUD")
-		HUD.set_enemy_health(percent)
-		HUD.set_enemy_name(info.name)
+		
+		player.HUD.set_enemy_health(percent)
+		player.HUD.set_enemy_name(info.name)
 
 		player.on_atk()

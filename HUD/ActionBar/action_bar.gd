@@ -7,8 +7,6 @@ var items = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print("montando action bar")
-	print(items)
 	for item in items:
 		var action_item = ActionBarItem.instantiate()
 		action_item.texture = item.texture

@@ -1,18 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://b3x80ld3moion"]
+[gd_scene load_steps=27 format=3 uid="uid://b3x80ld3moion"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_pxivw"]
 [ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="2_81g41"]
 [ext_resource type="PackedScene" uid="uid://7cs174745nl2" path="res://Player/spell.tscn" id="2_pi1sj"]
-[ext_resource type="Script" path="res://Player/hud.gd" id="3_1hcok"]
 [ext_resource type="PackedScene" uid="uid://desf4m6trmqkk" path="res://Spells/GreatFireBall/great_fire_ball.tscn" id="3_435oy"]
 [ext_resource type="PackedScene" uid="uid://cppj018t6q7dm" path="res://Spells/UltimateExplosion/ultimate_explosion.tscn" id="4_mcmhg"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_vawsd"]
 [ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="6_ybsnk"]
-[ext_resource type="PackedScene" uid="uid://bsv1rbchymmsv" path="res://HUD/Inventory/inventory.tscn" id="11_78fjn"]
-[ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="11_hyugb"]
-[ext_resource type="Texture2D" uid="uid://bok2xhagdqna5" path="res://Sprites/bag_dolar.png" id="12_ajyty"]
-[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="12_e8wal"]
-[ext_resource type="PackedScene" uid="uid://1whxeh42wdp7" path="res://HUD/Equipments/equipments.tscn" id="12_w02io"]
+[ext_resource type="PackedScene" uid="uid://g8hnt6va4kms" path="res://HUD/hud.tscn" id="7_44skb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]
 size = Vector2(15.9, 15.9)
@@ -191,6 +186,7 @@ script = ExtResource("1_pxivw")
 BasicAtkScene = ExtResource("2_pi1sj")
 GreatFireBallScene = ExtResource("3_435oy")
 UltimateExplosionScene = ExtResource("4_mcmhg")
+HUDScene = ExtResource("7_44skb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 20)
@@ -231,170 +227,6 @@ target_position = Vector2(32, 0)
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(0, 20)
 target_position = Vector2(-32, 0)
-
-[node name="HUD" type="CanvasLayer" parent="."]
-script = ExtResource("3_1hcok")
-ActionBarScene = ExtResource("11_hyugb")
-InventoryScene = ExtResource("11_78fjn")
-EquipmentsScene = ExtResource("12_w02io")
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 60
-
-[node name="PlayerContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="LifeBar" type="Control" parent="HUD/MarginContainer/PlayerContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Background" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/LifeBar"]
-layout_mode = 0
-offset_right = 144.0
-offset_bottom = 11.0
-color = Color(0.396889, 0.396889, 0.396889, 1)
-
-[node name="Foreground" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/LifeBar"]
-layout_mode = 0
-offset_right = 144.0
-offset_bottom = 11.0
-color = Color(0.152941, 1, 0.156863, 1)
-
-[node name="ManaBar" type="Control" parent="HUD/MarginContainer/PlayerContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Background" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/ManaBar"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 14.0
-offset_right = 140.0
-offset_bottom = 25.0
-color = Color(0.396889, 0.396889, 0.396889, 1)
-
-[node name="Foreground" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/ManaBar"]
-layout_mode = 0
-offset_left = -4.0
-offset_top = 14.0
-offset_right = 140.0
-offset_bottom = 25.0
-color = Color(0.137876, 0.364253, 1, 1)
-
-[node name="Name" type="Control" parent="HUD/MarginContainer/PlayerContainer"]
-layout_mode = 2
-
-[node name="Name" type="Label" parent="HUD/MarginContainer/PlayerContainer/Name"]
-layout_mode = 0
-offset_left = -8.0
-offset_top = 39.0
-offset_right = 71.0
-offset_bottom = 62.0
-theme_override_fonts/font = ExtResource("4_vawsd")
-text = "Doja Than"
-
-[node name="ExpBar" type="Control" parent="HUD/MarginContainer/PlayerContainer"]
-layout_mode = 2
-
-[node name="Background" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/ExpBar"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = 29.0
-offset_right = 132.0
-offset_bottom = 34.0
-color = Color(0.396889, 0.396889, 0.396889, 1)
-
-[node name="Foreground" type="ColorRect" parent="HUD/MarginContainer/PlayerContainer/ExpBar"]
-layout_mode = 0
-offset_left = -12.0
-offset_top = 29.0
-offset_right = 77.0
-offset_bottom = 34.0
-color = Color(1, 0.72549, 0, 1)
-
-[node name="EnemyContainer" type="HBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="LifeBar" type="Control" parent="HUD/MarginContainer/EnemyContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Background" type="ColorRect" parent="HUD/MarginContainer/EnemyContainer/LifeBar"]
-layout_mode = 0
-offset_left = -151.0
-offset_top = -1.0
-offset_right = -7.0
-offset_bottom = 10.0
-color = Color(0.396889, 0.396889, 0.396889, 1)
-
-[node name="Foreground" type="ColorRect" parent="HUD/MarginContainer/EnemyContainer/LifeBar"]
-layout_mode = 0
-offset_left = -151.0
-offset_top = -1.0
-offset_right = -7.0
-offset_bottom = 10.0
-color = Color(0.152941, 1, 0.156863, 1)
-
-[node name="Name" type="Label" parent="HUD/MarginContainer/EnemyContainer/LifeBar"]
-layout_mode = 2
-offset_left = -80.0
-offset_top = 15.0
-offset_right = -7.0
-offset_bottom = 30.0
-theme_override_fonts/font = ExtResource("4_vawsd")
-text = "Creature"
-
-[node name="Inventory" type="VBoxContainer" parent="HUD/MarginContainer"]
-layout_direction = 2
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Joystick" type="HBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Control" type="Control" parent="HUD/MarginContainer/Joystick"]
-layout_mode = 2
-
-[node name="Virtual Joystick" parent="HUD/MarginContainer/Joystick/Control" instance=ExtResource("12_e8wal")]
-layout_mode = 1
-offset_left = 1.0
-offset_top = -266.0
-offset_right = 243.0
-offset_bottom = -46.0
-joystick_mode = 1
-
-[node name="OptionsContainer" type="VBoxContainer" parent="HUD/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-
-[node name="Panel" type="Panel" parent="HUD/MarginContainer/OptionsContainer"]
-custom_minimum_size = Vector2(100, 40)
-layout_mode = 2
-
-[node name="InventoryHandler" type="TextureButton" parent="HUD/MarginContainer/OptionsContainer/Panel"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture_normal = ExtResource("12_ajyty")
 
 [node name="Name" type="Control" parent="."]
 layout_mode = 3

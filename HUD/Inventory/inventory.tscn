@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://bsv1rbchymmsv"]
+[gd_scene load_steps=6 format=3 uid="uid://bsv1rbchymmsv"]
 
 [ext_resource type="PackedScene" uid="uid://boivt54h80ar" path="res://HUD/InventoryItem/inventory_item.tscn" id="1_aiffj"]
 [ext_resource type="Script" path="res://HUD/Inventory/inventory.gd" id="1_jp6ru"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_pwohq"]
+[ext_resource type="Texture2D" uid="uid://my1nyc6awngv" path="res://Icons/delete.png" id="4_yxkpc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_irn6u"]
 font = ExtResource("2_pwohq")
 
 [node name="Inventory" type="Panel"]
-custom_minimum_size = Vector2(227, 170)
-offset_right = 225.0
-offset_bottom = 138.0
+custom_minimum_size = Vector2(227, 200)
+offset_right = 227.0
+offset_bottom = 200.0
 script = ExtResource("1_jp6ru")
 InventoryItem = ExtResource("1_aiffj")
 
@@ -38,3 +39,13 @@ offset_right = 148.0
 offset_bottom = 20.0
 text = "Inventory"
 label_settings = SubResource("LabelSettings_irn6u")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 173.0
+offset_right = 220.0
+offset_bottom = 195.0
+texture_normal = ExtResource("4_yxkpc")
+ignore_texture_size = true
+stretch_mode = 0

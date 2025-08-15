@@ -5,6 +5,7 @@ var speed = 70
 @export var BasicAtkScene: PackedScene
 @export var GreatFireBallScene: PackedScene
 @export var UltimateExplosionScene: PackedScene
+@export var HUDScene: PackedScene
 
 
 @export var tile_size := Vector2(32,32)
@@ -17,17 +18,19 @@ var speed = 70
 @onready var ray_up = $RayCastUp
 @onready var ray_left = $RayCastLeft
 @onready var ray_right = $RayCastRight
-@onready var enemy_life_bar: Control = $HUD/MarginContainer/EnemyContainer/LifeBar
+@onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
+
+var HUD: CanvasLayer
 
 
 
 var info := {
 	"id": 1,
-	"atk_min": 5,
-	"atk_max": 10,
+	"atk_min": 10,
+	"atk_max": 20,
 	"range": 3,
 	"def": 3,
-	"magic_power": 5
+	"magic_power": 10
 }
 
 
@@ -44,6 +47,25 @@ var target_id: int
 var atk_timer: Timer
 var has_target: bool
 
+var inventory_items = [
+		{
+			"id": 1,
+			"name": "Poção vazia",
+			"locked_time": 5.0,
+			"texture": preload("res://Sprites/empty_vial.png"),
+			"count": 1,
+			"cb": null
+		},
+		#{
+			#"id": 2,
+			#"name": "Gema verde",
+			#"locked_time": 5.0,
+			#"texture": preload("res://Sprites/green_gem.png"),
+			#"count": 2,
+			#"cb": null
+		#}
+	]
+
 func _ready():
 	target.visible = false
 	moviment_position = global_position
@@ -53,10 +75,46 @@ func _ready():
 	agent.radius = 15.9
 	agent.max_speed = speed
 	
-	enemy_life_bar.visible = false
+	on_prepare_hud()
 	update_health_bar()
 	
-
+	
+	
+func on_prepare_hud():
+	if HUD and is_instance_valid(HUD):
+		HUD.queue_free()
+		
+	HUD = HUDScene.instantiate()
+	HUD.inventory_items = inventory_items
+	add_child(HUD)
+	
+	
+func on_update_inventory(items: Array):
+	if inventory_items.size() == 15:
+		print("Inventory full")
+		return
+		
+	print("previous", inventory_items)
+	print("new", items)
+		
+		
+	for item in items:
+		var found = false
+		
+		for i in range(inventory_items.size()):
+			if inventory_items[i].id == item.id:
+				inventory_items[i].count += item.count
+				found = true
+				break  # já encontrou, não precisa continuar
+		
+		# se terminou o loop sem encontrar, adiciona
+		if not found:
+			inventory_items.append(item)
+			
+	
+	HUD.inventory_items = inventory_items
+	HUD.on_prepare_inventory()
+		
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
@@ -137,7 +195,7 @@ func clear_target():
 		atk_timer.stop()
 		atk_timer.queue_free()
 		atk_timer = null
-		enemy_life_bar.visible = false
+		HUD.enemy_life_bar.visible = false
 	
 func on_show_hit(damage, color: Color, left_position: float):
 	var dmg_label = FloatingText.instantiate()

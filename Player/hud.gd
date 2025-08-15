@@ -3,6 +3,8 @@ extends CanvasLayer
 @onready var health_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Foreground
 @onready var health_bar_backeground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Background
 
+
+@onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
 @onready var enemy_health_bar_foreground: ColorRect = $MarginContainer/EnemyContainer/LifeBar/Foreground
 @onready var enemy_health_bar_backeground: ColorRect = $MarginContainer/EnemyContainer/LifeBar/Background
 @onready var creature_name: Label = $MarginContainer/EnemyContainer/LifeBar/Name
@@ -11,6 +13,8 @@ extends CanvasLayer
 @onready var control: Control = $MarginContainer/SkillsBar/Control
 @onready var inventory_container: VBoxContainer = $MarginContainer/Inventory
 @onready var inventory_handler: TextureButton = $MarginContainer/OptionsContainer/Panel/InventoryHandler
+@onready var options_container: VBoxContainer = $MarginContainer/OptionsContainer
+@onready var skills_container: VBoxContainer = $MarginContainer/SkillsContainer
 
 
 @export var ActionBarScene: PackedScene
@@ -19,29 +23,7 @@ extends CanvasLayer
 
 
 var action_bar_items = []
-var inventory_items = [
-		{
-			"name": "Poção vazia",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/empty_vial.png"),
-			"count": 1,
-			"cb": null
-		},
-		{
-			"name": "Gema verde",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/green_gem.png"),
-			"count": 2,
-			"cb": null
-		},
-		{
-			"name": "Flexa de madeira",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/arrows_group.png"),
-			"count": 10,
-			"cb": null
-		},
-	]
+var inventory_items = []
 	
 var equipment_items = [
 		{
@@ -92,7 +74,8 @@ var equipment_items = [
 	]
 
 var player
-
+var inventory
+var equipments
 
 
 
@@ -108,15 +91,19 @@ func _ready() -> void:
 	
 
 func on_handle_inventory():
-	inventory_container.visible = not inventory_container.visible
+	inventory.visible = not inventory.visible
+	equipments.visible = not equipments.visible
 
 func on_prepare_inventory():
-	var inventory = InventoryScene.instantiate()
+	if inventory and is_instance_valid(inventory):
+		inventory.queue_free()
+		
+	inventory = InventoryScene.instantiate()
 	inventory.items = inventory_items
 	inventory_container.add_child(inventory)
 	
 func on_prepare_equipments():
-	var equipments = EquipmentsScene.instantiate()
+	equipments = EquipmentsScene.instantiate()
 	equipments.items = equipment_items
 	inventory_container.add_child(equipments)
 	
@@ -154,7 +141,7 @@ func on_prepare_action_bar():
 	
 	var action_bar = ActionBarScene.instantiate()
 	action_bar.items = action_bar_items
-	inventory_container.add_child(action_bar)
+	skills_container.add_child(action_bar)
 	
 func set_health(value):
 	var full_width: float = health_bar_backeground.size.x  
