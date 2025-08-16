@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dksglfeh8ca1c"]
+[gd_scene load_steps=3 format=3 uid="uid://dksglfeh8ca1c"]
 
 [ext_resource type="Script" path="res://HUD/EquipmentItem/equipment_item.gd" id="1_4aore"]
+[ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Scalable_5.png" id="2_bgtq6"]
 
 [node name="EquipmentItem" type="Panel"]
 custom_minimum_size = Vector2(40, 40)
@@ -14,3 +15,13 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 36.0
 offset_bottom = 36.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_bgtq6")
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11

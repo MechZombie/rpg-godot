@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://g8hnt6va4kms"]
+[gd_scene load_steps=10 format=3 uid="uid://g8hnt6va4kms"]
 
 [ext_resource type="Script" path="res://Player/hud.gd" id="1_3t5dv"]
 [ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="2_26gsd"]
 [ext_resource type="PackedScene" uid="uid://bsv1rbchymmsv" path="res://HUD/Inventory/inventory.tscn" id="3_uwpwb"]
 [ext_resource type="PackedScene" uid="uid://1whxeh42wdp7" path="res://HUD/Equipments/equipments.tscn" id="4_qoj2v"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="5_4gt8d"]
+[ext_resource type="Texture2D" uid="uid://bquhxt6gyy1t7" path="res://HUD/Bossbar_5.png" id="5_upn61"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_cbw3p"]
 [ext_resource type="Texture2D" uid="uid://bok2xhagdqna5" path="res://Sprites/bag_dolar.png" id="7_8257g"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="8_6q8r4"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_3t5dv")
@@ -39,15 +41,30 @@ size_flags_vertical = 0
 
 [node name="Background" type="ColorRect" parent="MarginContainer/PlayerContainer/LifeBar"]
 layout_mode = 0
+offset_top = 4.0
 offset_right = 144.0
 offset_bottom = 11.0
 color = Color(0.396889, 0.396889, 0.396889, 1)
 
 [node name="Foreground" type="ColorRect" parent="MarginContainer/PlayerContainer/LifeBar"]
 layout_mode = 0
+offset_top = 3.0
 offset_right = 144.0
 offset_bottom = 11.0
 color = Color(0.152941, 1, 0.156863, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PlayerContainer/LifeBar"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 145.0
+offset_bottom = 11.0
+texture = ExtResource("5_upn61")
+region_rect = Rect2(1, 3, 190, 9)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 1
 
 [node name="ManaBar" type="Control" parent="MarginContainer/PlayerContainer"]
 layout_mode = 2
@@ -57,18 +74,30 @@ size_flags_vertical = 0
 [node name="Background" type="ColorRect" parent="MarginContainer/PlayerContainer/ManaBar"]
 layout_mode = 0
 offset_left = -4.0
-offset_top = 14.0
-offset_right = 140.0
+offset_top = 18.0
+offset_right = 141.0
 offset_bottom = 25.0
 color = Color(0.396889, 0.396889, 0.396889, 1)
 
 [node name="Foreground" type="ColorRect" parent="MarginContainer/PlayerContainer/ManaBar"]
 layout_mode = 0
 offset_left = -4.0
-offset_top = 14.0
-offset_right = 140.0
+offset_top = 18.0
+offset_right = 141.0
 offset_bottom = 25.0
 color = Color(0.137876, 0.364253, 1, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PlayerContainer/ManaBar"]
+offset_left = -5.0
+offset_top = 13.0
+offset_right = 141.0
+offset_bottom = 25.0
+texture = ExtResource("5_upn61")
+region_rect = Rect2(1, 3, 190, 9)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 1
 
 [node name="Name" type="Control" parent="MarginContainer/PlayerContainer"]
 layout_mode = 2
@@ -88,18 +117,33 @@ layout_mode = 2
 [node name="Background" type="ColorRect" parent="MarginContainer/PlayerContainer/ExpBar"]
 layout_mode = 0
 offset_left = -12.0
-offset_top = 29.0
+offset_top = 31.0
 offset_right = 132.0
-offset_bottom = 34.0
+offset_bottom = 36.0
 color = Color(0.396889, 0.396889, 0.396889, 1)
 
 [node name="Foreground" type="ColorRect" parent="MarginContainer/PlayerContainer/ExpBar"]
 layout_mode = 0
 offset_left = -12.0
-offset_top = 29.0
+offset_top = 31.0
 offset_right = 77.0
-offset_bottom = 34.0
+offset_bottom = 36.0
 color = Color(1, 0.72549, 0, 1)
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/PlayerContainer/ExpBar"]
+offset_left = -13.0
+offset_top = 26.0
+offset_right = 133.0
+offset_bottom = 37.0
+texture = ExtResource("5_upn61")
+region_rect = Rect2(1, 3, 190, 9)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 1
+
+[node name="Control" type="Control" parent="MarginContainer/PlayerContainer"]
+layout_mode = 2
 
 [node name="EnemyContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -136,6 +180,18 @@ offset_bottom = 30.0
 theme_override_fonts/font = ExtResource("5_4gt8d")
 text = "Creature"
 
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/EnemyContainer/LifeBar"]
+offset_left = -152.0
+offset_top = -5.0
+offset_right = -6.0
+offset_bottom = 11.0
+texture = ExtResource("5_upn61")
+region_rect = Rect2(1, 3, 190, 9)
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 1
+
 [node name="Inventory" type="VBoxContainer" parent="MarginContainer"]
 layout_direction = 2
 layout_mode = 2
@@ -167,6 +223,16 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture_normal = ExtResource("7_8257g")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/OptionsContainer/Panel"]
+layout_mode = 0
+offset_right = 227.0
+offset_bottom = 40.0
+texture = ExtResource("8_6q8r4")
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
 
 [node name="SkillsContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2

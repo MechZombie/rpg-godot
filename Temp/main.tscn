@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="1_b13ns"]
 [ext_resource type="Texture2D" uid="uid://x71eyu5boklq" path="res://Sprites/1_terrain.png" id="2_k3ptj"]
-[ext_resource type="Script" path="res://new_player.gd" id="3_oj2qa"]
-[ext_resource type="Texture2D" uid="uid://c2orknlw8j3m7" path="res://Sprites/bard-32x32.png" id="4_xaevd"]
-[ext_resource type="Script" path="res://new_enemy.gd" id="5_hvgof"]
+[ext_resource type="Script" path="res://Temp/new_player.gd" id="3_oj2qa"]
+[ext_resource type="Texture2D" uid="uid://bvytcr026wt26" path="res://Sprites/bard-32x32.png" id="4_xaevd"]
+[ext_resource type="Script" path="res://Temp/new_enemy.gd" id="5_hvgof"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nc5j4"]
 texture = ExtResource("1_b13ns")

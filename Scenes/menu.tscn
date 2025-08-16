@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=3 uid="uid://bbp3timrna372"]
+
+[ext_resource type="Script" path="res://Scenes/menu.gd" id="1_83bd5"]
+[ext_resource type="Texture2D" uid="uid://wpjn7nlfw7io" path="res://HUD/Fade_3.png" id="2_q5xye"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="3_alp1j"]
+[ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="4_pwqyi"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="5_mbk27"]
+[ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Fade_1.png" id="7_oqpd0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ls07m"]
+font = ExtResource("3_alp1j")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhco3"]
+atlas = ExtResource("4_pwqyi")
+region = Rect2(477, 298, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l84mn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhco3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_83bd5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_top = -1.0
+offset_right = 1153.0
+offset_bottom = 648.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 3.0
+offset_right = 1150.0
+offset_bottom = 650.0
+region_rect = Rect2(0, 0, 79, 65)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 132.0
+offset_right = 689.0
+offset_bottom = 196.0
+texture = ExtResource("2_q5xye")
+patch_margin_left = 27
+patch_margin_top = 1
+patch_margin_right = 26
+patch_margin_bottom = 1
+
+[node name="Label" type="Label" parent="Panel/NinePatchRect/NinePatchRect"]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 25.0
+offset_right = 216.0
+offset_bottom = 40.0
+text = "Selecionar personagem"
+label_settings = SubResource("LabelSettings_ls07m")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Panel/NinePatchRect/NinePatchRect"]
+z_index = 2
+layout_mode = 0
+offset_left = 35.0
+offset_top = 212.0
+offset_right = 201.0
+offset_bottom = 252.0
+texture = ExtResource("7_oqpd0")
+region_rect = Rect2(0, 0, 180, 32)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Button" type="Button" parent="Panel/NinePatchRect/NinePatchRect/NinePatchRect"]
+layout_mode = 0
+offset_right = 166.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("3_alp1j")
+text = "Selecionar"
+
+[node name="NinePatchRect2" type="NinePatchRect" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_left = 465.0
+offset_top = 200.0
+offset_right = 673.0
+offset_bottom = 402.0
+texture = ExtResource("5_mbk27")
+draw_center = false
+region_rect = Rect2(0, 0, 80, 64)
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/NinePatchRect"]
+position = Vector2(569, 284)
+sprite_frames = SubResource("SpriteFrames_l84mn")
+
+[node name="CharacterName" type="Label" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 212.0
+offset_right = 608.0
+offset_bottom = 227.0
+text = "Doja than"
+label_settings = SubResource("LabelSettings_ls07m")
+
+[node name="NinePatchRect3" type="NinePatchRect" parent="Panel/NinePatchRect"]
+layout_mode = 0
+offset_left = 470.0
+offset_top = 204.0
+offset_right = 668.0
+offset_bottom = 235.0
+texture = ExtResource("7_oqpd0")

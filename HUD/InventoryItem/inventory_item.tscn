@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://boivt54h80ar"]
+[gd_scene load_steps=11 format=3 uid="uid://boivt54h80ar"]
 
 [ext_resource type="Script" path="res://HUD/InventoryItem/inventory_item.gd" id="1_va6cw"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_mec1v"]
 [ext_resource type="Texture2D" uid="uid://my1nyc6awngv" path="res://Icons/delete.png" id="3_gw4iy"]
 [ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_86pje"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="5_pssfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ora"]
 font = ExtResource("2_mec1v")
@@ -47,6 +48,7 @@ text = "0"
 label_settings = SubResource("LabelSettings_l3ora")
 
 [node name="Info" type="Panel" parent="."]
+visible = false
 layout_mode = 0
 offset_left = -152.0
 offset_top = -140.0
@@ -117,3 +119,14 @@ offset_bottom = 61.0
 texture_normal = ExtResource("4_86pje")
 ignore_texture_size = true
 stretch_mode = 0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_pssfx")
+region_rect = Rect2(0, 0, 80, 64)
+patch_margin_left = 11
+patch_margin_top = 11
+patch_margin_right = 11
+patch_margin_bottom = 11

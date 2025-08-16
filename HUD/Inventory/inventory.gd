@@ -1,5 +1,6 @@
 extends Panel
 
+
 @export var InventoryItem: PackedScene
 @onready var container: GridContainer = $MarginContainer/GridContainer
 
