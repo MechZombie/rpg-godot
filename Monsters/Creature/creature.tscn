@@ -181,6 +181,8 @@ size = Vector2(32, 57)
 size = Vector2(32, 57)
 
 [node name="Creature" type="CharacterBody2D" groups=["Creatures"]]
+collision_layer = 2
+collision_mask = 8
 motion_mode = 1
 safe_margin = 0.008
 script = ExtResource("1_eyf56")

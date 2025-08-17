@@ -119,9 +119,14 @@ animations = [{
 }]
 
 [node name="Area2D" type="Area2D"]
+z_index = 1
+collision_layer = 9
+collision_mask = 2
 script = ExtResource("1_5lndq")
 
 [node name="Shoot" type="Area2D" parent="."]
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shoot"]
 shape = SubResource("RectangleShape2D_66w5q")
@@ -138,6 +143,8 @@ offset_bottom = 40.0
 
 [node name="Left" type="Area2D" parent="Control"]
 position = Vector2(-32, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Left"]
 shape = SubResource("RectangleShape2D_uf5fw")
@@ -148,6 +155,8 @@ frame = 10
 frame_progress = 0.492298
 
 [node name="Center" type="Area2D" parent="Control"]
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Center"]
 shape = SubResource("RectangleShape2D_uf5fw")
@@ -158,6 +167,8 @@ frame_progress = 0.947661
 
 [node name="Right" type="Area2D" parent="Control"]
 position = Vector2(32, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Right"]
 shape = SubResource("RectangleShape2D_uf5fw")
@@ -168,6 +179,8 @@ frame_progress = 0.947661
 
 [node name="Down" type="Area2D" parent="Control"]
 position = Vector2(0, 32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Down"]
 shape = SubResource("RectangleShape2D_uf5fw")
@@ -178,6 +191,8 @@ frame_progress = 0.947661
 
 [node name="Up" type="Area2D" parent="Control"]
 position = Vector2(0, -32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Up"]
 shape = SubResource("RectangleShape2D_uf5fw")

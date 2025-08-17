@@ -1,11 +1,11 @@
 [gd_scene load_steps=10 format=3 uid="uid://bbp3timrna372"]
 
 [ext_resource type="Script" path="res://Scenes/menu.gd" id="1_83bd5"]
-[ext_resource type="Texture2D" uid="uid://wpjn7nlfw7io" path="res://HUD/Fade_3.png" id="2_q5xye"]
+[ext_resource type="Texture2D" uid="uid://wpjn7nlfw7io" path="res://HUD/Textures/Fade_3.png" id="2_q5xye"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="3_alp1j"]
 [ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="4_pwqyi"]
-[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="5_mbk27"]
-[ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Fade_1.png" id="7_oqpd0"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="5_mbk27"]
+[ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="7_oqpd0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls07m"]
 font = ExtResource("3_alp1j")

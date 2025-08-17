@@ -102,6 +102,8 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Fire1" type="Area2D" parent="Control"]
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire1"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -111,6 +113,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire2" type="Area2D" parent="Control"]
 position = Vector2(32, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire2"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -121,6 +125,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire3" type="Area2D" parent="Control"]
 position = Vector2(-32, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire3"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -131,6 +137,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire4" type="Area2D" parent="Control"]
 position = Vector2(0, 32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire4"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -141,6 +149,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire5" type="Area2D" parent="Control"]
 position = Vector2(0, -32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire5"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -151,6 +161,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire6" type="Area2D" parent="Control"]
 position = Vector2(32, 32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire6"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -161,6 +173,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire7" type="Area2D" parent="Control"]
 position = Vector2(32, -32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire7"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -171,6 +185,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire8" type="Area2D" parent="Control"]
 position = Vector2(-32, -32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire8"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -181,6 +197,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire9" type="Area2D" parent="Control"]
 position = Vector2(-32, 32)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire9"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -191,6 +209,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire10" type="Area2D" parent="Control"]
 position = Vector2(64, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire10"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -201,6 +221,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire11" type="Area2D" parent="Control"]
 position = Vector2(0, 64)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire11"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -211,6 +233,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire12" type="Area2D" parent="Control"]
 position = Vector2(-64, 0)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire12"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -221,6 +245,8 @@ shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="Fire13" type="Area2D" parent="Control"]
 position = Vector2(-1, -64)
+collision_layer = 9
+collision_mask = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control/Fire13"]
 sprite_frames = SubResource("SpriteFrames_t6pig")
@@ -230,6 +256,7 @@ frame_progress = 0.645244
 shape = SubResource("RectangleShape2D_bfuqq")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.956863, 0.831373, 0.129412, 1)
 energy = 0.3
 texture = ExtResource("3_nivo3")
 texture_scale = 0.35

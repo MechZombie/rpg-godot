@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_mec1v"]
 [ext_resource type="Texture2D" uid="uid://my1nyc6awngv" path="res://Icons/delete.png" id="3_gw4iy"]
 [ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_86pje"]
-[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="5_pssfx"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="5_pssfx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l3ora"]
 font = ExtResource("2_mec1v")

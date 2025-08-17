@@ -42,6 +42,8 @@ var dmg_label = null
 
 @onready var target = $Target
 
+var spawn_position: Vector2
+var max_range := 300.0 
 var atk_timer: Timer
 var is_folow: bool
 
@@ -95,6 +97,7 @@ func on_drop_loot():
 
 func _ready() -> void:
 	target.visible = false
+	spawn_position = global_position
 	
 	player = get_parent().get_node("Player")
 	agent = get_node("NavigationAgent2D")
@@ -165,17 +168,22 @@ func on_detect_player():
 		return
 		
 	var dist_to_player = global_position.distance_to(player.global_position)
+	var dist_from_spawn = global_position.distance_to(spawn_position)
 	
-	
-	if dist_to_player <= info.aggro:
+	# Se player está no range de aggro E criatura não passou do limite
+	if dist_to_player <= info.aggro and dist_from_spawn <= max_range:
 		is_folow = true
+		speed = 40.0
+	elif not is_target:
+		is_folow = false
+		speed = 200.0
 	
 	if is_folow:
 		var direction_player = (player.global_position - global_position).normalized()
 		var target_side = player.global_position - (direction_player * 32)
 		agent.target_position = target_side
 	else:
-		agent.target_position = global_position
+		agent.target_position = spawn_position
 
 func apply_pushback(from_position: Vector2):
 	push_vector = (global_position - from_position).normalized() * push_force
@@ -216,8 +224,6 @@ func update_health_bar():
 	if(current_health <= 0):
 		on_drop_loot()
 		on_dead()
-		
-		cav.spawn_creature()
 		
 	var percent: float = float(current_health) / float(max_health)
 	player.HUD.set_enemy_health(percent)

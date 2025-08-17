@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b3x80ld3moion"]
+[gd_scene load_steps=28 format=3 uid="uid://b3x80ld3moion"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_pxivw"]
 [ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="2_81g41"]
@@ -6,11 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://desf4m6trmqkk" path="res://Spells/GreatFireBall/great_fire_ball.tscn" id="3_435oy"]
 [ext_resource type="PackedScene" uid="uid://cppj018t6q7dm" path="res://Spells/UltimateExplosion/ultimate_explosion.tscn" id="4_mcmhg"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_vawsd"]
+[ext_resource type="PackedScene" uid="uid://k31p4yo5dif5" path="res://Spells/light_heal.tscn" id="5_cgiaq"]
 [ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="6_ybsnk"]
 [ext_resource type="PackedScene" uid="uid://g8hnt6va4kms" path="res://HUD/hud.tscn" id="7_44skb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]
-size = Vector2(15.9, 15.9)
+size = Vector2(15.9, 15.95)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a7e7m"]
 atlas = ExtResource("6_ybsnk")
@@ -186,10 +187,11 @@ script = ExtResource("1_pxivw")
 BasicAtkScene = ExtResource("2_pi1sj")
 GreatFireBallScene = ExtResource("3_435oy")
 UltimateExplosionScene = ExtResource("4_mcmhg")
+LightHealScene = ExtResource("5_cgiaq")
 HUDScene = ExtResource("7_44skb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 20)
+position = Vector2(0, 19.95)
 scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_3ga6y")
 one_way_collision_margin = 0.0

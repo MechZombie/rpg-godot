@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://HUD/ActionBar/action_bar.gd" id="1_t0m05"]
 [ext_resource type="PackedScene" uid="uid://b03gfr4fl6m5v" path="res://HUD/ActionBarSlot/actionbar_slot.tscn" id="2_31tjr"]
-[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="3_uim6q"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="3_uim6q"]
 
 [node name="ActionBar" type="Panel"]
 custom_minimum_size = Vector2(227, 55)

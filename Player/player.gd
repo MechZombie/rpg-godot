@@ -5,6 +5,7 @@ var speed = 70
 @export var BasicAtkScene: PackedScene
 @export var GreatFireBallScene: PackedScene
 @export var UltimateExplosionScene: PackedScene
+@export var LightHealScene: PackedScene
 @export var HUDScene: PackedScene
 
 
@@ -106,20 +107,9 @@ func on_update_inventory(items: Array):
 	
 func _physics_process(delta):
 	var input_vector = Vector2.ZERO
-	#if Input.is_action_pressed("ui_right"):
-		#input_vector.x += 1
-	#if Input.is_action_pressed("ui_left"):
-		#input_vector.x -= 1
-	#if Input.is_action_pressed("ui_down"):
-		#input_vector.y += 1
-	#if Input.is_action_pressed("ui_up"):
-		#input_vector.y -= 1
-		#
-	#input_vector = input_vector.normalized()
 	
 	input_vector = Vector2.ZERO
 	input_vector = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
-	#position += input_vector * speed * delta
 
 	if input_vector != Vector2.ZERO:
 		# movimentação direta sem colisão grudenta
@@ -161,6 +151,9 @@ func move_to_tile(pos: Vector2):
 	is_moving = true
 
 func on_heal():
+	var light = LightHealScene.instantiate()
+	add_child(light) 
+	
 	var heal = info.magic_power + ( max_health / 10)
 	var totalLife = current_health + heal
 	

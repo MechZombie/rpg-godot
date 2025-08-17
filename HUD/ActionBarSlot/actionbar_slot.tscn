@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://HUD/ActionBarSlot/actionbar_slot.gd" id="1_7514d"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_7ybst"]
-[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Scalable_4.png" id="3_kwi6t"]
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="3_kwi6t"]
 
 [node name="ActionBarSlot" type="Panel"]
 clip_contents = true

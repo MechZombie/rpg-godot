@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://dsndb6sev64mo"]
+
+[ext_resource type="Script" path="res://Objects/WitchCalderon/witch_calderon.gd" id="1_v4ryq"]
+[ext_resource type="Texture2D" uid="uid://djc2gufhtkg5o" path="res://Sprites/witch_1.png" id="2_1g032"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j8xre"]
+size = Vector2(44, 81)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbicc"]
+atlas = ExtResource("2_1g032")
+region = Rect2(7, 0, 64, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ir5a4"]
+atlas = ExtResource("2_1g032")
+region = Rect2(71, 0, 64, 98)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fj7l5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbicc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ir5a4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[node name="WitchCalderon" type="CharacterBody2D"]
+script = ExtResource("1_v4ryq")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(1, 6.5)
+shape = SubResource("RectangleShape2D_j8xre")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_fj7l5")
+frame_progress = 0.622221
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
