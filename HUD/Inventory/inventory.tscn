@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bsv1rbchymmsv"]
 
 [ext_resource type="PackedScene" uid="uid://boivt54h80ar" path="res://HUD/InventoryItem/inventory_item.tscn" id="1_aiffj"]
-[ext_resource type="Script" path="res://HUD/Inventory/inventory.gd" id="1_jp6ru"]
+[ext_resource type="Script" uid="uid://u7fmhxypdehk" path="res://HUD/Inventory/inventory.gd" id="1_jp6ru"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_pwohq"]
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="4_c34nl"]
 

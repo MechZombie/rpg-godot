@@ -3,7 +3,9 @@ extends Area2D
 
 @export var speed: float = 400.0
 
+@onready var audio: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var control: Control = $Control
+
 var target_hits = []
 var damage
 var target_id
@@ -17,9 +19,6 @@ func _ready() -> void:
 	await get_tree().create_timer(1).timeout
 	queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func _on_body_entered(body):
 	if not body.is_in_group("Creatures"):

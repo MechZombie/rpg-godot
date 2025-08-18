@@ -1,11 +1,11 @@
-[gd_scene load_steps=42 format=3 uid="uid://bdrfgbq0ucxmg"]
+[gd_scene load_steps=43 format=3 uid="uid://bdrfgbq0ucxmg"]
 
-[ext_resource type="Script" path="res://Maps/Cave/cave.gd" id="1_aqe4h"]
+[ext_resource type="Script" uid="uid://omqufig1j1mv" path="res://Maps/Cave/cave.gd" id="1_aqe4h"]
 [ext_resource type="Texture2D" uid="uid://bj6hgxtma8bb3" path="res://Sprites/8_cave.png" id="1_betb3"]
 [ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="2_1isbr"]
 [ext_resource type="PackedScene" uid="uid://b3x80ld3moion" path="res://Player/player.tscn" id="2_3q3gp"]
 [ext_resource type="PackedScene" uid="uid://b2ff08031msdc" path="res://Objects/Torch/torch.tscn" id="5_6afn1"]
-[ext_resource type="Script" path="res://Maps/Cave/tile_map.gd" id="5_kerq4"]
+[ext_resource type="Script" uid="uid://scl5hf5sfhp7" path="res://Maps/Cave/tile_map.gd" id="5_kerq4"]
 [ext_resource type="PackedScene" uid="uid://ckcv38bnaj0dc" path="res://Objects/Dummy/dummy.tscn" id="7_sv0pv"]
 [ext_resource type="Texture2D" uid="uid://c6ybgjqm5261t" path="res://Sprites/witchtiles_2.png" id="8_2gl0l"]
 [ext_resource type="Texture2D" uid="uid://dwn56hnrhjthp" path="res://Sprites/3_plants.png" id="8_igt06"]
@@ -22,6 +22,7 @@
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="15_qticc"]
 [ext_resource type="Texture2D" uid="uid://wpjn7nlfw7io" path="res://HUD/Textures/Fade_3.png" id="18_1ko0y"]
 [ext_resource type="PackedScene" uid="uid://cdop6k138dhbx" path="res://Objects/teleport.tscn" id="22_ts2rf"]
+[ext_resource type="AudioStream" uid="uid://ds7etk3o8vg7w" path="res://Sounds/Backgrounds/cave.ogg" id="23_67gx7"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_eoh7g"]
 vertices = PackedVector2Array(187, 198, 175, 198, 175, 154, 187, 154, 1019, 198, 847, 198, 847, 186, 1019, 186, 461.844, 986.109, 215.008, 988.883, 299.141, 917.641, 458.844, 795.656, 223.688, 920.383, 215.977, 429, 226.289, 831, 297.852, 831, 465.07, 714.109, 463.07, 429, 569.789, 799.32, 574.211, 712.891, 699.609, 761.906, 573.219, 666, 690, 666, 1005.94, 764.898, 529, 194, 558.859, 194, 557.859, 264.039, 416, 255.961, 950.859, 372.938, 158.07, 377.93, 158.922, 256.961, 416, 115.867, 188.922, 118.859, 187.07, -118.953, 666.609, -117.023, 703.617, -61, 756.953, -61, 756.039, 122.906, 529, 120.906, 821.82, 262.969, 782.602, 519, 726, 519, 726, 431, 878.594, 431, 883.422, 510.82, 847.227, 513.758, 844.75, 610.656, 787.406, 637.891, 690, 638.891, 685.609, 987.773, 573.789, 985.211, 954.141, 614.352, 1003.05, 230, 834.812, 230)
@@ -1491,3 +1492,8 @@ target_position = Vector2(942, 52)
 [node name="Teleport2" parent="." instance=ExtResource("22_ts2rf")]
 position = Vector2(960, -3)
 target_position = Vector2(1488, -243)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_67gx7")
+volume_db = -0.175
+autoplay = true

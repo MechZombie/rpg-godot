@@ -6,6 +6,7 @@ extends Node2D
 var respawn_timer: Timer
 @onready var respawn_label: Label = $Label
 @onready var title: NinePatchRect = $Title
+@onready var background_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 
 var dummy_instances = []
@@ -24,6 +25,9 @@ func _process(delta: float) -> void:
 		respawn_label.text = "Respawn em: %ds" % remaining
 		
 		
+func on_play_bg():
+	background_sound.autoplay = true
+	background_sound.play()
 		
 func on_handle_title():
 	title.visible = true

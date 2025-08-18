@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crabfdfxrvxon"]
 
-[ext_resource type="Script" path="res://Objects/Hit/hit_damage.gd" id="1_cdyim"]
+[ext_resource type="Script" uid="uid://dwnc7lmjv3t2k" path="res://Objects/Hit/hit_damage.gd" id="1_cdyim"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="1_o3m6u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1qa2c"]

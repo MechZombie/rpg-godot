@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://g8hnt6va4kms"]
 
-[ext_resource type="Script" path="res://Player/hud.gd" id="1_3t5dv"]
+[ext_resource type="Script" uid="uid://c2yrfvdn55o6w" path="res://Player/hud.gd" id="1_3t5dv"]
 [ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="2_26gsd"]
 [ext_resource type="PackedScene" uid="uid://bsv1rbchymmsv" path="res://HUD/Inventory/inventory.tscn" id="3_uwpwb"]
 [ext_resource type="PackedScene" uid="uid://1whxeh42wdp7" path="res://HUD/Equipments/equipments.tscn" id="4_qoj2v"]
@@ -203,6 +203,7 @@ size_flags_horizontal = 8
 size_flags_vertical = 4
 
 [node name="Joystick" type="HBoxContainer" parent="MarginContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
@@ -212,26 +213,32 @@ layout_mode = 2
 
 [node name="Virtual Joystick" parent="MarginContainer/Joystick/Control" instance=ExtResource("6_cbw3p")]
 layout_mode = 1
-pressed_color = Color(0.582703, 0.768828, 0.929546, 1)
+offset_left = -2.0
+offset_top = -389.0
+offset_right = 298.0
+offset_bottom = -89.0
 
 [node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="Panel" type="Panel" parent="MarginContainer/OptionsContainer"]
-custom_minimum_size = Vector2(227, 40)
+custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 
 [node name="InventoryHandler" type="TextureButton" parent="MarginContainer/OptionsContainer/Panel"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 52.0
+offset_bottom = 43.0
 texture_normal = ExtResource("7_8257g")
+ignore_texture_size = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/OptionsContainer/Panel"]
 layout_mode = 0
-offset_right = 227.0
-offset_bottom = 40.0
+offset_right = 301.0
+offset_bottom = 52.0
 texture = ExtResource("9_tsu20")
 patch_margin_left = 15
 patch_margin_top = 15

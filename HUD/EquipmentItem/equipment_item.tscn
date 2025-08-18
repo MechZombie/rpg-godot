@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dksglfeh8ca1c"]
 
-[ext_resource type="Script" path="res://HUD/EquipmentItem/equipment_item.gd" id="1_4aore"]
+[ext_resource type="Script" uid="uid://dhgql86jlyxup" path="res://HUD/EquipmentItem/equipment_item.gd" id="1_4aore"]
 [ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Textures/Scalable_5.png" id="2_bgtq6"]
 
 [node name="EquipmentItem" type="Panel"]

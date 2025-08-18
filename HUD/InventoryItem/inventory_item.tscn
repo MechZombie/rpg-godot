@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://boivt54h80ar"]
 
-[ext_resource type="Script" path="res://HUD/InventoryItem/inventory_item.gd" id="1_va6cw"]
+[ext_resource type="Script" uid="uid://dkjo5cwqus1vs" path="res://HUD/InventoryItem/inventory_item.gd" id="1_va6cw"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_mec1v"]
 [ext_resource type="Texture2D" uid="uid://my1nyc6awngv" path="res://Icons/delete.png" id="3_gw4iy"]
 [ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_86pje"]

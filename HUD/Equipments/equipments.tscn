@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://1whxeh42wdp7"]
 
-[ext_resource type="Script" path="res://HUD/Equipments/equipments.gd" id="1_xqirn"]
+[ext_resource type="Script" uid="uid://chyjv8y6r43mr" path="res://HUD/Equipments/equipments.gd" id="1_xqirn"]
 [ext_resource type="PackedScene" uid="uid://dksglfeh8ca1c" path="res://HUD/EquipmentItem/equipment_item.tscn" id="2_1kwfs"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_xxfqs"]
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="4_ol5qc"]

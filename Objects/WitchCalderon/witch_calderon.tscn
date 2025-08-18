@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dsndb6sev64mo"]
 
-[ext_resource type="Script" path="res://Objects/WitchCalderon/witch_calderon.gd" id="1_v4ryq"]
+[ext_resource type="Script" uid="uid://ss238dtjelkd" path="res://Objects/WitchCalderon/witch_calderon.gd" id="1_v4ryq"]
 [ext_resource type="Texture2D" uid="uid://djc2gufhtkg5o" path="res://Sprites/witch_1.png" id="2_1g032"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j8xre"]
