@@ -11,7 +11,7 @@ var respawn_timer: Timer
 
 var dummy_instances = []
 var creature_instances = []
-var resps = [Vector2(806, 409),  Vector2(443,793), Vector2(244,270)]
+var resps = [Vector2(806, 409),  Vector2(443,793), Vector2(244,270), Vector2(1165, 131), Vector2(991, -405)]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

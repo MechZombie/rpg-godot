@@ -8,7 +8,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_ls07m"]
 font = ExtResource("3_alp1j")
-font_size = 70
+font_size = 40
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jhco3"]
 atlas = ExtResource("4_pwqyi")
@@ -27,55 +27,71 @@ animations = [{
 
 [node name="Menu" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_83bd5")
 
-[node name="Panel" type="Panel" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
+offset_left = 148.0
 offset_top = -1.0
-offset_right = 2432.0
-offset_bottom = 1314.0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 3.0
-offset_right = 2432.0
-offset_bottom = 1315.0
+offset_right = 1298.0
+offset_bottom = 648.0
 region_rect = Rect2(0, 0, 79, 65)
 patch_margin_left = 50
 patch_margin_top = 50
 patch_margin_right = 50
 patch_margin_bottom = 50
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/NinePatchRect"]
-layout_mode = 0
-offset_left = 594.0
-offset_top = 115.0
-offset_right = 1888.0
-offset_bottom = 385.0
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -502.0
+offset_top = 1.0
+offset_right = 522.0
+offset_bottom = 153.0
+grow_horizontal = 2
 texture = ExtResource("2_q5xye")
-patch_margin_left = 27
-patch_margin_top = 1
-patch_margin_right = 26
-patch_margin_bottom = 1
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
 
-[node name="Label" type="Label" parent="Panel/NinePatchRect/NinePatchRect"]
-layout_mode = 0
-offset_left = 286.0
-offset_top = 95.0
-offset_right = 1030.0
-offset_bottom = 165.0
+[node name="Label" type="Label" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -19.0
+offset_right = 220.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
 text = "Selecionar personagem"
 label_settings = SubResource("LabelSettings_ls07m")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Panel/NinePatchRect/NinePatchRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/NinePatchRect"]
 z_index = 2
-layout_mode = 0
-offset_left = 377.0
-offset_top = 962.0
-offset_right = 940.0
-offset_bottom = 1110.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -26.5
+offset_top = 300.0
+offset_right = 3.5
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 0
 texture = ExtResource("7_oqpd0")
 region_rect = Rect2(0, 0, 180, 32)
 patch_margin_left = 15
@@ -83,26 +99,47 @@ patch_margin_top = 15
 patch_margin_right = 15
 patch_margin_bottom = 15
 
-[node name="Button" type="Button" parent="Panel/NinePatchRect/NinePatchRect/NinePatchRect"]
-layout_mode = 0
-offset_left = 1.0
-offset_top = -202.0
-offset_right = 564.0
-offset_bottom = -54.0
+[node name="Button" type="Button" parent="NinePatchRect/NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -214.5
+offset_top = 35.0
+offset_right = 217.5
+offset_bottom = 126.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_alp1j")
 theme_override_font_sizes/font_size = 50
 text = "Selecionar"
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Panel/NinePatchRect"]
-position = Vector2(1234, 660)
+[node name="Panel" type="Panel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -203.0
+offset_top = -219.5
+offset_right = -203.0
+offset_bottom = -219.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect/Panel"]
+position = Vector2(206, 234)
 scale = Vector2(5.3125, 4.4375)
 sprite_frames = SubResource("SpriteFrames_l84mn")
 
-[node name="CharacterName" type="Label" parent="Panel/NinePatchRect"]
+[node name="CharacterName" type="Label" parent="NinePatchRect/Panel"]
 layout_mode = 0
-offset_left = 1057.0
-offset_top = 425.0
-offset_right = 1359.0
-offset_bottom = 492.0
+offset_left = 109.0
+offset_top = 69.0
+offset_right = 320.0
+offset_bottom = 114.0
 text = "Doja than"
 label_settings = SubResource("LabelSettings_ls07m")

@@ -7,6 +7,7 @@ var speed = 70
 @export var UltimateExplosionScene: PackedScene
 @export var LightHealScene: PackedScene
 @export var HUDScene: PackedScene
+@export var DeadScene: PackedScene
 
 
 @export var tile_size := Vector2(32,32)
@@ -47,6 +48,10 @@ var target_id: int
 var atk_timer: Timer
 var has_target: bool
 
+var is_alive: bool = true
+
+var dead_scene
+
 var inventory_items = [
 		{
 			"id": 1,
@@ -71,6 +76,22 @@ func _ready():
 	update_health_bar()
 	
 	
+	
+func on_dead():
+	dead_scene = DeadScene.instantiate()
+	dead_scene.cb = Callable(self, "on_rebirth")
+	HUD.add_child(dead_scene)
+	is_alive = false
+	
+	
+func on_rebirth():
+	global_position = Vector2(480, -200)
+	is_alive = true
+	dead_scene.queue_free()
+	current_health = max_health
+	update_health_bar()
+
+
 	
 func on_prepare_hud():
 	if HUD and is_instance_valid(HUD):
@@ -106,6 +127,10 @@ func on_update_inventory(items: Array):
 		
 	
 func _physics_process(delta):
+	if not is_alive:
+		return
+		
+	
 	var input_vector = Vector2.ZERO
 	
 	input_vector = Vector2.ZERO
@@ -303,6 +328,10 @@ func is_out_of_range():
 func update_health_bar():
 	var percent: float = float(current_health) / float(max_health)
 	emit_signal("health_changed", percent)
+	
+	if current_health <= 0 and is_alive:
+		on_dead()
+		
 	
 func set_target_position(pos: Vector2):
 	moviment_position = pos

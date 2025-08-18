@@ -132,13 +132,6 @@ func on_prepare_action_bar():
 			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
 			"count": null,
 			"cb": func(): player.shoot_spell("on_ultimate_explosion")
-		},
-		{
-			"name": "Espaço vazio",
-			"locked_time": 5.0,
-			"texture": null,
-			"count": null,
-			"cb": null
 		}
 	]
 	

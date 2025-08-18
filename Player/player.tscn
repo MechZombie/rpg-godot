@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3x80ld3moion"]
+[gd_scene load_steps=29 format=3 uid="uid://b3x80ld3moion"]
 
 [ext_resource type="Script" uid="uid://31pxsmf1d0aq" path="res://Player/player.gd" id="1_pxivw"]
 [ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="2_81g41"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://k31p4yo5dif5" path="res://Spells/light_heal.tscn" id="5_cgiaq"]
 [ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="6_ybsnk"]
 [ext_resource type="PackedScene" uid="uid://g8hnt6va4kms" path="res://HUD/hud.tscn" id="7_44skb"]
+[ext_resource type="PackedScene" uid="uid://bbcudvjtm4h20" path="res://HUD/DeadScene.tscn" id="7_x3vf3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]
 size = Vector2(15.9, 15.95)
@@ -189,6 +190,7 @@ GreatFireBallScene = ExtResource("3_435oy")
 UltimateExplosionScene = ExtResource("4_mcmhg")
 LightHealScene = ExtResource("5_cgiaq")
 HUDScene = ExtResource("7_44skb")
+DeadScene = ExtResource("7_x3vf3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 19.95)

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="3_uim6q"]
 
 [node name="ActionBar" type="Panel"]
-custom_minimum_size = Vector2(227, 55)
+custom_minimum_size = Vector2(300, 100)
 offset_top = 4.0
 offset_right = 182.0
 offset_bottom = 59.0
@@ -16,19 +16,20 @@ ActionBarItem = ExtResource("2_31tjr")
 layout_mode = 0
 offset_left = 5.0
 offset_top = 3.0
-offset_right = 177.0
-offset_bottom = 53.0
+offset_right = 297.0
+offset_bottom = 96.0
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
 columns = 5
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_right = 228.0
-offset_bottom = 55.0
+offset_right = 301.0
+offset_bottom = 100.0
 texture = ExtResource("3_uim6q")
 patch_margin_left = 15
 patch_margin_top = 15

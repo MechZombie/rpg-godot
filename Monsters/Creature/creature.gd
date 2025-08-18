@@ -53,8 +53,8 @@ var info := {
 	"id": 1,
 	"name": "Reaper",
 	"def": 3,
-	"atk_min": 2,
-	"atk_max": 5,
+	"atk_min": 5,
+	"atk_max": 10,
 	"atk_range": 70,
 	"wave_rng": [0,2],
 	"aggro": 200
@@ -167,14 +167,15 @@ func on_detect_player():
 	if not player:
 		return
 		
+		
 	var dist_to_player = global_position.distance_to(player.global_position)
 	var dist_from_spawn = global_position.distance_to(spawn_position)
 	
 	# Se player está no range de aggro E criatura não passou do limite
-	if dist_to_player <= info.aggro and dist_from_spawn <= max_range:
+	if dist_to_player <= info.aggro and dist_from_spawn <= max_range and player.is_alive:
 		is_folow = true
 		speed = 40.0
-	elif not is_target:
+	elif not is_target or not player.is_alive:
 		is_folow = false
 		speed = 200.0
 	
