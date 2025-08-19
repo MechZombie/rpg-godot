@@ -35,11 +35,12 @@ grow_vertical = 2
 script = ExtResource("1_83bd5")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_left = 148.0
-offset_top = -1.0
-offset_right = 1298.0
-offset_bottom = 648.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 region_rect = Rect2(0, 0, 79, 65)
 patch_margin_left = 50
 patch_margin_top = 50
@@ -131,8 +132,8 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="NinePatchRect/Panel"]
-position = Vector2(206, 234)
-scale = Vector2(5.3125, 4.4375)
+position = Vector2(188, 180.5)
+scale = Vector2(2.125, 1.55469)
 sprite_frames = SubResource("SpriteFrames_l84mn")
 
 [node name="CharacterName" type="Label" parent="NinePatchRect/Panel"]

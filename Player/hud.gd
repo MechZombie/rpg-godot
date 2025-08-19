@@ -15,6 +15,7 @@ extends CanvasLayer
 @onready var inventory_handler: TextureButton = $MarginContainer/OptionsContainer/Panel/InventoryHandler
 @onready var options_container: VBoxContainer = $MarginContainer/OptionsContainer
 @onready var skills_container: VBoxContainer = $MarginContainer/SkillsContainer
+@onready var life_label: Label = $MarginContainer/EnemyContainer/LifeBar/Background/Life
 
 
 @export var ActionBarScene: PackedScene
@@ -143,9 +144,13 @@ func set_health(value):
 	var full_width: float = health_bar_backeground.size.x  
 	health_bar_foreground.size.x = full_width * value
 
-func set_enemy_health(value):
+func set_enemy_health(value, current_health):
 	var full_width: float = enemy_health_bar_backeground.size.x  
+	print(full_width)
+	print(full_width * value)
+	
 	enemy_health_bar_foreground.size.x = full_width * value
+	life_label.text = str(current_health)
 
 func set_enemy_name(name):
 	creature_name.text = name

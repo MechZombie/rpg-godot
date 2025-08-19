@@ -9,17 +9,19 @@
 font = ExtResource("2_pwohq")
 
 [node name="Inventory" type="Panel"]
-custom_minimum_size = Vector2(227, 180)
+custom_minimum_size = Vector2(227, 220)
 offset_right = 227.0
 offset_bottom = 170.0
 script = ExtResource("1_jp6ru")
 InventoryItem = ExtResource("1_aiffj")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_top = 24.0
-offset_right = 226.0
-offset_bottom = 162.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -29,9 +31,10 @@ theme_override_constants/margin_bottom = 5
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 5
+columns = 3
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 73.0
 offset_top = 3.0
@@ -41,9 +44,12 @@ text = "Inventory"
 label_settings = SubResource("LabelSettings_irn6u")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_right = 227.0
-offset_bottom = 181.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_c34nl")
 patch_margin_left = 15
 patch_margin_top = 15

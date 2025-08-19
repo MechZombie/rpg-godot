@@ -22,7 +22,7 @@ func on_prepare_inventory():
 		
 		container.add_child(inventory_item)
 		
-	for item in 15 - items.size():
+	for item in 9 - items.size():
 		var inventory_item = InventoryItem.instantiate()
 		container.add_child(inventory_item)
 		

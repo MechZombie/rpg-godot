@@ -9,18 +9,22 @@
 font = ExtResource("2_xxfqs")
 
 [node name="Equipments" type="Panel"]
-custom_minimum_size = Vector2(227, 170)
-offset_top = -17.0
-offset_right = 138.0
-offset_bottom = 144.0
+custom_minimum_size = Vector2(227, 220)
+offset_top = -72.0
+offset_right = 227.0
+offset_bottom = 178.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_xqirn")
 EquipmentItem = ExtResource("2_1kwfs")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_top = 22.0
-offset_right = 138.0
-offset_bottom = 161.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -28,9 +32,12 @@ theme_override_constants/margin_bottom = 5
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer"]
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 columns = 3
 
 [node name="Label" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 25.0
 offset_top = 6.0
@@ -40,9 +47,12 @@ text = "Equipments"
 label_settings = SubResource("LabelSettings_fgjfv")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
-layout_mode = 0
-offset_right = 228.0
-offset_bottom = 170.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("4_ol5qc")
 patch_margin_left = 15
 patch_margin_top = 15

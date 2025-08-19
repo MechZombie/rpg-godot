@@ -227,7 +227,7 @@ func update_health_bar():
 		on_dead()
 		
 	var percent: float = float(current_health) / float(max_health)
-	player.HUD.set_enemy_health(percent)
+	player.HUD.set_enemy_health(percent, current_health)
 
 func on_dead():
 	player.clear_target()
@@ -268,7 +268,7 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		
 		var percent: float = float(current_health) / float(max_health)
 		
-		player.HUD.set_enemy_health(percent)
+		player.HUD.set_enemy_health(percent, current_health)
 		player.HUD.set_enemy_name(info.name)
 
 		player.on_atk()

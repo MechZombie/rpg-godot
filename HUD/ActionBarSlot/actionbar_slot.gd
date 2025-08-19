@@ -30,7 +30,6 @@ func _on_button_pressed():
 	if(not has_cdr and cb):
 		cb.call()
 		has_cdr = true
-		cooldown.size.y = 40
 		cooldown.visible = true
 		decrement_per_second = cooldown.size.y / locked_time
 		timer.wait_time = 1.0
