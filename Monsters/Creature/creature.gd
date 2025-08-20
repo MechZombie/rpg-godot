@@ -57,7 +57,8 @@ var info := {
 	"atk_max": 10,
 	"atk_range": 70,
 	"wave_rng": [0,2],
-	"aggro": 200
+	"aggro": 200,
+	"exp": 50
 }
 
 var drops = [
@@ -231,6 +232,7 @@ func update_health_bar():
 
 func on_dead():
 	player.clear_target()
+	player.on_gain_exp(info.exp)
 	queue_free()
 
 

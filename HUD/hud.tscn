@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://g8hnt6va4kms"]
+[gd_scene load_steps=11 format=3 uid="uid://g8hnt6va4kms"]
 
 [ext_resource type="Script" uid="uid://c2yrfvdn55o6w" path="res://Player/hud.gd" id="1_3t5dv"]
 [ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="2_26gsd"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_cbw3p"]
 [ext_resource type="Texture2D" uid="uid://bok2xhagdqna5" path="res://Sprites/bag_dolar.png" id="7_8257g"]
 [ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="9_tsu20"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_y0nqa"]
+font = ExtResource("5_4gt8d")
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_3t5dv")
@@ -156,6 +159,17 @@ color = Color(1, 0.72549, 0, 1)
 
 [node name="Control" type="Control" parent="MarginContainer/PlayerContainer"]
 layout_mode = 2
+
+[node name="Level" type="Control" parent="MarginContainer/PlayerContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PlayerContainer/Level"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 68.0
+offset_right = 24.0
+offset_bottom = 91.0
+label_settings = SubResource("LabelSettings_y0nqa")
 
 [node name="EnemyContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2

@@ -8,6 +8,7 @@ var speed = 70
 @export var LightHealScene: PackedScene
 @export var HUDScene: PackedScene
 @export var DeadScene: PackedScene
+@export var LevelUPScene: PackedScene
 
 
 @export var tile_size := Vector2(32,32)
@@ -25,7 +26,28 @@ var speed = 70
 @onready var regen_timer: Timer = $RegenTimer
 
 var HUD: CanvasLayer
-
+var levels = [
+	{
+		"id": 1,
+		"min_exp": 0,
+		"max_exp": 99
+	},
+	{
+		"id": 2,
+		"min_exp": 100,
+		"max_exp": 199
+	},
+	{
+		"id": 3,
+		"min_exp": 200,
+		"max_exp": 299
+	},
+	{
+		"id": 4,
+		"min_exp": 300,
+		"max_exp": 399
+	},
+]
 
 var info := {
 	"id": 1,
@@ -35,8 +57,11 @@ var info := {
 	"def": 3,
 	"magic_power": 10,
 	"life_regen": 2,
-	"mana_regen": 1
+	"mana_regen": 1,
+	"level": 1,
+	"exp": 0
 }
+
 
 
 var max_health := 100
@@ -46,6 +71,8 @@ signal health_changed(new_health)
 var max_mana := 100
 var current_mana := 100
 signal mana_changed(new_mana)
+
+signal level_up(value: int)
 
 var last_direction = "down"
 var is_moving = false
@@ -82,8 +109,39 @@ func _ready():
 	
 	on_prepare_hud()
 	update_health_bar()
+	update_hud_level()
 	
 	regen_timer.timeout.connect(on_regenerate)
+	
+	
+func on_gain_exp(value: int):
+	var level_data = levels.filter(func(el): return el["id"] == info["level"])
+	if level_data.is_empty():
+		print("Level not found")
+		return
+		
+		
+	var max_level_exp = level_data[0].max_exp
+	var total_exp = (info.exp + value)
+	info.exp = total_exp
+	
+	if(total_exp > max_level_exp):
+		on_level_up()
+	
+func on_level_up():
+	print("Level UP")
+	
+	var exp = info.exp
+	var new_level = levels.filter(func (el): return exp >= el["min_exp"] and exp < el["max_exp"])
+	if new_level.is_empty():
+		print("Level max reached")
+		return
+	
+	var levelLabel = LevelUPScene.instantiate()
+	add_child(levelLabel)
+	
+	info.level = new_level[0].id
+	update_hud_level()
 	
 	
 func on_regenerate():
@@ -413,6 +471,10 @@ func update_mana_bar():
 	var percent: float = float(current_mana) / float(max_mana)
 	emit_signal("mana_changed", percent)
 	
+
+func update_hud_level():
+	print("atualizando lvl ", info["level"])
+	emit_signal("level_up", info["level"])
 	
 func set_target_position(pos: Vector2):
 	moviment_position = pos

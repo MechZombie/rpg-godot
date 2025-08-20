@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://byk0mp5mheb8h"]
+
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="1_0odfg"]
+[ext_resource type="Script" uid="uid://68oysco7uyjs" path="res://level_up.gd" id="2_2ot3i"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fqynw"]
+font = ExtResource("1_0odfg")
+font_size = 20
+
+[node name="LevelUp" type="Label"]
+offset_left = -48.0
+offset_top = -52.0
+offset_right = 45.0
+offset_bottom = -29.0
+text = "Level UP+"
+label_settings = SubResource("LabelSettings_fqynw")
+script = ExtResource("2_2ot3i")

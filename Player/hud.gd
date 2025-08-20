@@ -18,6 +18,7 @@ extends CanvasLayer
 @onready var options_container: VBoxContainer = $MarginContainer/OptionsContainer
 @onready var skills_container: VBoxContainer = $MarginContainer/SkillsContainer
 @onready var life_label: Label = $MarginContainer/EnemyContainer/LifeBar/Background/Life
+@onready var level_label: Label = $MarginContainer/PlayerContainer/Level/Label
 
 
 @export var ActionBarScene: PackedScene
@@ -87,11 +88,17 @@ func _ready() -> void:
 	player = get_parent()
 	player.connect("health_changed", Callable(self, "set_health"))
 	player.connect("mana_changed", Callable(self, "set_mana"))
+	player.connect("level_up", Callable(self, "set_level"))
+	
 	inventory_handler.pressed.connect(on_handle_inventory)
 	
 	on_prepare_equipments()
 	on_prepare_inventory()
 	on_prepare_action_bar()
+	
+func set_level(value):
+	print("level", value)
+	level_label.text = "Level %s" % [value]
 	
 
 func on_handle_inventory():
