@@ -44,3 +44,5 @@ func _on_timer_timeout() -> void:
 	else:
 		timer.stop()
 		has_cdr = false
+		cooldown.size.y = 80
+		cooldown.visible = false
