@@ -18,6 +18,9 @@ func _ready() -> void:
 	take_all_area.input_event.connect(on_take_all)
 	
 	on_create_loot()
+	await get_tree().create_timer(5).timeout
+	queue_free()
+	
 	
 
 

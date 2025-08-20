@@ -1407,7 +1407,7 @@ dummy = ExtResource("7_sv0pv")
 creature = ExtResource("11_mgvdi")
 
 [node name="Player" parent="." instance=ExtResource("2_3q3gp")]
-position = Vector2(480, -200)
+position = Vector2(932, -76)
 
 [node name="Respawn" parent="." instance=ExtResource("11_hiny4")]
 visible = false

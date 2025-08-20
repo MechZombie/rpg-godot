@@ -1,9 +1,16 @@
 extends CanvasLayer
 
-@onready var health_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Foreground
-@onready var health_bar_backeground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Background
-@onready var mana_bar_background: ColorRect = $MarginContainer/PlayerContainer/ManaBar/Background
-@onready var mana_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/ManaBar/Foreground
+@onready var mana_bar_background: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ManaBar/Background
+@onready var mana_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ManaBar/Foreground
+@onready var mana_label: Label = $MarginContainer/PlayerContainer/Test/NinePatchRect/ManaBar/Mana
+
+@onready var health_bar_backeground: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/LifeBar/Background
+@onready var health_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/LifeBar/Foreground
+@onready var health_life_label: Label = $MarginContainer/PlayerContainer/Test/NinePatchRect/LifeBar/Life
+
+@onready var exp_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Foreground
+@onready var exp_bar_background: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Background
+@onready var exp_label: Label = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Exp
 
 
 @onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
@@ -89,6 +96,7 @@ func _ready() -> void:
 	player.connect("health_changed", Callable(self, "set_health"))
 	player.connect("mana_changed", Callable(self, "set_mana"))
 	player.connect("level_up", Callable(self, "set_level"))
+	exp_bar_foreground.size.x = 0
 	
 	inventory_handler.pressed.connect(on_handle_inventory)
 	
@@ -96,9 +104,14 @@ func _ready() -> void:
 	on_prepare_inventory()
 	on_prepare_action_bar()
 	
-func set_level(value):
-	print("level", value)
+func set_level(value, exp, max_level_exp, acc_level_exp):
+	print("set level", exp, max_level_exp)
+	
+	var full_width: float = exp_bar_background.size.x 
+	exp_bar_foreground.size.x = full_width 
+	
 	level_label.text = "Level %s" % [value]
+	exp_label.text = "Exp %s / %s" % [exp, max_level_exp]
 	
 
 func on_handle_inventory():
@@ -156,10 +169,12 @@ func on_prepare_action_bar():
 func set_health(value):
 	var full_width: float = health_bar_backeground.size.x  
 	health_bar_foreground.size.x = full_width * value
+	health_life_label.text = "%s / %s" % [player.current_health, player.max_health]
 	
 func set_mana(value):
 	var full_width: float = mana_bar_background.size.x  
 	mana_bar_foreground.size.x = full_width * value
+	mana_label.text = "%s / %s" % [player.current_mana, player.max_mana]
 
 func set_enemy_health(value, current_health, max_health):
 	var full_width: float = enemy_health_bar_backeground.size.x  

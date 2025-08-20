@@ -59,7 +59,8 @@ var info := {
 	"life_regen": 2,
 	"mana_regen": 1,
 	"level": 1,
-	"exp": 0
+	"exp": 0,
+	"acc_level_exp": 0
 }
 
 
@@ -72,7 +73,7 @@ var max_mana := 100
 var current_mana := 100
 signal mana_changed(new_mana)
 
-signal level_up(value: int)
+signal level_up(value: int, exp: int, max_level_exp: int, acc_level_exp: int)
 
 var last_direction = "down"
 var is_moving = false
@@ -124,13 +125,14 @@ func on_gain_exp(value: int):
 	var max_level_exp = level_data[0].max_exp
 	var total_exp = (info.exp + value)
 	info.exp = total_exp
+	info.acc_level_exp += value
 	
 	if(total_exp > max_level_exp):
 		on_level_up()
+		
+	update_hud_level()
 	
 func on_level_up():
-	print("Level UP")
-	
 	var exp = info.exp
 	var new_level = levels.filter(func (el): return exp >= el["min_exp"] and exp < el["max_exp"])
 	if new_level.is_empty():
@@ -139,9 +141,8 @@ func on_level_up():
 	
 	var levelLabel = LevelUPScene.instantiate()
 	add_child(levelLabel)
-	
 	info.level = new_level[0].id
-	update_hud_level()
+	info.acc_level_exp = 0
 	
 	
 func on_regenerate():
@@ -473,8 +474,13 @@ func update_mana_bar():
 	
 
 func update_hud_level():
-	print("atualizando lvl ", info["level"])
-	emit_signal("level_up", info["level"])
+	var level_data = levels.filter(func(el): return el["id"] == info["level"])
+	if level_data.is_empty():
+		print("Level not found")
+		return
+		
+	var max_level_exp = level_data[0].max_exp
+	emit_signal("level_up", info["level"], info["exp"], max_level_exp, info.acc_level_exp)
 	
 func set_target_position(pos: Vector2):
 	moviment_position = pos
