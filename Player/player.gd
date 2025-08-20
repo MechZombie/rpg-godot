@@ -22,6 +22,8 @@ var speed = 70
 @onready var ray_right = $RayCastRight
 @onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
 
+@onready var regen_timer: Timer = $RegenTimer
+
 var HUD: CanvasLayer
 
 
@@ -31,13 +33,19 @@ var info := {
 	"atk_max": 20,
 	"range": 3,
 	"def": 3,
-	"magic_power": 10
+	"magic_power": 10,
+	"life_regen": 2,
+	"mana_regen": 1
 }
 
 
 var max_health := 100
 var current_health := 100
 signal health_changed(new_health)
+
+var max_mana := 100
+var current_mana := 100
+signal mana_changed(new_mana)
 
 var last_direction = "down"
 var is_moving = false
@@ -75,6 +83,27 @@ func _ready():
 	on_prepare_hud()
 	update_health_bar()
 	
+	regen_timer.timeout.connect(on_regenerate)
+	
+	
+func on_regenerate():
+	if(not is_alive):
+		return
+		
+	var total_life_regen = (current_health + info.life_regen)
+	if(total_life_regen >= max_health):
+		current_health = max_health
+	else:
+		current_health = total_life_regen
+		
+	var total_mana_regen = (current_mana + info.mana_regen)
+	if(total_mana_regen >= max_mana):
+		current_mana = max_mana
+	else:
+		current_mana = total_mana_regen
+		
+	update_health_bar()
+	update_mana_bar()
 	
 	
 func on_dead():
@@ -88,8 +117,15 @@ func on_rebirth():
 	global_position = Vector2(480, -200)
 	is_alive = true
 	dead_scene.queue_free()
+	
 	current_health = max_health
 	update_health_bar()
+	
+	current_mana = max_mana
+	update_mana_bar()
+	
+	anim.play("idle_down")
+	
 
 
 	
@@ -176,11 +212,20 @@ func move_to_tile(pos: Vector2):
 	is_moving = true
 
 func on_heal():
+	var mana_cost = 5
 	var light = LightHealScene.instantiate()
 	add_child(light) 
 	
-	var heal = info.magic_power + ( max_health / 10)
+	current_mana -= mana_cost
+	
+	var rng_heal = randi_range(0, 10)
+	var heal = info.magic_power + ( max_health / 10) + rng_heal
 	var totalLife = current_health + heal
+	
+	on_show_heal(heal)
+	on_show_mana_cost(mana_cost)
+	update_mana_bar()
+	
 	
 	if(totalLife  >= max_health):
 		current_health = max_health
@@ -188,6 +233,28 @@ func on_heal():
 		current_health = totalLife
 		
 	update_health_bar()
+	
+func on_show_mana_cost(value):
+	var dmg_label = FloatingText.instantiate()
+	dmg_label.label_settings = dmg_label.label_settings.duplicate()
+	dmg_label.label_settings.font_color = Color.BLUE
+	
+	dmg_label.text = "-" + str(value)
+		
+	dmg_label.global_position = global_position + Vector2(0, -25)  
+	get_tree().current_scene.add_child(dmg_label)
+	
+	
+func on_show_heal(damage):
+	var dmg_label = FloatingText.instantiate()
+	dmg_label.label_settings = dmg_label.label_settings.duplicate() # cria cópia
+	dmg_label.label_settings.font_color = Color.GREEN
+	
+	dmg_label.text = "+" + str(damage)
+		
+	dmg_label.global_position = global_position + Vector2(0, -35)  
+	get_tree().current_scene.add_child(dmg_label)
+	
 	
 func on_atk(): 
 	if(has_target):
@@ -257,6 +324,7 @@ func shoot_spell(type: String):
 
 
 func on_great_fire_ball():
+	var mana_cost = 5
 	var damage = info.magic_power + randi_range(info.atk_min, info.atk_max)
 	var gfb = GreatFireBallScene.instantiate()
 	
@@ -270,7 +338,12 @@ func on_great_fire_ball():
 	gfb.set("direction", direction)
 	get_parent().add_child(gfb) 
 	
+	current_mana -= mana_cost
+	on_show_mana_cost(mana_cost)
+	update_mana_bar()
+	
 func on_ultimate_explosion():
+	var mana_cost = 20
 	var damage = info.magic_power + randi_range(info.atk_min, info.atk_max)
 	var ultimate = UltimateExplosionScene.instantiate()
 	
@@ -281,6 +354,10 @@ func on_ultimate_explosion():
 	
 	var direction = (target_position - global_position).normalized()
 	get_parent().add_child(ultimate) 
+	
+	current_mana -= mana_cost
+	on_show_mana_cost(mana_cost)
+	update_mana_bar()
 
 
 func on_basic_atk():
@@ -332,6 +409,10 @@ func update_health_bar():
 	if current_health <= 0 and is_alive:
 		on_dead()
 		
+func update_mana_bar():
+	var percent: float = float(current_mana) / float(max_mana)
+	emit_signal("mana_changed", percent)
+	
 	
 func set_target_position(pos: Vector2):
 	moviment_position = pos

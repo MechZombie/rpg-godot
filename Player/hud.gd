@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @onready var health_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Foreground
 @onready var health_bar_backeground: ColorRect = $MarginContainer/PlayerContainer/LifeBar/Background
+@onready var mana_bar_background: ColorRect = $MarginContainer/PlayerContainer/ManaBar/Background
+@onready var mana_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/ManaBar/Foreground
 
 
 @onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
@@ -84,6 +86,7 @@ var equipments
 func _ready() -> void:
 	player = get_parent()
 	player.connect("health_changed", Callable(self, "set_health"))
+	player.connect("mana_changed", Callable(self, "set_mana"))
 	inventory_handler.pressed.connect(on_handle_inventory)
 	
 	on_prepare_equipments()
@@ -118,6 +121,7 @@ func on_prepare_action_bar():
 			"locked_time": 5.0,
 			"texture": preload("res://Sprites/hud_spell_heal_1.png"),
 			"count": null,
+			"mana_cost": 5,
 			"cb": player.on_heal
 		},
 		{
@@ -125,6 +129,7 @@ func on_prepare_action_bar():
 			"locked_time": 5.0,
 			"texture": preload("res://Sprites/hud_spell_fire_3.png"),
 			"count": null,
+			"mana_cost": 5,
 			"cb": func(): player.shoot_spell("great_fire_ball")
 		},
 		{
@@ -132,6 +137,7 @@ func on_prepare_action_bar():
 			"locked_time": 5.0,
 			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
 			"count": null,
+			"mana_cost": 20,
 			"cb": func(): player.shoot_spell("on_ultimate_explosion")
 		}
 	]
@@ -143,14 +149,15 @@ func on_prepare_action_bar():
 func set_health(value):
 	var full_width: float = health_bar_backeground.size.x  
 	health_bar_foreground.size.x = full_width * value
-
-func set_enemy_health(value, current_health):
-	var full_width: float = enemy_health_bar_backeground.size.x  
-	print(full_width)
-	print(full_width * value)
 	
+func set_mana(value):
+	var full_width: float = mana_bar_background.size.x  
+	mana_bar_foreground.size.x = full_width * value
+
+func set_enemy_health(value, current_health, max_health):
+	var full_width: float = enemy_health_bar_backeground.size.x  
 	enemy_health_bar_foreground.size.x = full_width * value
-	life_label.text = str(current_health)
+	life_label.text = "%s / %s" % [current_health, max_health]
 
 func set_enemy_name(name):
 	creature_name.text = name

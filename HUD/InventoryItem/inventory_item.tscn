@@ -45,12 +45,15 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 0
-offset_left = 25.0
-offset_top = 1.0
-offset_right = 38.0
-offset_bottom = 16.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -10.0
+offset_top = 2.0
+offset_right = -2.0
+offset_bottom = 17.0
+grow_horizontal = 0
 text = "0"
 label_settings = SubResource("LabelSettings_l3ora")
 
