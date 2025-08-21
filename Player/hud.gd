@@ -11,6 +11,7 @@ extends CanvasLayer
 @onready var exp_bar_foreground: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Foreground
 @onready var exp_bar_background: ColorRect = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Background
 @onready var exp_label: Label = $MarginContainer/PlayerContainer/Test/NinePatchRect/ExpBar/Exp
+@onready var logo: AnimatedSprite2D = $MarginContainer/PlayerContainer/Passives/AnimatedSprite2D
 
 
 @onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
@@ -21,12 +22,14 @@ extends CanvasLayer
 @onready var action_bar: Panel = $MarginContainer/SkillsBar/Control/ActionBar
 @onready var control: Control = $MarginContainer/SkillsBar/Control
 @onready var inventory_container: VBoxContainer = $MarginContainer/Inventory
-@onready var inventory_handler: TextureButton = $MarginContainer/OptionsContainer/Panel/InventoryHandler
 @onready var options_container: VBoxContainer = $MarginContainer/OptionsContainer
 @onready var skills_container: VBoxContainer = $MarginContainer/SkillsContainer
 @onready var life_label: Label = $MarginContainer/EnemyContainer/LifeBar/Background/Life
 @onready var level_label: Label = $MarginContainer/PlayerContainer/Level/Label
+@onready var new_inventory: Control = $MarginContainer/HBoxContainer/Control
+@onready var inventory_handler: TextureButton = $MarginContainer/OptionsContainer/Control/Panel/InventoryHandler
 
+@onready var config: TextureButton = $MarginContainer/PlayerContainer/Control/TextureButton
 
 @export var ActionBarScene: PackedScene
 @export var InventoryScene: PackedScene
@@ -97,8 +100,10 @@ func _ready() -> void:
 	player.connect("mana_changed", Callable(self, "set_mana"))
 	player.connect("level_up", Callable(self, "set_level"))
 	exp_bar_foreground.size.x = 0
+	logo.play("default")
 	
-	inventory_handler.pressed.connect(on_handle_inventory)
+	config.pressed.connect(on_handle_inventory)
+	
 	
 	on_prepare_equipments()
 	on_prepare_inventory()
@@ -115,8 +120,10 @@ func set_level(value, exp, max_level_exp, acc_level_exp):
 	
 
 func on_handle_inventory():
+	print("tome")
 	inventory.visible = not inventory.visible
 	equipments.visible = not equipments.visible
+	new_inventory.visible = not new_inventory.visible
 
 func on_prepare_inventory():
 	if inventory and is_instance_valid(inventory):

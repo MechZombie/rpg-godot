@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://g8hnt6va4kms"]
+[gd_scene load_steps=30 format=3 uid="uid://g8hnt6va4kms"]
 
 [ext_resource type="Script" uid="uid://c2yrfvdn55o6w" path="res://Player/hud.gd" id="1_3t5dv"]
 [ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="2_26gsd"]
@@ -8,8 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://bquhxt6gyy1t7" path="res://HUD/Textures/Bossbar_5.png" id="5_upn61"]
 [ext_resource type="Texture2D" uid="uid://bafvmnabkgvdl" path="res://HUD/Textures/healthbar.png" id="6_2q3se"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_cbw3p"]
-[ext_resource type="Texture2D" uid="uid://bok2xhagdqna5" path="res://Sprites/bag_dolar.png" id="7_8257g"]
-[ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="9_tsu20"]
+[ext_resource type="Texture2D" uid="uid://b360faagpcuvp" path="res://Sprites/hud_spell_heal_1.png" id="7_03xa0"]
+[ext_resource type="Texture2D" uid="uid://c46us1xbky8fs" path="res://Sprites/hud_spell_fire_3.png" id="8_aayvn"]
+[ext_resource type="Texture2D" uid="uid://b0vhaps5bol0x" path="res://Sprites/hud_spell_fire_4.png" id="9_ltn1w"]
+[ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="10_ltn1w"]
+[ext_resource type="PackedScene" uid="uid://bl05c0mx4oxrm" path="res://HUD/NewInventory.tscn" id="11_q5vrg"]
+[ext_resource type="Texture2D" uid="uid://cht74p248bi6q" path="res://Icons/3d-settings-icon.png" id="14_aayvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0nqa"]
 font = ExtResource("5_4gt8d")
@@ -17,6 +21,98 @@ font = ExtResource("5_4gt8d")
 [sub_resource type="LabelSettings" id="LabelSettings_2q3se"]
 font = ExtResource("5_4gt8d")
 font_size = 10
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yngjm"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afx7j"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3soa"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whk5m"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axroe"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p8r3"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3jd6"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trc5y"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxcd7"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x02e7"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixf48"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2obgk"]
+atlas = ExtResource("10_ltn1w")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_86yhk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yngjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afx7j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3soa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whk5m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axroe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p8r3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3jd6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trc5y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxcd7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x02e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixf48")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2obgk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_3t5dv")
@@ -191,13 +287,61 @@ grow_horizontal = 2
 grow_vertical = 2
 label_settings = SubResource("LabelSettings_2q3se")
 
+[node name="Passives" type="Control" parent="MarginContainer/PlayerContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 12.0
+offset_right = 101.0
+offset_bottom = 38.0
+texture = ExtResource("7_03xa0")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
+layout_mode = 0
+offset_left = 107.0
+offset_top = 12.0
+offset_right = 132.0
+offset_bottom = 38.0
+texture = ExtResource("8_aayvn")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 12.0
+offset_right = 164.0
+offset_bottom = 38.0
+texture = ExtResource("9_ltn1w")
+expand_mode = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/PlayerContainer/Passives"]
+position = Vector2(29, 50)
+scale = Vector2(2.21875, 2.125)
+sprite_frames = SubResource("SpriteFrames_86yhk")
+frame_progress = 0.215217
+
+[node name="Control" type="Control" parent="MarginContainer/PlayerContainer"]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer/PlayerContainer/Control"]
+layout_mode = 0
+offset_left = -29.0
+offset_top = 147.0
+offset_right = 54.0
+offset_bottom = 226.0
+texture_normal = ExtResource("14_aayvn")
+ignore_texture_size = true
+stretch_mode = 0
+
 [node name="EnemyContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
 [node name="LifeBar" type="Control" parent="MarginContainer/EnemyContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 4
 
@@ -265,7 +409,7 @@ offset_right = 100.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.152941, 1, 0.156863, 1)
+color = Color(1, 0.133333, 0.156863, 1)
 
 [node name="Name" type="Label" parent="MarginContainer/EnemyContainer/LifeBar"]
 layout_mode = 1
@@ -280,6 +424,7 @@ text = "Creature"
 horizontal_alignment = 1
 
 [node name="Inventory" type="VBoxContainer" parent="MarginContainer"]
+visible = false
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
@@ -300,35 +445,21 @@ offset_right = 320.0
 offset_bottom = 40.0
 deadzone_size = 5.0
 
-[node name="OptionsContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Panel" type="Panel" parent="MarginContainer/OptionsContainer"]
-custom_minimum_size = Vector2(300, 50)
-layout_mode = 2
-
-[node name="InventoryHandler" type="TextureButton" parent="MarginContainer/OptionsContainer/Panel"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 5.0
-offset_right = 52.0
-offset_bottom = 43.0
-texture_normal = ExtResource("7_8257g")
-ignore_texture_size = true
-
-[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/OptionsContainer/Panel"]
-layout_mode = 0
-offset_right = 301.0
-offset_bottom = 52.0
-texture = ExtResource("9_tsu20")
-patch_margin_left = 15
-patch_margin_top = 15
-patch_margin_right = 15
-patch_margin_bottom = 15
-
 [node name="SkillsContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 alignment = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Control" type="Control" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="NinePatchRect" parent="MarginContainer/HBoxContainer/Control" instance=ExtResource("11_q5vrg")]
+layout_mode = 2
+offset_left = -406.0
+offset_right = -4.0
+offset_bottom = 578.0

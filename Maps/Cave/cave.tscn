@@ -1401,7 +1401,7 @@ font = ExtResource("15_qticc")
 font_size = 30
 
 [node name="Cave" type="Node2D"]
-position = Vector2(0, 2)
+position = Vector2(0, 3)
 script = ExtResource("1_aqe4h")
 dummy = ExtResource("7_sv0pv")
 creature = ExtResource("11_mgvdi")
