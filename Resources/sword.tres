@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://boxichjlfurhy"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_pk6ra"]
+[ext_resource type="Texture2D" uid="uid://dfdo155chncfm" path="res://Sprites/fire_sword.png" id="2_0bu56"]
+
+[resource]
+script = ExtResource("1_pk6ra")
+id = 1
+name = "Espada de fogo"
+description = "\"Sua presença intimida até os guerreiros mais experientes.\""
+texture = ExtResource("2_0bu56")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 3
+atk_max = 7
+def_min = 3
+def_max = 5
+range = 70
+count = 1
+drop_change = 0
+drop_count = 1
+vocation = "Cavaleiro"
+type = "Melee"
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

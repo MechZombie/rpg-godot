@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://davonksyfs77q"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_4cr5m"]
+[ext_resource type="Texture2D" uid="uid://drk7nvwtqwfgx" path="res://Sprites/legs_1.png" id="2_pkdbg"]
+
+[resource]
+script = ExtResource("1_4cr5m")
+id = 8
+name = "Calças do caçador"
+description = "\"Projetadas para proteger contra espinhos, cortes e o frio da noite, oferecem liberdade de movimento essencial para caçadas prolongadas.\""
+texture = ExtResource("2_pkdbg")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 0
+atk_max = 0
+def_min = 5
+def_max = 8
+range = 0
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Todas"
+type = ""
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://buygnh0ncun7e" path="res://Sprites/bag.png" id="1_igt4a"]
 [ext_resource type="Script" uid="uid://b4gqr2xfxwa52" path="res://Objects/Bag/drop_bag.gd" id="2_0gg3y"]
-[ext_resource type="PackedScene" uid="uid://boivt54h80ar" path="res://HUD/InventoryItem/inventory_item.tscn" id="2_3e6rd"]
+[ext_resource type="PackedScene" uid="uid://dksj0fkws1w6s" path="res://HUD/NewInventoryItem/NewInventoryItem.tscn" id="2_lgu3q"]
 [ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_3nfpw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qqua"]
@@ -13,7 +13,7 @@ size = Vector2(32, 32)
 [node name="DropBag" type="Area2D"]
 z_index = 2
 script = ExtResource("2_0gg3y")
-InventoryItem = ExtResource("2_3e6rd")
+InventoryItem = ExtResource("2_lgu3q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_7qqua")

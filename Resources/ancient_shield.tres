@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cpp0unb7hyjtk"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_eh6ot"]
+[ext_resource type="Texture2D" uid="uid://b05gy5op50htw" path="res://Sprites/sanguinare_shield.png" id="2_acuut"]
+
+[resource]
+script = ExtResource("1_eh6ot")
+id = 0
+name = "Escudo dos ancestras"
+description = "\"Diz-se que cada golpe bloqueado ecoa as vozes dos ancestrais, concedendo coragem inabalável ao portador.\""
+texture = ExtResource("2_acuut")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 0
+atk_max = 0
+def_min = 10
+def_max = 15
+range = 0
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Todas"
+type = ""
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

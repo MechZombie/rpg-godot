@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://q1u83fidbg8"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_weby4"]
+[ext_resource type="Texture2D" uid="uid://o4jiq6m66uum" path="res://Sprites/feather_2.png" id="2_dwkqq"]
+
+[resource]
+script = ExtResource("1_weby4")
+id = 4
+name = "Brincos da fenix"
+description = "\"Diz-se que carregam a bênção da fênix, concedendo ao portador vitalidade renovada e a chama da esperança, mesmo diante da morte.\""
+texture = ExtResource("2_dwkqq")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 2
+atk_max = 4
+def_min = 1
+def_max = 3
+range = 0
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Todas"
+type = ""
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

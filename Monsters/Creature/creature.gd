@@ -61,36 +61,19 @@ var info := {
 	"exp": 50
 }
 
-var drops = [
-		{
-			"id": 1,
-			"name": "Poção vazia",
-			"texture": preload("res://Sprites/empty_vial.png"),
-			"count": [0,0,0,1],
-		},
-		{
-			"id": 2,
-			"name": "Gema verde",
-			"texture": preload("res://Sprites/green_gem.png"),
-			"count": [0,1],
-		},
-		{
-			"id": 3,
-			"name": "Flexa de madeira",
-			"texture": preload("res://Sprites/arrows_group.png"),
-			"count": [0,7],
-		},
-	]
+@export var drops: Array[Item] = []
+
 
 func on_drop_loot():
 	var loot = DropBag.instantiate()
 	loot.position = global_position
 	
 	for drop in drops:
-		var is_drop = randi_range(drop.count[0], drop.count[1])
+		var is_drop = randi_range(0, drop.drop_change)
 		if is_drop > 0:
-			drop.count = is_drop
-			loot.items.append(drop)
+			var new_drop = drop.duplicate()
+			new_drop.count = randi_range(1, new_drop.drop_count)
+			loot.items.append(new_drop)
 		
 		
 	loot.player = player

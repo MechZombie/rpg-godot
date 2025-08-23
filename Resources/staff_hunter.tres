@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dydjcpw4gj4r"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_stw1t"]
+[ext_resource type="Texture2D" uid="uid://dt7icjblh2a88" path="res://Sprites/wood_staff.png" id="2_stw1t"]
+
+[resource]
+script = ExtResource("1_stw1t")
+id = 7
+name = "Cajado do caçador"
+description = "\"Criado para caçadores arcanos, une a astúcia do rastreador com o poder destrutivo da magia.\""
+texture = ExtResource("2_stw1t")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 15
+atk_max = 20
+def_min = 0
+def_max = 0
+range = 200
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Magos"
+type = "Ranged"
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

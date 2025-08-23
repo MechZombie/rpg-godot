@@ -1,0 +1,562 @@
+[gd_scene load_steps=18 format=3 uid="uid://bl05c0mx4oxrm"]
+
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_hsupl"]
+[ext_resource type="Script" uid="uid://clt35ex4v7jmq" path="res://HUD/NewInventory/new_inventory.gd" id="2_lcbny"]
+[ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="3_c2k8l"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_ol4dd"]
+[ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Textures/Scalable_5.png" id="6_mtg8j"]
+[ext_resource type="Texture2D" uid="uid://cgkkw23q6hyhl" path="res://HUD/Textures/deviders5.png" id="13_ceuub"]
+[ext_resource type="PackedScene" uid="uid://dksj0fkws1w6s" path="res://HUD/NewInventoryItem/NewInventoryItem.tscn" id="14_lns7b"]
+[ext_resource type="Texture2D" uid="uid://bbedptthnjukq" path="res://HUD/Textures/Scalable_1.png" id="16_onx7l"]
+[ext_resource type="Texture2D" uid="uid://c46us1xbky8fs" path="res://Sprites/hud_spell_fire_3.png" id="17_4c8jd"]
+[ext_resource type="Texture2D" uid="uid://cu1npfg4wn3cv" path="res://Icons/fire_book.png" id="17_enqk5"]
+[ext_resource type="Texture2D" uid="uid://dgosntughch4b" path="res://Icons/fire_orc.png" id="18_wp5hu"]
+[ext_resource type="Texture2D" uid="uid://tw6fhliic216" path="res://Icons/mage_medidate.png" id="19_7mqv1"]
+[ext_resource type="Texture2D" uid="uid://b360faagpcuvp" path="res://Sprites/hud_spell_heal_1.png" id="20_7mqv1"]
+[ext_resource type="Texture2D" uid="uid://b0vhaps5bol0x" path="res://Sprites/hud_spell_fire_4.png" id="21_lns7b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l7vub"]
+font = ExtResource("4_ol4dd")
+
+[sub_resource type="LabelSettings" id="LabelSettings_miypt"]
+font = ExtResource("4_ol4dd")
+font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_ceuub"]
+font = ExtResource("4_ol4dd")
+font_size = 19
+
+[node name="NinePatchRect" type="NinePatchRect"]
+offset_right = 406.0
+offset_bottom = 652.0
+texture = ExtResource("1_hsupl")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+script = ExtResource("2_lcbny")
+InventoryItem = ExtResource("14_lns7b")
+
+[node name="NinePatchRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.129558, 0.129558, 0.129558, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 67.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Title" type="NinePatchRect" parent="NinePatchRect/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("3_c2k8l")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/MarginContainer/Title"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -15.5
+offset_right = 96.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+columns = 4
+
+[node name="Inventory" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
+layout_mode = 2
+text = "Inventory"
+
+[node name="Button2" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
+layout_mode = 2
+text = "Stats"
+
+[node name="Skills" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
+layout_mode = 2
+text = "Skills"
+
+[node name="Button4" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
+layout_mode = 2
+text = "Outfit"
+
+[node name="Equipments" type="MarginContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.243842
+anchor_top = 0.130368
+anchor_right = 0.756158
+anchor_bottom = 0.449387
+grow_horizontal = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/Equipments"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 3
+
+[node name="EarLeft" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Helmet" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="EarRight" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Gloves" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Armor" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Weapon" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Shoes" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Legs" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="OffHand" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+
+[node name="Inventory" type="VBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -272.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/Inventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Deviders5" type="Sprite2D" parent="NinePatchRect/Inventory/MarginContainer3"]
+position = Vector2(202, 10)
+scale = Vector2(2.375, 1)
+texture = ExtResource("13_ceuub")
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/Inventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/Inventory/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Inventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/Inventory/MarginContainer"]
+layout_mode = 2
+text = " 100 Gold"
+label_settings = SubResource("LabelSettings_l7vub")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect/Inventory/MarginContainer/Label"]
+layout_mode = 2
+offset_left = -2.0
+offset_top = -3.0
+offset_right = 77.0
+offset_bottom = 16.0
+texture = ExtResource("6_mtg8j")
+
+[node name="Skills" type="MarginContainer" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Skills"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Passives (3/3)"
+label_settings = SubResource("LabelSettings_miypt")
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 5
+
+[node name="Item" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("17_enqk5")
+expand_mode = 1
+
+[node name="Item2" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item2/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("18_wp5hu")
+expand_mode = 1
+
+[node name="Item3" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item3/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("19_7mqv1")
+expand_mode = 1
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Deviders5" type="Sprite2D" parent="NinePatchRect/Skills/VBoxContainer/MarginContainer3"]
+position = Vector2(193, 11)
+scale = Vector2(2.375, 1)
+texture = ExtResource("13_ceuub")
+
+[node name="Label2" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Actives (3/4)"
+label_settings = SubResource("LabelSettings_miypt")
+
+[node name="GridContainer2" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+columns = 5
+
+[node name="Item" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("20_7mqv1")
+
+[node name="Item2" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item2/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("21_lns7b")
+
+[node name="Item3" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("16_onx7l")
+patch_margin_left = 5
+patch_margin_top = 5
+patch_margin_right = 5
+patch_margin_bottom = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item3/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("17_4c8jd")
+
+[node name="Stats" type="MarginContainer" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 62.0
+offset_right = 10.0
+offset_bottom = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="NinePatchRect/Stats"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Control" type="Control" parent="NinePatchRect/Stats/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="Label2" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 2
+offset_left = -107.0
+offset_top = 50.0
+offset_right = 91.0
+offset_bottom = 69.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Atk 10 ~ 15"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label3" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 2
+offset_left = -107.0
+offset_top = 73.0
+offset_right = 91.0
+offset_bottom = 92.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Def 10 ~ 15"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label4" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 98.0
+offset_right = 91.0
+offset_bottom = 117.0
+text = "Range 3"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label5" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 123.0
+offset_right = 91.0
+offset_bottom = 142.0
+text = "Magic power 10"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label6" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 147.0
+offset_right = 91.0
+offset_bottom = 166.0
+text = "Life regen 1"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label7" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 170.0
+offset_right = 91.0
+offset_bottom = 189.0
+text = "Mana regen 2"
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label8" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 10.0
+offset_right = 91.0
+offset_bottom = 29.0
+text = "Exp 100 "
+label_settings = SubResource("LabelSettings_ceuub")
+
+[node name="Label9" type="Label" parent="NinePatchRect/Stats/HBoxContainer/Control"]
+layout_mode = 0
+offset_left = -106.0
+offset_top = 31.0
+offset_right = 92.0
+offset_bottom = 50.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_ceuub")

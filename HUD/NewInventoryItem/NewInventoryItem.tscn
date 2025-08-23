@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://dksj0fkws1w6s"]
+
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_70umo"]
+[ext_resource type="Script" uid="uid://bmcwymjyrql0d" path="res://HUD/NewInventoryItem/new_inventory_item.gd" id="2_3gwet"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="3_oakan"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_e3ije"]
+font = ExtResource("3_oakan")
+
+[sub_resource type="LabelSettings" id="LabelSettings_wa2d5"]
+font = ExtResource("3_oakan")
+font_color = Color(0.50383, 1, 0.510449, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dobm6"]
+font = ExtResource("3_oakan")
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_oakan"]
+font = ExtResource("3_oakan")
+font_size = 12
+
+[node name="Item" type="NinePatchRect"]
+custom_minimum_size = Vector2(60, 60)
+size_flags_horizontal = 4
+texture = ExtResource("1_70umo")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
+script = ExtResource("2_3gwet")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureButton" type="TextureButton" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Count" type="Label" parent="MarginContainer/TextureButton"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -5.0
+offset_bottom = 15.0
+grow_horizontal = 0
+label_settings = SubResource("LabelSettings_e3ije")
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+clip_contents = true
+layout_mode = 2
+offset_left = -172.0
+offset_top = -53.0
+offset_right = 32.0
+offset_bottom = 52.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_wa2d5")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Description" type="Label" parent="Panel/MarginContainer/GridContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_dobm6")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Atk" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_oakan")

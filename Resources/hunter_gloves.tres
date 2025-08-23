@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1ryyc46lrvp"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_obnnr"]
+[ext_resource type="Texture2D" uid="uid://bo1kbs80stuei" path="res://Sprites/gloves_1.png" id="2_6y1k2"]
+
+[resource]
+script = ExtResource("1_obnnr")
+id = 5
+name = "Luvas do caçador"
+description = "\"Seu toque áspero protege contra o frio da noite e garante ao caçador uma pegada estável durante longas caçadas.\""
+texture = ExtResource("2_6y1k2")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 1
+atk_max = 3
+def_min = 1
+def_max = 3
+range = 0
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Todas"
+type = ""
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

@@ -21,7 +21,6 @@ extends CanvasLayer
 
 @onready var action_bar: Panel = $MarginContainer/SkillsBar/Control/ActionBar
 @onready var control: Control = $MarginContainer/SkillsBar/Control
-@onready var inventory_container: VBoxContainer = $MarginContainer/Inventory
 @onready var options_container: VBoxContainer = $MarginContainer/OptionsContainer
 @onready var skills_container: VBoxContainer = $MarginContainer/SkillsContainer
 @onready var life_label: Label = $MarginContainer/EnemyContainer/LifeBar/Background/Life
@@ -37,59 +36,7 @@ extends CanvasLayer
 
 
 var action_bar_items = []
-var inventory_items = []
-	
-var equipment_items = [
-		{
-			"name": "Brincos 1",
-			"texture": preload("res://Sprites/feather_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Capacete",
-			"texture": preload("res://Sprites/helmet_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Brincos 2",
-			"texture": preload("res://Sprites/feather_2.png"),
-			"cb": null
-		},
-		{
-			"name": "Arma",
-			"texture": preload("res://Sprites/weapon_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Armadura",
-			"texture": preload("res://Sprites/armor_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Escudo",
-			"texture": preload("res://Sprites/book_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Botas",
-			"texture": preload("res://Sprites/shoes_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Calças",
-			"texture": preload("res://Sprites/legs_1.png"),
-			"cb": null
-		},
-		{
-			"name": "Luvas",
-			"texture": preload("res://Sprites/gloves_1.png"),
-			"cb": null
-		},
-	]
-
 var player
-var inventory
-var equipments
 
 
 
@@ -104,9 +51,6 @@ func _ready() -> void:
 	
 	config.pressed.connect(on_handle_inventory)
 	
-	
-	on_prepare_equipments()
-	on_prepare_inventory()
 	on_prepare_action_bar()
 	
 func set_level(value, exp, max_level_exp, acc_level_exp):
@@ -120,27 +64,8 @@ func set_level(value, exp, max_level_exp, acc_level_exp):
 	
 
 func on_handle_inventory():
-	print("tome")
-	inventory.visible = not inventory.visible
-	equipments.visible = not equipments.visible
 	new_inventory.visible = not new_inventory.visible
 
-func on_prepare_inventory():
-	if inventory and is_instance_valid(inventory):
-		inventory.queue_free()
-		
-	inventory = InventoryScene.instantiate()
-	inventory.items = inventory_items
-	inventory_container.add_child(inventory)
-	inventory.visible = true
-	equipments.visible = true
-	
-	
-func on_prepare_equipments():
-	equipments = EquipmentsScene.instantiate()
-	equipments.items = equipment_items
-	inventory_container.add_child(equipments)
-	
 func on_prepare_action_bar():
 	action_bar_items = [
 		{

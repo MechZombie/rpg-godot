@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://k31p4yo5dif5" path="res://Spells/light_heal.tscn" id="5_cgiaq"]
 [ext_resource type="Texture2D" uid="uid://b4vsx41uejouo" path="res://Sprites/characters_1_32x32.png" id="6_ybsnk"]
 [ext_resource type="PackedScene" uid="uid://g8hnt6va4kms" path="res://HUD/hud.tscn" id="7_44skb"]
-[ext_resource type="PackedScene" uid="uid://bbcudvjtm4h20" path="res://HUD/DeadScene.tscn" id="7_x3vf3"]
+[ext_resource type="PackedScene" uid="uid://bbcudvjtm4h20" path="res://HUD/Dead/dead_scene.tscn" id="7_x3vf3"]
 [ext_resource type="PackedScene" uid="uid://byk0mp5mheb8h" path="res://Objects/LevelUp/level_up.tscn" id="8_apopc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ga6y"]

@@ -51,8 +51,8 @@ var levels = [
 
 var info := {
 	"id": 1,
-	"atk_min": 10,
-	"atk_max": 20,
+	"atk_min": 20,
+	"atk_max": 30,
 	"range": 3,
 	"def": 3,
 	"magic_power": 10,
@@ -88,16 +88,6 @@ var is_alive: bool = true
 
 var dead_scene
 
-var inventory_items = [
-		{
-			"id": 1,
-			"name": "Fire Sword",
-			"locked_time": 0.0,
-			"texture": preload("res://Sprites/fire_sword.png"),
-			"count": null,
-			"cb": null
-		},
-	]
 
 func _ready():
 	target.visible = false
@@ -193,32 +183,8 @@ func on_prepare_hud():
 		HUD.queue_free()
 		
 	HUD = HUDScene.instantiate()
-	HUD.inventory_items = inventory_items
 	add_child(HUD)
 	
-	
-func on_update_inventory(items: Array):
-	if inventory_items.size() == 15:
-		print("Inventory full")
-		return
-		
-		
-	for item in items:
-		var found = false
-		
-		for i in range(inventory_items.size()):
-			if inventory_items[i].id == item.id:
-				inventory_items[i].count += item.count
-				found = true
-				break  # já encontrou, não precisa continuar
-		
-		# se terminou o loop sem encontrar, adiciona
-		if not found:
-			inventory_items.append(item)
-			
-	
-	HUD.inventory_items = inventory_items
-	HUD.on_prepare_inventory()
 		
 	
 func _physics_process(delta):

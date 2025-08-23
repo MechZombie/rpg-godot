@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dptsapg74gfe1"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_pxlxh"]
+[ext_resource type="Texture2D" uid="uid://ci5nooyb42djf" path="res://Sprites/armor_1.png" id="2_v3gee"]
+
+[resource]
+script = ExtResource("1_pxlxh")
+id = 6
+name = "Vestimenta do caçador"
+description = "\"A escolha preferida dos caçadores que precisam se mover em silêncio e atacar com precisão.\""
+texture = ExtResource("2_v3gee")
+is_stackable = false
+is_usable = false
+is_equipable = true
+atk_min = 0
+atk_max = 0
+def_min = 5
+def_max = 10
+range = 0
+count = 0
+drop_change = 0
+drop_count = 0
+vocation = "Todas"
+type = ""
+level = 1
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

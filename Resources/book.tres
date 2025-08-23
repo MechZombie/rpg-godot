@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://8x6mrj0wxkox"]
+
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_nvhvq"]
+[ext_resource type="Texture2D" uid="uid://bqi2nh0q2ish1" path="res://Sprites/book_1.png" id="2_0p7ji"]
+
+[resource]
+script = ExtResource("1_nvhvq")
+id = 2
+name = "Livro das eras"
+description = "\"Um tomo antigo que guarda os segredos do tempo e das civilizações esquecidas.\""
+texture = ExtResource("2_0p7ji")
+is_stackable = true
+is_usable = false
+is_equipable = false
+atk_min = 0
+atk_max = 0
+range = 0
+count = 1
+drop_change = 2
+drop_count = 5
+metadata/_custom_type_script = "uid://ctry00w1jyudc"

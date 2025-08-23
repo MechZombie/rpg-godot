@@ -67,7 +67,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_nx7rj")
 theme_override_font_sizes/font_size = 30
-text = "NEW GAME"
+text = "NOVO JOGO"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/NinePatchRect/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -90,7 +90,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_nx7rj")
 theme_override_font_sizes/font_size = 30
-text = "SETTINGS"
+text = "CONFIGURAÇÃO"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/NinePatchRect/VBoxContainer/MarginContainer2"]
 layout_mode = 2
@@ -112,7 +112,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_nx7rj")
 theme_override_font_sizes/font_size = 30
-text = "QUIT"
+text = "SAIR"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MarginContainer/HBoxContainer/Control/NinePatchRect/VBoxContainer/MarginContainer3"]
 layout_mode = 2

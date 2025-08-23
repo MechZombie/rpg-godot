@@ -8,11 +8,11 @@
 [ext_resource type="Texture2D" uid="uid://bquhxt6gyy1t7" path="res://HUD/Textures/Bossbar_5.png" id="5_upn61"]
 [ext_resource type="Texture2D" uid="uid://bafvmnabkgvdl" path="res://HUD/Textures/healthbar.png" id="6_2q3se"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_cbw3p"]
-[ext_resource type="Texture2D" uid="uid://b360faagpcuvp" path="res://Sprites/hud_spell_heal_1.png" id="7_03xa0"]
-[ext_resource type="Texture2D" uid="uid://c46us1xbky8fs" path="res://Sprites/hud_spell_fire_3.png" id="8_aayvn"]
-[ext_resource type="Texture2D" uid="uid://b0vhaps5bol0x" path="res://Sprites/hud_spell_fire_4.png" id="9_ltn1w"]
+[ext_resource type="Texture2D" uid="uid://tw6fhliic216" path="res://Icons/mage_medidate.png" id="7_aayvn"]
+[ext_resource type="Texture2D" uid="uid://dgosntughch4b" path="res://Icons/fire_orc.png" id="8_ltn1w"]
+[ext_resource type="Texture2D" uid="uid://cu1npfg4wn3cv" path="res://Icons/fire_book.png" id="9_yngjm"]
 [ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="10_ltn1w"]
-[ext_resource type="PackedScene" uid="uid://bl05c0mx4oxrm" path="res://HUD/NewInventory.tscn" id="11_q5vrg"]
+[ext_resource type="PackedScene" uid="uid://bl05c0mx4oxrm" path="res://HUD/NewInventory/NewInventory.tscn" id="11_q5vrg"]
 [ext_resource type="Texture2D" uid="uid://cht74p248bi6q" path="res://Icons/3d-settings-icon.png" id="14_aayvn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_y0nqa"]
@@ -296,7 +296,7 @@ offset_left = 76.0
 offset_top = 12.0
 offset_right = 101.0
 offset_bottom = 38.0
-texture = ExtResource("7_03xa0")
+texture = ExtResource("7_aayvn")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
@@ -305,7 +305,7 @@ offset_left = 107.0
 offset_top = 12.0
 offset_right = 132.0
 offset_bottom = 38.0
-texture = ExtResource("8_aayvn")
+texture = ExtResource("8_ltn1w")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
@@ -314,7 +314,7 @@ offset_left = 139.0
 offset_top = 12.0
 offset_right = 164.0
 offset_bottom = 38.0
-texture = ExtResource("9_ltn1w")
+texture = ExtResource("9_yngjm")
 expand_mode = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/PlayerContainer/Passives"]
@@ -424,7 +424,6 @@ text = "Creature"
 horizontal_alignment = 1
 
 [node name="Inventory" type="VBoxContainer" parent="MarginContainer"]
-visible = false
 layout_direction = 2
 layout_mode = 2
 size_flags_horizontal = 8
