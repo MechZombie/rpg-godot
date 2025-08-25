@@ -7,8 +7,7 @@ extends Area2D
 @onready var take_all_area: Area2D = $Panel/TakeAllArea
 
 @export var InventoryItem: PackedScene
-@onready var player_inventory: InventoryData = preload("res://Resources/player_inventory.tres")
-
+@onready var player_inventory = preload("res://Resources/Inventory/player_inventory.tres")
 
 var player
 

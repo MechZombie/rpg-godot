@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bxe8dkn65qc23"]
 
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_3shfx"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="1_3shfx"]
 [ext_resource type="Texture2D" uid="uid://d1rl2meiw1pg1" path="res://Sprites/helmet_1.png" id="2_po06v"]
 
 [resource]

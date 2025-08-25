@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Passive" load_steps=3 format=3 uid="uid://dnijj5nj6qfyd"]
+
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_ws8gy"]
+[ext_resource type="Texture2D" uid="uid://bltpado0dl7yd" path="res://Sprites/Spells/64x64/FortressSide_Icons_Pack7_  (83).png" id="2_rktte"]
+
+[resource]
+script = ExtResource("1_ws8gy")
+id = 2
+name = "Dreno Arcano"
+description = "\"Seus ataques drenam a essência mágica do alvo. Cada golpe concede ao usuário uma pequena quantidade de mana roubada do inimigo, enfraquecendo suas energias enquanto fortalece as suas.\""
+texture = ExtResource("2_rktte")
+metadata/_custom_type_script = "uid://cinq0apbfcsm0"

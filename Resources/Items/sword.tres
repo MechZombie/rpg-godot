@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://boxichjlfurhy"]
 
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_pk6ra"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="1_pk6ra"]
 [ext_resource type="Texture2D" uid="uid://dfdo155chncfm" path="res://Sprites/fire_sword.png" id="2_0bu56"]
 
 [resource]

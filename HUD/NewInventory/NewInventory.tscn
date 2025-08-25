@@ -1,19 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://bl05c0mx4oxrm"]
+[gd_scene load_steps=12 format=3 uid="uid://bl05c0mx4oxrm"]
 
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_hsupl"]
 [ext_resource type="Script" uid="uid://clt35ex4v7jmq" path="res://HUD/NewInventory/new_inventory.gd" id="2_lcbny"]
 [ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="3_c2k8l"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_ol4dd"]
 [ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Textures/Scalable_5.png" id="6_mtg8j"]
+[ext_resource type="PackedScene" uid="uid://c2q61wq1elyxc" path="res://HUD/Passives/passive_icon.tscn" id="8_dvrqj"]
 [ext_resource type="Texture2D" uid="uid://cgkkw23q6hyhl" path="res://HUD/Textures/deviders5.png" id="13_ceuub"]
 [ext_resource type="PackedScene" uid="uid://dksj0fkws1w6s" path="res://HUD/NewInventoryItem/NewInventoryItem.tscn" id="14_lns7b"]
-[ext_resource type="Texture2D" uid="uid://bbedptthnjukq" path="res://HUD/Textures/Scalable_1.png" id="16_onx7l"]
-[ext_resource type="Texture2D" uid="uid://c46us1xbky8fs" path="res://Sprites/hud_spell_fire_3.png" id="17_4c8jd"]
-[ext_resource type="Texture2D" uid="uid://cu1npfg4wn3cv" path="res://Icons/fire_book.png" id="17_enqk5"]
-[ext_resource type="Texture2D" uid="uid://dgosntughch4b" path="res://Icons/fire_orc.png" id="18_wp5hu"]
-[ext_resource type="Texture2D" uid="uid://tw6fhliic216" path="res://Icons/mage_medidate.png" id="19_7mqv1"]
-[ext_resource type="Texture2D" uid="uid://b360faagpcuvp" path="res://Sprites/hud_spell_heal_1.png" id="20_7mqv1"]
-[ext_resource type="Texture2D" uid="uid://b0vhaps5bol0x" path="res://Sprites/hud_spell_fire_4.png" id="21_lns7b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l7vub"]
 font = ExtResource("4_ol4dd")
@@ -36,6 +30,7 @@ patch_margin_right = 3
 patch_margin_bottom = 3
 script = ExtResource("2_lcbny")
 InventoryItem = ExtResource("14_lns7b")
+Passive = ExtResource("8_dvrqj")
 
 [node name="NinePatchRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -270,95 +265,17 @@ theme_override_constants/margin_bottom = 10
 [node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/Skills"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
+[node name="PassivesCount" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Passives (3/3)"
 label_settings = SubResource("LabelSettings_miypt")
 
-[node name="GridContainer" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
+[node name="PassivesGrid" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 columns = 5
-
-[node name="Item" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("17_enqk5")
-expand_mode = 1
-
-[node name="Item2" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item2/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("18_wp5hu")
-expand_mode = 1
-
-[node name="Item3" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer/Item3/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("19_7mqv1")
-expand_mode = 1
 
 [node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer"]
 layout_mode = 2
@@ -373,92 +290,17 @@ position = Vector2(193, 11)
 scale = Vector2(2.375, 1)
 texture = ExtResource("13_ceuub")
 
-[node name="Label2" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
+[node name="ActivesCount" type="Label" parent="NinePatchRect/Skills/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Actives (3/4)"
 label_settings = SubResource("LabelSettings_miypt")
 
-[node name="GridContainer2" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
+[node name="ActiveGrid" type="GridContainer" parent="NinePatchRect/Skills/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 columns = 5
-
-[node name="Item" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("20_7mqv1")
-
-[node name="Item2" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item2/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("21_lns7b")
-
-[node name="Item3" type="NinePatchRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2"]
-custom_minimum_size = Vector2(60, 60)
-layout_mode = 2
-texture = ExtResource("16_onx7l")
-patch_margin_left = 5
-patch_margin_top = 5
-patch_margin_right = 5
-patch_margin_bottom = 5
-
-[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
-
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Skills/VBoxContainer/GridContainer2/Item3/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("17_4c8jd")
 
 [node name="Stats" type="MarginContainer" parent="NinePatchRect"]
 visible = false

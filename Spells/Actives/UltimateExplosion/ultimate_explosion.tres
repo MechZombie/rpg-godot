@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Passive" load_steps=3 format=3 uid="uid://gmi4d3i2hab3"]
+
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_cfpxq"]
+[ext_resource type="Texture2D" uid="uid://bymfllhjquygx" path="res://Sprites/Spells/64x64/FortressSide_Icons_Pack7_  (111).png" id="2_ynuuc"]
+
+[resource]
+script = ExtResource("1_cfpxq")
+id = 3
+name = "Núcleo do fogo"
+description = "\"O usuário concentra a energia ígnea em seu interior e a libera em uma explosão de chamas em área, causando dano massivo a todos os inimigos próximos.\""
+coldown = "Tempo de recarga 5 segundos"
+texture = ExtResource("2_ynuuc")
+metadata/_custom_type_script = "uid://cinq0apbfcsm0"

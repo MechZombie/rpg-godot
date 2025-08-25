@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://d1ryyc46lrvp"]
 
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_obnnr"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="1_obnnr"]
 [ext_resource type="Texture2D" uid="uid://bo1kbs80stuei" path="res://Sprites/gloves_1.png" id="2_6y1k2"]
 
 [resource]

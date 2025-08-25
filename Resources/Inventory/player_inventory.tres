@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="InventoryData" load_steps=12 format=3 uid="uid://cqrcovjk72nfj"]
+
+[ext_resource type="Resource" uid="uid://dptsapg74gfe1" path="res://Resources/Items/hunter_armor.tres" id="1_rdx74"]
+[ext_resource type="Resource" uid="uid://d1ryyc46lrvp" path="res://Resources/Items/hunter_gloves.tres" id="2_n8gjf"]
+[ext_resource type="Resource" uid="uid://bxe8dkn65qc23" path="res://Resources/Items/helmet.tres" id="3_npl5f"]
+[ext_resource type="Resource" uid="uid://q1u83fidbg8" path="res://Resources/Items/phoenix_ear.tres" id="4_o6t0h"]
+[ext_resource type="Resource" uid="uid://davonksyfs77q" path="res://Resources/Items/hunter_legs.tres" id="5_qsc22"]
+[ext_resource type="Resource" uid="uid://cpp0unb7hyjtk" path="res://Resources/Items/ancient_shield.tres" id="6_ji12j"]
+[ext_resource type="Script" uid="uid://wvmpnaqxlrhx" path="res://Resources/Inventory/player_inventory.type.gd" id="7_2joqr"]
+[ext_resource type="Resource" uid="uid://vsm0b0ha8g1" path="res://Resources/Items/hunter_shoes.tres" id="8_ao75r"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="9_rkp07"]
+[ext_resource type="Resource" uid="uid://boxichjlfurhy" path="res://Resources/Items/sword.tres" id="10_jfgch"]
+[ext_resource type="Resource" uid="uid://dydjcpw4gj4r" path="res://Resources/Items/staff_hunter.tres" id="11_ejdsw"]
+
+[resource]
+script = ExtResource("7_2joqr")
+slots = Array[ExtResource("9_rkp07")]([ExtResource("10_jfgch"), ExtResource("3_npl5f"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+helmet = ExtResource("3_npl5f")
+left_ear = ExtResource("4_o6t0h")
+right_ear = ExtResource("4_o6t0h")
+gloves = ExtResource("2_n8gjf")
+armor = ExtResource("1_rdx74")
+weapon = ExtResource("11_ejdsw")
+off_hand = ExtResource("6_ji12j")
+shoes = ExtResource("8_ao75r")
+legs = ExtResource("5_qsc22")
+metadata/_custom_type_script = "uid://wvmpnaqxlrhx"

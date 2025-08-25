@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2q61wq1elyxc"]
+
+[ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_ngnq3"]
+[ext_resource type="Script" uid="uid://clr7t5iqf04oh" path="res://HUD/Passives/passive_icon.gd" id="2_vcfsy"]
+[ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="3_vcfsy"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7aa2m"]
+font = ExtResource("3_vcfsy")
+font_size = 12
+font_color = Color(0.501961, 1, 0.509804, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kqaya"]
+font = ExtResource("3_vcfsy")
+font_size = 10
+
+[sub_resource type="LabelSettings" id="LabelSettings_ngnq3"]
+font = ExtResource("3_vcfsy")
+font_size = 10
+font_color = Color(1, 1, 0.176471, 1)
+
+[node name="Passive" type="NinePatchRect"]
+z_index = 1
+custom_minimum_size = Vector2(70, 70)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_ngnq3")
+patch_margin_left = 10
+patch_margin_top = 10
+patch_margin_right = 10
+patch_margin_bottom = 10
+script = ExtResource("2_vcfsy")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.427361, 0.777173, 0.813086, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 32.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Button"]
+layout_mode = 2
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch_mode = 2
+
+[node name="Panel" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -184.0
+offset_top = -54.0
+offset_right = 2.0
+offset_bottom = 6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_7aa2m")
+
+[node name="Description" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = SubResource("LabelSettings_kqaya")
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Cdr" type="Label" parent="Panel/MarginContainer/GridContainer"]
+layout_mode = 2
+label_settings = SubResource("LabelSettings_ngnq3")
+horizontal_alignment = 1

@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cmuhufqve6oeu" path="res://Sprites/reaper_2.png" id="2_0dk4b"]
 [ext_resource type="Texture2D" uid="uid://drim28ro2uagq" path="res://Sprites/target.png" id="3_mgrsk"]
 [ext_resource type="PackedScene" uid="uid://dxo32ktciifpn" path="res://Objects/Bag/drop_bag.tscn" id="3_n3eo6"]
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="4_0w7a6"]
-[ext_resource type="PackedScene" uid="uid://15ipgiq6uow2" path="res://Spells/Holy/holy_wave.tscn" id="4_r0of7"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="4_0w7a6"]
+[ext_resource type="PackedScene" uid="uid://15ipgiq6uow2" path="res://Spells/Actives/Holy/holy_wave.tscn" id="4_r0of7"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="5_5oet4"]
-[ext_resource type="Resource" uid="uid://8x6mrj0wxkox" path="res://Resources/book.tres" id="5_tq1fr"]
+[ext_resource type="Resource" uid="uid://8x6mrj0wxkox" path="res://Resources/Items/book.tres" id="5_tq1fr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y8404"]
 atlas = ExtResource("2_0dk4b")

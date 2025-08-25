@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dptsapg74gfe1"]
 
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_pxlxh"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="1_pxlxh"]
 [ext_resource type="Texture2D" uid="uid://ci5nooyb42djf" path="res://Sprites/armor_1.png" id="2_v3gee"]
 
 [resource]

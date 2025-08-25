@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://cppj018t6q7dm"]
 
-[ext_resource type="Script" uid="uid://dy823rlf88td7" path="res://Spells/UltimateExplosion/ultimate_explosion.gd" id="1_1ncsc"]
+[ext_resource type="Script" uid="uid://dy823rlf88td7" path="res://Spells/Actives/UltimateExplosion/ultimate_explosion.gd" id="1_1ncsc"]
 [ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="2_k3kbj"]
 [ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_nivo3"]
 [ext_resource type="AudioStream" uid="uid://bq73y4fwpff75" path="res://Sounds/Sfx/fire_bomb_1.ogg" id="4_rivt8"]

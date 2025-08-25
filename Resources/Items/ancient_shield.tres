@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://cpp0unb7hyjtk"]
 
-[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Types/item.type.gd" id="1_eh6ot"]
+[ext_resource type="Script" uid="uid://ctry00w1jyudc" path="res://Resources/Items/item.gd" id="1_eh6ot"]
 [ext_resource type="Texture2D" uid="uid://b05gy5op50htw" path="res://Sprites/sanguinare_shield.png" id="2_acuut"]
 
 [resource]

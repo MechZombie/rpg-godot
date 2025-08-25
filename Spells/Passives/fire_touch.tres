@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Passive" load_steps=3 format=3 uid="uid://drldmhx4kqdrh"]
+
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_cgv1x"]
+[ext_resource type="Texture2D" uid="uid://x8j1kl4jnr3x" path="res://Sprites/Spells/64x64/FortressSide_Icons_Pack7_  (55).png" id="2_fvnyt"]
+
+[resource]
+script = ExtResource("1_cgv1x")
+id = 1
+name = "Toque do fogo"
+description = "Possui 10% de chance de infligir queimadura ao atacar inimigos."
+texture = ExtResource("2_fvnyt")
+metadata/_custom_type_script = "uid://cinq0apbfcsm0"

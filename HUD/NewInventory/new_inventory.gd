@@ -11,6 +11,7 @@ extends NinePatchRect
 @onready var inventory_grid: GridContainer = $NinePatchRect/Inventory/MarginContainer2/GridContainer
 
 @export var InventoryItem: PackedScene
+@export var Passive: PackedScene
 
 @onready var ear_left_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/EarLeft
 @onready var ear_right_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/EarRight
@@ -21,9 +22,14 @@ extends NinePatchRect
 @onready var weapon_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/Weapon
 @onready var legs_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/Legs
 @onready var shoes_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/Shoes
+@onready var passives_grid: GridContainer = $NinePatchRect/Skills/VBoxContainer/PassivesGrid
+@onready var actives_grid: GridContainer = $NinePatchRect/Skills/VBoxContainer/ActiveGrid
 
-@onready var inventory_data: InventoryData = preload("res://Resources/player_inventory.tres")
+@onready var inventory_data = preload("res://Resources/Inventory/player_inventory.tres")
+@onready var passives_data = preload("res://Spells/Passives/player_passives.tres")
 
+@onready var actives_count: Label = $NinePatchRect/Skills/VBoxContainer/ActivesCount
+@onready var passives_count: Label = $NinePatchRect/Skills/VBoxContainer/PassivesCount
 
 func _ready():
 	stats_button.pressed.connect(on_handle_stats)
@@ -35,9 +41,26 @@ func _ready():
 	skills_container.visible = false
 	
 	inventory_data.connect("updated", Callable(self, "on_prepare_slots"))
+	passives_data.connect("update", Callable(self, "on_prepare_passives"))
+	
 	on_prepare_slots()
 	on_prepare_equipments()
+	on_prepare_passives()
 	
+	
+func on_prepare_passives():
+	passives_count.text = str("Passivas (%s/%s)" % [passives_data.deactivated.size(), 3])
+	for item in passives_data.deactivated:
+		var passive = Passive.instantiate()
+		passive.data = item
+		passives_grid.add_child(passive)
+		
+	actives_count.text = str("Ativas (%s/%s)" % [passives_data.activated.size(), 3])
+	
+	for item in passives_data.activated:
+		var active = Passive.instantiate()
+		active.data = item
+		actives_grid.add_child(active)
 	
 	
 func on_prepare_equipments():
