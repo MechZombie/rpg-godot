@@ -24,6 +24,7 @@ var speed = 70
 @onready var enemy_life_bar: Control = $MarginContainer/EnemyContainer/LifeBar
 
 @onready var regen_timer: Timer = $RegenTimer
+@onready var player_passives = preload("res://Spells/Passives/player_passives.tres")
 
 var HUD: CanvasLayer
 var levels = [
@@ -90,6 +91,8 @@ var dead_scene
 
 
 func _ready():
+	player_passives.on_exec.connect(shoot_spell)
+	
 	target.visible = false
 	moviment_position = global_position
 	agent.target_position = global_position
@@ -329,7 +332,7 @@ func shoot_projectile():
 		
 	on_basic_atk()
 
-func shoot_spell(type: String):
+func shoot_spell(spell: Passive):
 	var cav = get_parent()
 	var creatures = cav.creature_instances
 	
@@ -341,10 +344,13 @@ func shoot_spell(type: String):
 	var is_way = is_shootable()
 	
 		
-	if(type == "great_fire_ball" and not is_out and not is_way):
+	if(spell.id == 5):
+		on_heal()
+		
+	if(spell.id == 4 and not is_out and not is_way):
 		on_great_fire_ball()
 	
-	if(type == "on_ultimate_explosion"):
+	if(spell.id == 3):
 		on_ultimate_explosion()
 
 

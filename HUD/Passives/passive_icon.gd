@@ -9,6 +9,7 @@ extends NinePatchRect
 @onready var grid_container: GridContainer = $Panel/MarginContainer/GridContainer
 @onready var cdr: Label = $Panel/MarginContainer/GridContainer/Cdr
 
+var player_hud = preload("res://Resources/HUD/player_hud.tres")
 
 var data: Passive
 
@@ -23,8 +24,8 @@ func _ready():
 	description.text = data.description
 	
 	if data.coldown:
-		cdr.text = data.coldown
-	
+		cdr.text = "Tempo de recarga %s" % data.coldown
+		
 	on_prepare_button()
 	
 	
@@ -36,7 +37,13 @@ func on_prepare_button():
 	custom_font.font_data = load("res://Fonts/alagard.ttf")
 
 	button.add_theme_font_override("font", custom_font)
+	button.pressed.connect(on_handle_spell)
 	grid_container.add_child(button)
+	
+
+func on_handle_spell():
+	player_hud.on_add(data)
+	on_click()
 	
 func on_click():
 	if not data:

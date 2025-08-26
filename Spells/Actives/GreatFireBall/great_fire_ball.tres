@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Passive" load_steps=3 format=3 uid="uid://b7234x4lwobjm"]
 
-[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_s6s23"]
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/spell.gd" id="1_s6s23"]
 [ext_resource type="Texture2D" uid="uid://cd4pk6t8312jq" path="res://Sprites/Spells/64x64/FortressSide_Icons_Pack7_  (84).png" id="2_bymj8"]
 
 [resource]
@@ -8,6 +8,8 @@ script = ExtResource("1_s6s23")
 id = 4
 name = "Grande bola de fogo"
 description = "\"O conjurador reúne poder elemental e lança uma enorme esfera de fogo contra o alvo, causando dano em área na zona de impacto e incendiando o campo de batalha.\""
-coldown = "Tempo de recarga 5 segundos"
+coldown = 5
 texture = ExtResource("2_bymj8")
+type = "Active"
+cb = Callable()
 metadata/_custom_type_script = "uid://cinq0apbfcsm0"

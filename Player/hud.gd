@@ -34,6 +34,8 @@ extends CanvasLayer
 @export var InventoryScene: PackedScene
 @export var EquipmentsScene: PackedScene
 
+var player_hud = preload("res://Resources/HUD/player_hud.tres")
+@onready var passives_container: GridContainer = $MarginContainer/PlayerContainer/Passives/PassivesContainer
 
 var action_bar_items = []
 var player
@@ -51,7 +53,9 @@ func _ready() -> void:
 	
 	config.pressed.connect(on_handle_inventory)
 	
+	player_hud.updated.connect(on_prepare_passives)
 	on_prepare_action_bar()
+	on_prepare_passives()
 	
 func set_level(value, exp, max_level_exp, acc_level_exp):
 	print("set level", exp, max_level_exp)
@@ -66,36 +70,49 @@ func set_level(value, exp, max_level_exp, acc_level_exp):
 func on_handle_inventory():
 	new_inventory.visible = not new_inventory.visible
 
+func on_prepare_passives():
+	for child in passives_container.get_children():
+		child.queue_free()
+		
+	for passive in player_hud.passives:
+		var texture = TextureRect.new()
+		texture.texture = passive.texture
+		texture.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+		texture.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+		texture.custom_minimum_size = Vector2(24,24)
+		
+		passives_container.add_child(texture)
+	
+	
 func on_prepare_action_bar():
-	action_bar_items = [
-		{
-			"name": "Heal Speal",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_heal_1.png"),
-			"count": null,
-			"mana_cost": 5,
-			"cb": player.on_heal
-		},
-		{
-			"name": "Great Fire Ball",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_fire_3.png"),
-			"count": null,
-			"mana_cost": 5,
-			"cb": func(): player.shoot_spell("great_fire_ball")
-		},
-		{
-			"name": "Ultimate Explosion",
-			"locked_time": 5.0,
-			"texture": preload("res://Sprites/hud_spell_fire_4.png"),
-			"count": null,
-			"mana_cost": 20,
-			"cb": func(): player.shoot_spell("on_ultimate_explosion")
-		}
-	]
+	#action_bar_items = [
+		#{
+			#"name": "Heal Speal",
+			#"locked_time": 5.0,
+			#"texture": preload("res://Sprites/hud_spell_heal_1.png"),
+			#"count": null,
+			#"mana_cost": 5,
+			#"cb": player.on_heal
+		#},
+		#{
+			#"name": "Great Fire Ball",
+			#"locked_time": 5.0,
+			#"texture": preload("res://Sprites/hud_spell_fire_3.png"),
+			#"count": null,
+			#"mana_cost": 5,
+			#"cb": func(): player.shoot_spell("great_fire_ball")
+		#},
+		#{
+			#"name": "Ultimate Explosion",
+			#"locked_time": 5.0,
+			#"texture": preload("res://Sprites/hud_spell_fire_4.png"),
+			#"count": null,
+			#"mana_cost": 20,
+			#"cb": func(): player.shoot_spell("on_ultimate_explosion")
+		#}
+	#]
 	
 	var action_bar = ActionBarScene.instantiate()
-	action_bar.items = action_bar_items
 	skills_container.add_child(action_bar)
 	
 func set_health(value):

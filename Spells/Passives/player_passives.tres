@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PlayerPassives" load_steps=8 format=3 uid="uid://c4n5igfuc7nf5"]
 
-[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_s2dc1"]
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/spell.gd" id="1_c42t0"]
 [ext_resource type="Resource" uid="uid://gmi4d3i2hab3" path="res://Spells/Actives/UltimateExplosion/ultimate_explosion.tres" id="2_c42t0"]
 [ext_resource type="Resource" uid="uid://b7234x4lwobjm" path="res://Spells/Actives/GreatFireBall/great_fire_ball.tres" id="3_xy3hm"]
 [ext_resource type="Resource" uid="uid://b3qifofqj6wer" path="res://Spells/Actives/LightHeal/light_heal.tres" id="4_c42t0"]
@@ -10,6 +10,6 @@
 
 [resource]
 script = ExtResource("6_m7n0o")
-activated = Array[ExtResource("1_s2dc1")]([ExtResource("2_c42t0"), ExtResource("3_xy3hm"), ExtResource("4_c42t0")])
-deactivated = Array[ExtResource("1_s2dc1")]([ExtResource("4_y1a8q"), ExtResource("5_d6uo5")])
+activated = Array[ExtResource("1_c42t0")]([ExtResource("2_c42t0"), ExtResource("3_xy3hm"), ExtResource("4_c42t0")])
+deactivated = Array[ExtResource("1_c42t0")]([ExtResource("4_y1a8q"), ExtResource("5_d6uo5")])
 metadata/_custom_type_script = "uid://beisckc56shky"

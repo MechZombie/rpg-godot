@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PlayerHud" load_steps=3 format=3 uid="uid://b3sgtuq4ievyc"]
+
+[ext_resource type="Script" uid="uid://csarxee5hgx0v" path="res://Resources/HUD/player_hud.gd" id="1_fy850"]
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/spell.gd" id="1_wly0j"]
+
+[resource]
+script = ExtResource("1_fy850")
+spells = Array[ExtResource("1_wly0j")]([])
+passives = Array[ExtResource("1_wly0j")]([])
+metadata/_custom_type_script = "uid://csarxee5hgx0v"

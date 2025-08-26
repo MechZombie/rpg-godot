@@ -1,13 +1,15 @@
 [gd_resource type="Resource" script_class="Passive" load_steps=3 format=3 uid="uid://b3qifofqj6wer"]
 
-[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/passive.gd" id="1_mb6j7"]
+[ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/spell.gd" id="1_mb6j7"]
 [ext_resource type="Texture2D" uid="uid://b58k4w4fhhne7" path="res://Sprites/Spells/64x64/FortressSide_Icons_Pack7_  (270).png" id="2_78llg"]
 
 [resource]
 script = ExtResource("1_mb6j7")
-id = 0
+id = 5
 name = "Cura leve"
 description = "O personagem canaliza energia restauradora, curando em pequena quantidade de pontos de vida."
-coldown = "Tempo de recarga 10s"
+coldown = 5
 texture = ExtResource("2_78llg")
+type = "Active"
+cb = Callable()
 metadata/_custom_type_script = "uid://cinq0apbfcsm0"

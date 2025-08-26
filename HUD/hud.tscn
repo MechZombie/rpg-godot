@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://g8hnt6va4kms"]
+[gd_scene load_steps=27 format=3 uid="uid://g8hnt6va4kms"]
 
 [ext_resource type="Script" uid="uid://c2yrfvdn55o6w" path="res://Player/hud.gd" id="1_3t5dv"]
 [ext_resource type="PackedScene" uid="uid://c2rt2dill4msd" path="res://HUD/ActionBar/action_bar.tscn" id="2_26gsd"]
@@ -8,9 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://bquhxt6gyy1t7" path="res://HUD/Textures/Bossbar_5.png" id="5_upn61"]
 [ext_resource type="Texture2D" uid="uid://bafvmnabkgvdl" path="res://HUD/Textures/healthbar.png" id="6_2q3se"]
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="6_cbw3p"]
-[ext_resource type="Texture2D" uid="uid://c5aj7a2m5jir3" path="res://Sprites/Spells/32x32/FortressSide_Icons_Pack7_  (83).png" id="7_aayvn"]
-[ext_resource type="Texture2D" uid="uid://bgaced6cwsmmi" path="res://Sprites/Spells/32x32/FortressSide_Icons_Pack7_  (12).png" id="8_ltn1w"]
-[ext_resource type="Texture2D" uid="uid://dq4jy428r5n5m" path="res://Sprites/Spells/32x32/FortressSide_Icons_Pack7_  (34).png" id="9_yngjm"]
 [ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="10_ltn1w"]
 [ext_resource type="PackedScene" uid="uid://bl05c0mx4oxrm" path="res://HUD/NewInventory/NewInventory.tscn" id="11_q5vrg"]
 [ext_resource type="Texture2D" uid="uid://cht74p248bi6q" path="res://Icons/3d-settings-icon.png" id="14_aayvn"]
@@ -290,38 +287,19 @@ label_settings = SubResource("LabelSettings_2q3se")
 [node name="Passives" type="Control" parent="MarginContainer/PlayerContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
-layout_mode = 0
-offset_left = 76.0
-offset_top = 12.0
-offset_right = 101.0
-offset_bottom = 38.0
-texture = ExtResource("7_aayvn")
-expand_mode = 1
-
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
-layout_mode = 0
-offset_left = 107.0
-offset_top = 12.0
-offset_right = 132.0
-offset_bottom = 38.0
-texture = ExtResource("8_ltn1w")
-expand_mode = 1
-
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/PlayerContainer/Passives"]
-layout_mode = 0
-offset_left = 139.0
-offset_top = 12.0
-offset_right = 164.0
-offset_bottom = 38.0
-texture = ExtResource("9_yngjm")
-expand_mode = 1
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/PlayerContainer/Passives"]
 position = Vector2(29, 50)
 scale = Vector2(2.21875, 2.125)
 sprite_frames = SubResource("SpriteFrames_86yhk")
 frame_progress = 0.215217
+
+[node name="PassivesContainer" type="GridContainer" parent="MarginContainer/PlayerContainer/Passives"]
+layout_mode = 0
+offset_left = 74.0
+offset_top = 101.0
+offset_right = 162.0
+offset_bottom = 127.0
+columns = 3
 
 [node name="Control" type="Control" parent="MarginContainer/PlayerContainer"]
 layout_mode = 2

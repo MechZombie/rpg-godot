@@ -3,12 +3,13 @@
 [ext_resource type="Texture2D" uid="uid://buygnh0ncun7e" path="res://Sprites/bag.png" id="1_igt4a"]
 [ext_resource type="Script" uid="uid://b4gqr2xfxwa52" path="res://Objects/Bag/drop_bag.gd" id="2_0gg3y"]
 [ext_resource type="PackedScene" uid="uid://dksj0fkws1w6s" path="res://HUD/NewInventoryItem/NewInventoryItem.tscn" id="2_lgu3q"]
-[ext_resource type="Texture2D" uid="uid://bc661fsciytat" path="res://Icons/select.png" id="4_3nfpw"]
+[ext_resource type="Texture2D" uid="uid://ccctdve7xtler" path="res://HUD/Icons/hand_cube.svg" id="4_lgu3q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qqua"]
 size = Vector2(32, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nmdkh"]
+size = Vector2(32, 20)
 
 [node name="DropBag" type="Area2D"]
 z_index = 2
@@ -44,10 +45,10 @@ columns = 5
 [node name="TakeAllArea" type="Area2D" parent="Panel"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/TakeAllArea"]
-position = Vector2(213, 60)
+position = Vector2(207, 60)
 shape = SubResource("RectangleShape2D_nmdkh")
 
 [node name="Sprite2D" type="Sprite2D" parent="Panel/TakeAllArea/CollisionShape2D"]
-position = Vector2(7.62939e-06, 4.76837e-07)
-scale = Vector2(0.0366211, 0.0336914)
-texture = ExtResource("4_3nfpw")
+position = Vector2(2.20537e-06, -0.105287)
+scale = Vector2(0.393, 0.37)
+texture = ExtResource("4_lgu3q")

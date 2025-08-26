@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://b03gfr4fl6m5v"]
+[gd_scene load_steps=6 format=3 uid="uid://b03gfr4fl6m5v"]
 
 [ext_resource type="Script" uid="uid://bd26vfeqr3c4c" path="res://HUD/ActionBarSlot/actionbar_slot.gd" id="1_7514d"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="2_7ybst"]
 [ext_resource type="Texture2D" uid="uid://b0vhaps5bol0x" path="res://Sprites/hud_spell_fire_4.png" id="2_ik6e7"]
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="3_kwi6t"]
+[ext_resource type="Texture2D" uid="uid://bl0qx6fhfc7vu" path="res://HUD/Icons/hourglass.png" id="4_4yhbn"]
 
 [node name="ActionBarSlot" type="Panel"]
 clip_contents = true
@@ -48,6 +49,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.266667, 0.258824, 0.278431)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cooldown"]
+position = Vector2(40, 40)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_4yhbn")
 
 [node name="Timer" type="Timer" parent="."]
 
