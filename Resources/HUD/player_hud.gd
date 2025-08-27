@@ -4,8 +4,20 @@ class_name PlayerHud
 
 @export var spells: Array[Passive]
 @export var passives: Array[Passive]
+@export var current_mana: int
+@export var max_mana: int
+
+@export var max_life: int
+@export var current_life: int
+@export var level: int
+@export var total_exp: int
+
+@export var melee_level: int
+@export var distance_level: int
+@export var magic_level: int
 
 signal updated(items: Array[Passive]) 
+signal update_stats
 
 func on_add(item: Passive):
 	var passiveExists = passives.filter(func (el): return el.id == item.id)

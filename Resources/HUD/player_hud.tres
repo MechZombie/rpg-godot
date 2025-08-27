@@ -7,4 +7,10 @@
 script = ExtResource("1_fy850")
 spells = Array[ExtResource("1_wly0j")]([])
 passives = Array[ExtResource("1_wly0j")]([])
+current_mana = 100
+max_mana = 100
+max_life = 100
+current_life = 100
+level = 1
+total_exp = 0
 metadata/_custom_type_script = "uid://csarxee5hgx0v"

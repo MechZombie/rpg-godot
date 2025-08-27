@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bl05c0mx4oxrm"]
+[gd_scene load_steps=20 format=3 uid="uid://bl05c0mx4oxrm"]
 
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_hsupl"]
 [ext_resource type="Script" uid="uid://clt35ex4v7jmq" path="res://HUD/NewInventory/new_inventory.gd" id="2_lcbny"]
@@ -6,7 +6,13 @@
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_ol4dd"]
 [ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Textures/Scalable_5.png" id="6_mtg8j"]
 [ext_resource type="PackedScene" uid="uid://c2q61wq1elyxc" path="res://HUD/Passives/passive_icon.tscn" id="8_dvrqj"]
+[ext_resource type="Texture2D" uid="uid://cbvca8soyrscv" path="res://HUD/Icons/suit_hearts.png" id="9_jcvfj"]
+[ext_resource type="Texture2D" uid="uid://dh6v475bjhnl0" path="res://HUD/Icons/flask_full.png" id="10_p1m5w"]
+[ext_resource type="Texture2D" uid="uid://1phsfa7nlv61" path="res://HUD/Icons/sword.png" id="11_1xi31"]
+[ext_resource type="Texture2D" uid="uid://qmvoi23gn618" path="res://HUD/Icons/bow.png" id="12_u6eqr"]
+[ext_resource type="Texture2D" uid="uid://ckbaje4apexa1" path="res://HUD/Icons/book_open.png" id="13_5mput"]
 [ext_resource type="Texture2D" uid="uid://cgkkw23q6hyhl" path="res://HUD/Textures/deviders5.png" id="13_ceuub"]
+[ext_resource type="Texture2D" uid="uid://cyc6q7uqbxndy" path="res://HUD/Icons/shield.png" id="14_0wcud"]
 [ext_resource type="PackedScene" uid="uid://dksj0fkws1w6s" path="res://HUD/NewInventoryItem/NewInventoryItem.tscn" id="14_lns7b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l7vub"]
@@ -15,6 +21,18 @@ font = ExtResource("4_ol4dd")
 [sub_resource type="LabelSettings" id="LabelSettings_miypt"]
 font = ExtResource("4_ol4dd")
 font_size = 18
+
+[sub_resource type="LabelSettings" id="LabelSettings_tb2bg"]
+font = ExtResource("4_ol4dd")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_ga1cu"]
+font = ExtResource("4_ol4dd")
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_n77yi"]
+font = ExtResource("4_ol4dd")
+font_size = 20
 
 [node name="NinePatchRect" type="NinePatchRect"]
 offset_right = 406.0
@@ -88,7 +106,6 @@ layout_mode = 2
 text = "Outfit"
 
 [node name="Equipments" type="MarginContainer" parent="NinePatchRect"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.243842
@@ -190,7 +207,6 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Inventory" type="VBoxContainer" parent="NinePatchRect"]
-visible = false
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
@@ -301,14 +317,15 @@ size_flags_vertical = 8
 columns = 5
 
 [node name="Stats" type="MarginContainer" parent="NinePatchRect"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1.0
-offset_top = 62.0
-offset_right = 1.0
-offset_bottom = 10.0
+offset_left = 21.0
+offset_top = 69.0
+offset_right = -19.0
+offset_bottom = -14.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -316,5 +333,388 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="VBoxContainer" parent="NinePatchRect/Stats"]
+[node name="Container" type="VBoxContainer" parent="NinePatchRect/Stats"]
 layout_mode = 2
+
+[node name="LifeContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/LifeContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("9_jcvfj")
+expand_mode = 1
+
+[node name="Life" type="Label" parent="NinePatchRect/Stats/Container/LifeContainer"]
+layout_mode = 2
+text = "Vida maxima"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/LifeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="ManaContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/ManaContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("10_p1m5w")
+expand_mode = 1
+
+[node name="Mana" type="Label" parent="NinePatchRect/Stats/Container/ManaContainer"]
+layout_mode = 2
+text = "Mana maxima"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/ManaContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MarginContainer8" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="LevelContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="Level" type="Label" parent="NinePatchRect/Stats/Container/LevelContainer"]
+layout_mode = 2
+text = "Level"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/LevelContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="LevelBarContainer" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/LevelBarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MeeleeContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/MeeleeContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("11_1xi31")
+expand_mode = 1
+
+[node name="Meelee" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer"]
+layout_mode = 2
+text = "Combate corpo a corpo"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MeeleBarContainer" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/MeeleBarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="DistanceContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/DistanceContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("12_u6eqr")
+expand_mode = 1
+
+[node name="Distance" type="Label" parent="NinePatchRect/Stats/Container/DistanceContainer"]
+layout_mode = 2
+text = "Combate a distancia"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/DistanceContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="DistanceBarContainer" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/DistanceBarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MagicContainer" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/MagicContainer"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("13_5mput")
+expand_mode = 1
+
+[node name="Magic" type="Label" parent="NinePatchRect/Stats/Container/MagicContainer"]
+layout_mode = 2
+text = "Força mágica"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/MagicContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MagicBarContainer" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/MagicBarContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer4" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="Label" type="Label" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+text = "Resistencias"
+label_settings = SubResource("LabelSettings_n77yi")
+horizontal_alignment = 1
+
+[node name="MarginContainer5" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MagicContainer2" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/MagicContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("13_5mput")
+expand_mode = 1
+
+[node name="Magic" type="Label" parent="NinePatchRect/Stats/Container/MagicContainer2"]
+layout_mode = 2
+text = "Defesa mágica"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/MagicContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MagicBarContainer2" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/MagicBarContainer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer6" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MeeleeContainer2" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/MeeleeContainer2"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("14_0wcud")
+expand_mode = 1
+
+[node name="Meelee" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer2"]
+layout_mode = 2
+text = "Defesa corpo a corpo"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MeeleBarContainer2" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/MeeleBarContainer2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="MarginContainer7" type="MarginContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+theme_override_constants/margin_top = 10
+
+[node name="MeeleeContainer3" type="HBoxContainer" parent="NinePatchRect/Stats/Container"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/Stats/Container/MeeleeContainer3"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("12_u6eqr")
+expand_mode = 1
+
+[node name="Meelee" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer3"]
+layout_mode = 2
+text = "Defesa a distância"
+label_settings = SubResource("LabelSettings_tb2bg")
+
+[node name="Value" type="Label" parent="NinePatchRect/Stats/Container/MeeleeContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "12"
+label_settings = SubResource("LabelSettings_ga1cu")
+horizontal_alignment = 2
+
+[node name="MeeleBarContainer3" type="NinePatchRect" parent="NinePatchRect/Stats/Container"]
+z_index = 1
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+texture = ExtResource("1_hsupl")
+patch_margin_left = 2
+patch_margin_top = 2
+patch_margin_right = 2
+patch_margin_bottom = 2
+
+[node name="ColorRect" type="ColorRect" parent="NinePatchRect/Stats/Container/MeeleBarContainer3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.133333, 0.156863, 1)

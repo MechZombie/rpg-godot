@@ -1430,7 +1430,7 @@ layer_2/tile_data = PackedInt32Array(-65519, 131073, 2, -589802, 393217, 0, -655
 script = ExtResource("5_kerq4")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.695503, 0.695503, 0.695503, 1)
+color = Color(0.493545, 0.493546, 0.493546, 1)
 
 [node name="WitchCalderon" parent="." instance=ExtResource("14_l52jw")]
 position = Vector2(216, -170)

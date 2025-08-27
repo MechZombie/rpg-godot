@@ -34,7 +34,7 @@ extends CanvasLayer
 @export var InventoryScene: PackedScene
 @export var EquipmentsScene: PackedScene
 
-var player_hud = preload("res://Resources/HUD/player_hud.tres")
+@onready var player_hud = preload("res://Resources/HUD/player_hud.tres")
 @onready var passives_container: GridContainer = $MarginContainer/PlayerContainer/Passives/PassivesContainer
 
 var action_bar_items = []
@@ -123,7 +123,7 @@ func set_health(value):
 func set_mana(value):
 	var full_width: float = mana_bar_background.size.x  
 	mana_bar_foreground.size.x = full_width * value
-	mana_label.text = "%s / %s" % [player.current_mana, player.max_mana]
+	mana_label.text = "%s / %s" % [player_hud.current_mana, player_hud.max_mana]
 
 func set_enemy_health(value, current_health, max_health):
 	var full_width: float = enemy_health_bar_backeground.size.x  

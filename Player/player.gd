@@ -25,6 +25,8 @@ var speed = 70
 
 @onready var regen_timer: Timer = $RegenTimer
 @onready var player_passives = preload("res://Spells/Passives/player_passives.tres")
+@onready var player_hud = preload("res://Resources/HUD/player_hud.tres")
+
 
 var HUD: CanvasLayer
 var levels = [
@@ -70,8 +72,7 @@ var max_health := 100
 var current_health := 100
 signal health_changed(new_health)
 
-var max_mana := 100
-var current_mana := 100
+
 signal mana_changed(new_mana)
 
 signal level_up(value: int, exp: int, max_level_exp: int, acc_level_exp: int)
@@ -137,6 +138,9 @@ func on_level_up():
 	info.level = new_level[0].id
 	info.acc_level_exp = 0
 	
+	player_hud.level = new_level[0].id
+	player_hud.update_stats.emit()
+	
 	
 func on_regenerate():
 	if(not is_alive):
@@ -148,11 +152,11 @@ func on_regenerate():
 	else:
 		current_health = total_life_regen
 		
-	var total_mana_regen = (current_mana + info.mana_regen)
-	if(total_mana_regen >= max_mana):
-		current_mana = max_mana
+	var total_mana_regen = (player_hud.current_mana + info.mana_regen)
+	if(total_mana_regen >= player_hud.max_mana):
+		player_hud.current_mana = player_hud.max_mana
 	else:
-		current_mana = total_mana_regen
+		player_hud.current_mana = total_mana_regen
 		
 	update_health_bar()
 	update_mana_bar()
@@ -173,7 +177,7 @@ func on_rebirth():
 	current_health = max_health
 	update_health_bar()
 	
-	current_mana = max_mana
+	player_hud.current_mana = player_hud.max_mana
 	update_mana_bar()
 	
 	anim.play("idle_down")
@@ -244,7 +248,7 @@ func on_heal():
 	var light = LightHealScene.instantiate()
 	add_child(light) 
 	
-	current_mana -= mana_cost
+	player_hud.current_mana -= mana_cost
 	
 	var rng_heal = randi_range(0, 10)
 	var heal = info.magic_power + ( max_health / 10) + rng_heal
@@ -264,6 +268,8 @@ func on_heal():
 	
 func on_show_mana_cost(value):
 	var dmg_label = FloatingText.instantiate()
+	dmg_label.type = "Mana"
+	
 	dmg_label.label_settings = dmg_label.label_settings.duplicate()
 	dmg_label.label_settings.font_color = Color.BLUE
 	
@@ -275,6 +281,7 @@ func on_show_mana_cost(value):
 	
 func on_show_heal(damage):
 	var dmg_label = FloatingText.instantiate()
+	dmg_label.type = "Heal"
 	dmg_label.label_settings = dmg_label.label_settings.duplicate() # cria cópia
 	dmg_label.label_settings.font_color = Color.GREEN
 	
@@ -369,12 +376,13 @@ func on_great_fire_ball():
 	gfb.set("direction", direction)
 	get_parent().add_child(gfb) 
 	
-	current_mana -= mana_cost
+	player_hud.current_mana -= mana_cost
 	on_show_mana_cost(mana_cost)
 	update_mana_bar()
 	
 func on_ultimate_explosion():
 	var mana_cost = 20
+		
 	var damage = info.magic_power + randi_range(info.atk_min, info.atk_max)
 	var ultimate = UltimateExplosionScene.instantiate()
 	
@@ -386,7 +394,7 @@ func on_ultimate_explosion():
 	var direction = (target_position - global_position).normalized()
 	get_parent().add_child(ultimate) 
 	
-	current_mana -= mana_cost
+	player_hud.current_mana -= mana_cost
 	on_show_mana_cost(mana_cost)
 	update_mana_bar()
 
@@ -441,7 +449,7 @@ func update_health_bar():
 		on_dead()
 		
 func update_mana_bar():
-	var percent: float = float(current_mana) / float(max_mana)
+	var percent: float = float(player_hud.current_mana) / float(player_hud.max_mana)
 	emit_signal("mana_changed", percent)
 	
 

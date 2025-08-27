@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="1_c2jc7"]
 [ext_resource type="Script" uid="uid://csnh1etvj0hi2" path="res://Objects/Torch/torch.gd" id="1_mcafl"]
-[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_ysmj6"]
+[ext_resource type="Texture2D" uid="uid://cnk1vftno0nnl" path="res://Sprites/light_ball_512.png" id="3_ha8f5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_buu5h"]
 
@@ -47,9 +47,8 @@ sprite_frames = SubResource("SpriteFrames_jlcj4")
 frame_progress = 0.902689
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
-color = Color(1, 1, 1, 0.584314)
-energy = 0.3
-texture = ExtResource("3_ysmj6")
+color = Color(1, 0.568627, 0.294118, 0.584314)
+texture = ExtResource("3_ha8f5")
 texture_scale = 0.45
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]

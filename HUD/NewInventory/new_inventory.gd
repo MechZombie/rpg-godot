@@ -27,9 +27,17 @@ extends NinePatchRect
 
 @onready var inventory_data = preload("res://Resources/Inventory/player_inventory.tres")
 @onready var passives_data = preload("res://Spells/Passives/player_passives.tres")
+@onready var player_hud = preload("res://Resources/HUD/player_hud.tres")
 
 @onready var actives_count: Label = $NinePatchRect/Skills/VBoxContainer/ActivesCount
 @onready var passives_count: Label = $NinePatchRect/Skills/VBoxContainer/PassivesCount
+@onready var life_value: Label = $NinePatchRect/Stats/Container/LifeContainer/Value
+@onready var mana_value: Label = $NinePatchRect/Stats/Container/ManaContainer/Value
+@onready var level_value: Label = $NinePatchRect/Stats/Container/LevelContainer/Value
+@onready var melee_value: Label = $NinePatchRect/Stats/Container/MeeleeContainer/Value
+@onready var distance_value: Label = $NinePatchRect/Stats/Container/DistanceContainer/Value
+@onready var magic_value: Label = $NinePatchRect/Stats/Container/MagicContainer/Value
+
 
 func _ready():
 	stats_button.pressed.connect(on_handle_stats)
@@ -42,11 +50,22 @@ func _ready():
 	
 	inventory_data.connect("updated", Callable(self, "on_prepare_slots"))
 	passives_data.connect("update", Callable(self, "on_prepare_passives"))
+	player_hud.connect("update_stats", Callable(self, "on_prepare_stats"))
+	
 	
 	on_prepare_slots()
 	on_prepare_equipments()
 	on_prepare_passives()
+	on_prepare_stats()
 	
+	
+func on_prepare_stats():
+	life_value.text = str(player_hud.max_life)
+	mana_value.text = str(player_hud.max_mana)
+	level_value.text = str(player_hud.level)
+	melee_value.text = str(player_hud.melee_level)
+	distance_value.text = str(player_hud.distance_level)
+	magic_value.text = str(player_hud.magic_level)
 	
 func on_prepare_passives():
 	passives_count.text = str("Passivas (%s/%s)" % [passives_data.deactivated.size(), 3])

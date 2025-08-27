@@ -5,6 +5,7 @@ extends Panel
 @onready var label: Label = $MarginContainer/HBoxContainer/TextureButton/Label
 @onready var texture_button: TextureButton = $MarginContainer/HBoxContainer/TextureButton
 @onready var player_passives = preload("res://Spells/Passives/player_passives.tres")
+@onready var player_hud = preload("res://Resources/HUD/player_hud.tres")
 
 var target_height := 0
 var increment := 4
@@ -26,6 +27,10 @@ func _ready() -> void:
 	texture_button.texture_normal = spell.texture
 	
 func _on_button_pressed():
+	var has_mana = player_hud.current_mana - spell.mana_cost
+	if has_mana <= 0:
+		return
+		
 	if(not has_cdr):
 		player_passives.on_exec.emit(spell)
 		has_cdr = true

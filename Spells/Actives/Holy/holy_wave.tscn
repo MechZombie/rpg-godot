@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://gnhx6s7t8cfn" path="res://Spells/Actives/Holy/holy_wave.gd" id="1_q2ara"]
 [ext_resource type="Texture2D" uid="uid://eh5t56dcx1h0" path="res://Sprites/holy-explosion.png" id="2_0fc6w"]
-[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_nrpcb"]
+[ext_resource type="Texture2D" uid="uid://cnk1vftno0nnl" path="res://Sprites/light_ball_512.png" id="3_kgytq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kblyx"]
 atlas = ExtResource("2_0fc6w")
@@ -172,5 +172,5 @@ shape = SubResource("RectangleShape2D_qjfqg")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 energy = 0.3
-texture = ExtResource("3_nrpcb")
+texture = ExtResource("3_kgytq")
 texture_scale = 0.3

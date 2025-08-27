@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://q3aefaoaoiuq" path="res://Spells/Actives/LightHeal/light_heal.gd" id="1_044pi"]
 [ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="1_dsg1f"]
-[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_kjlqt"]
+[ext_resource type="Texture2D" uid="uid://cnk1vftno0nnl" path="res://Sprites/light_ball_512.png" id="3_mywhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncwfb"]
 size = Vector2(32, 32)
@@ -44,5 +44,5 @@ frame_progress = 0.59225
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.796257, 1, 0.775565, 1)
 energy = 0.3
-texture = ExtResource("3_kjlqt")
+texture = ExtResource("3_mywhb")
 texture_scale = 0.3

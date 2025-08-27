@@ -12,4 +12,5 @@ coldown = 10
 texture = ExtResource("2_ynuuc")
 type = "Active"
 cb = Callable()
+mana_cost = 10
 metadata/_custom_type_script = "uid://cinq0apbfcsm0"

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dy823rlf88td7" path="res://Spells/Actives/UltimateExplosion/ultimate_explosion.gd" id="1_1ncsc"]
 [ext_resource type="Texture2D" uid="uid://cf07yciel5i47" path="res://Sprites/fire_spell_01.png" id="2_k3kbj"]
-[ext_resource type="Texture2D" uid="uid://qev1titcsgnw" path="res://Sprites/light-texture.png" id="3_nivo3"]
+[ext_resource type="Texture2D" uid="uid://cnk1vftno0nnl" path="res://Sprites/light_ball_512.png" id="3_7e6e5"]
 [ext_resource type="AudioStream" uid="uid://bq73y4fwpff75" path="res://Sounds/Sfx/fire_bomb_1.ogg" id="4_rivt8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8xin8"]
@@ -259,7 +259,7 @@ shape = SubResource("RectangleShape2D_bfuqq")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(0.956863, 0.831373, 0.129412, 1)
 energy = 0.3
-texture = ExtResource("3_nivo3")
+texture = ExtResource("3_7e6e5")
 texture_scale = 0.35
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
