@@ -15,9 +15,12 @@ class_name PlayerHud
 @export var melee_level: int
 @export var distance_level: int
 @export var magic_level: int
+@export var outfit: SpriteFrames
+@export var available_outfits: Array[SpriteFrames]
 
 signal updated(items: Array[Passive]) 
 signal update_stats
+signal update_outfit
 
 func on_add(item: Passive):
 	var passiveExists = passives.filter(func (el): return el.id == item.id)
@@ -36,3 +39,8 @@ func on_add(item: Passive):
 
 		spells.insert(0, item)
 		updated.emit()
+
+func on_set_outfit(data: SpriteFrames):
+	print("set new outfit")
+	outfit = data
+	update_outfit.emit()

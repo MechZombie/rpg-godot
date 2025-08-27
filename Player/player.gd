@@ -26,6 +26,7 @@ var speed = 70
 @onready var regen_timer: Timer = $RegenTimer
 @onready var player_passives = preload("res://Spells/Passives/player_passives.tres")
 @onready var player_hud = preload("res://Resources/HUD/player_hud.tres")
+@onready var outfit: AnimatedSprite2D = $AnimatedSprite2D
 
 
 var HUD: CanvasLayer
@@ -93,6 +94,7 @@ var dead_scene
 
 func _ready():
 	player_passives.on_exec.connect(shoot_spell)
+	player_hud.update_outfit.connect(on_change_outfit)
 	
 	target.visible = false
 	moviment_position = global_position
@@ -108,6 +110,12 @@ func _ready():
 	
 	regen_timer.timeout.connect(on_regenerate)
 	
+	
+func on_change_outfit():
+	print("mudando outfit")
+	print(player_hud.outfit)
+	print(outfit)
+	outfit.sprite_frames = player_hud.outfit
 	
 func on_gain_exp(value: int):
 	var level_data = levels.filter(func(el): return el["id"] == info["level"])
@@ -221,6 +229,8 @@ func on_receive_damage(atk: float, color: Color, left_position: float):
 	on_show_hit(damage, color, left_position)
 	
 func play_walk(dir: Vector2):
+	anim.sprite_frames = player_hud.outfit
+	
 	if abs(dir.x) > abs(dir.y):
 		if dir.x > 0:
 			anim.play("walk_right")
@@ -237,6 +247,7 @@ func play_walk(dir: Vector2):
 			last_direction = "up"
 
 func play_idle():
+	anim.sprite_frames = player_hud.outfit
 	anim.play("idle_" + last_direction)
 
 func move_to_tile(pos: Vector2):

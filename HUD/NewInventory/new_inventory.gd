@@ -10,8 +10,13 @@ extends NinePatchRect
 @onready var stats_continer: MarginContainer = $NinePatchRect/Stats
 @onready var inventory_grid: GridContainer = $NinePatchRect/Inventory/MarginContainer2/GridContainer
 
+@onready var outfit_button: Button = $NinePatchRect/MarginContainer/Title/GridContainer/Outfit
+@onready var outfit_container: GridContainer = $NinePatchRect/OutfitMargin/GridContainer
+@onready var outfit_margin: MarginContainer = $NinePatchRect/OutfitMargin
+
 @export var InventoryItem: PackedScene
 @export var Passive: PackedScene
+@export var OutfitSelector: PackedScene
 
 @onready var ear_left_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/EarLeft
 @onready var ear_right_slot: NinePatchRect = $NinePatchRect/Equipments/GridContainer/EarRight
@@ -45,6 +50,7 @@ func _ready():
 	
 	skills_button.pressed.connect(on_handle_skills)
 	inventory_button.pressed.connect(on_handle_inventory)
+	outfit_button.pressed.connect(on_handle_outfits)
 	
 	skills_container.visible = false
 	
@@ -57,7 +63,14 @@ func _ready():
 	on_prepare_equipments()
 	on_prepare_passives()
 	on_prepare_stats()
+	on_prepare_outfits()
 	
+	
+func on_prepare_outfits():
+	for data in player_hud.available_outfits:
+		var outfit = OutfitSelector.instantiate()
+		outfit.animation = data
+		outfit_container.add_child(outfit)
 	
 func on_prepare_stats():
 	life_value.text = str(player_hud.max_life)
@@ -131,11 +144,13 @@ func on_prepare_slots():
 
 
 func on_handle_skills():
+	skills_container.visible = true
+	
 	equipments.visible = false
 	inventory.visible = false
-	
 	stats_continer.visible = false
-	skills_container.visible = true
+	outfit_margin.visible = false
+	
 
 func on_handle_inventory():
 	equipments.visible = true
@@ -143,6 +158,8 @@ func on_handle_inventory():
 	
 	stats_continer.visible = false
 	skills_container.visible = false
+	outfit_margin.visible = false
+	
 
 func on_handle_stats():
 	stats_continer.visible = true
@@ -150,3 +167,14 @@ func on_handle_stats():
 	equipments.visible = false
 	inventory.visible = false
 	skills_container.visible = false
+	outfit_margin.visible = false
+	
+
+func on_handle_outfits():
+	outfit_margin.visible = true
+	
+	stats_continer.visible = false
+	equipments.visible = false
+	inventory.visible = false
+	skills_container.visible = false
+	

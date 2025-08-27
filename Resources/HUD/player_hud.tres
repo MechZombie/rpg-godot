@@ -1,5 +1,7 @@
-[gd_resource type="Resource" script_class="PlayerHud" load_steps=3 format=3 uid="uid://b3sgtuq4ievyc"]
+[gd_resource type="Resource" script_class="PlayerHud" load_steps=5 format=3 uid="uid://b3sgtuq4ievyc"]
 
+[ext_resource type="SpriteFrames" uid="uid://bb1e8qiltgrpa" path="res://Player/Outfits/bard.tres" id="1_1y6wj"]
+[ext_resource type="SpriteFrames" uid="uid://bjeo2i47m5fra" path="res://Player/Outfits/ancient.tres" id="1_6mrvm"]
 [ext_resource type="Script" uid="uid://csarxee5hgx0v" path="res://Resources/HUD/player_hud.gd" id="1_fy850"]
 [ext_resource type="Script" uid="uid://cinq0apbfcsm0" path="res://Spells/Passives/spell.gd" id="1_wly0j"]
 
@@ -13,4 +15,9 @@ max_life = 100
 current_life = 100
 level = 1
 total_exp = 0
+melee_level = 0
+distance_level = 0
+magic_level = 0
+outfit = ExtResource("1_6mrvm")
+available_outfits = Array[SpriteFrames]([ExtResource("1_6mrvm"), ExtResource("1_1y6wj")])
 metadata/_custom_type_script = "uid://csarxee5hgx0v"

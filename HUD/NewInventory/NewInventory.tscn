@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://bl05c0mx4oxrm"]
+[gd_scene load_steps=21 format=3 uid="uid://bl05c0mx4oxrm"]
 
 [ext_resource type="Texture2D" uid="uid://di7vt4f83jrow" path="res://HUD/Textures/Scalable_4.png" id="1_hsupl"]
 [ext_resource type="Script" uid="uid://clt35ex4v7jmq" path="res://HUD/NewInventory/new_inventory.gd" id="2_lcbny"]
 [ext_resource type="Texture2D" uid="uid://1em8lrtd8his" path="res://HUD/Textures/Fade_1.png" id="3_c2k8l"]
 [ext_resource type="FontFile" uid="uid://du75ycf6ijvp2" path="res://Fonts/alagard.ttf" id="4_ol4dd"]
+[ext_resource type="PackedScene" uid="uid://cj86hcaebabcr" path="res://HUD/outfit_selector.tscn" id="5_p1m5w"]
 [ext_resource type="Texture2D" uid="uid://5pd4ddcb3y0n" path="res://HUD/Textures/Scalable_5.png" id="6_mtg8j"]
 [ext_resource type="PackedScene" uid="uid://c2q61wq1elyxc" path="res://HUD/Passives/passive_icon.tscn" id="8_dvrqj"]
 [ext_resource type="Texture2D" uid="uid://cbvca8soyrscv" path="res://HUD/Icons/suit_hearts.png" id="9_jcvfj"]
@@ -45,6 +46,7 @@ patch_margin_bottom = 3
 script = ExtResource("2_lcbny")
 InventoryItem = ExtResource("14_lns7b")
 Passive = ExtResource("8_dvrqj")
+OutfitSelector = ExtResource("5_p1m5w")
 
 [node name="NinePatchRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -101,7 +103,7 @@ text = "Stats"
 layout_mode = 2
 text = "Skills"
 
-[node name="Button4" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
+[node name="Outfit" type="Button" parent="NinePatchRect/MarginContainer/Title/GridContainer"]
 layout_mode = 2
 text = "Outfit"
 
@@ -718,3 +720,22 @@ offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 0.133333, 0.156863, 1)
+
+[node name="OutfitMargin" type="MarginContainer" parent="NinePatchRect"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect/OutfitMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 4
