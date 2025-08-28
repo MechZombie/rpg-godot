@@ -6,16 +6,16 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_7aa2m"]
 font = ExtResource("3_vcfsy")
-font_size = 12
+font_size = 20
 font_color = Color(0.501961, 1, 0.509804, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kqaya"]
 font = ExtResource("3_vcfsy")
-font_size = 10
+font_size = 18
 
 [sub_resource type="LabelSettings" id="LabelSettings_ngnq3"]
 font = ExtResource("3_vcfsy")
-font_size = 10
+font_size = 12
 font_color = Color(1, 1, 0.176471, 1)
 
 [node name="Passive" type="NinePatchRect"]
@@ -59,6 +59,7 @@ theme_override_constants/margin_bottom = 0
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
+toggle_mode = true
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer/Button"]
 layout_mode = 2
@@ -70,6 +71,7 @@ stretch_mode = 2
 
 [node name="Panel" type="PanelContainer" parent="."]
 visible = false
+z_index = 5
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -82,6 +84,10 @@ offset_right = 2.0
 offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+layout_mode = 2
+color = Color(0.244776, 0.244776, 0.244776, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="Panel"]
 layout_mode = 2

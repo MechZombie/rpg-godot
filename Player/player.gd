@@ -55,8 +55,8 @@ var levels = [
 
 var info := {
 	"id": 1,
-	"atk_min": 20,
-	"atk_max": 30,
+	"atk_min": 5,
+	"atk_max": 12,
 	"range": 3,
 	"def": 3,
 	"magic_power": 10,
@@ -335,6 +335,10 @@ func on_show_hit(damage, color: Color, left_position: float):
 	get_tree().current_scene.add_child(dmg_label)
 	
 func shoot_projectile():	
+	if not is_alive:
+		return
+		
+		
 	var cav = get_parent()
 	var creatures = cav.creature_instances
 	

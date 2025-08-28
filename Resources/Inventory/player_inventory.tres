@@ -14,7 +14,7 @@
 
 [resource]
 script = ExtResource("7_2joqr")
-slots = Array[ExtResource("9_rkp07")]([ExtResource("10_jfgch"), ExtResource("3_npl5f"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+slots = Array[ExtResource("9_rkp07")]([ExtResource("10_jfgch"), ExtResource("3_npl5f"), null, null, null, null, null, null, null, null, null, null])
 helmet = ExtResource("3_npl5f")
 left_ear = ExtResource("4_o6t0h")
 right_ear = ExtResource("4_o6t0h")

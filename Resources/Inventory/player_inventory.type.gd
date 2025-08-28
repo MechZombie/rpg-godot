@@ -14,7 +14,9 @@ class_name InventoryData
 @export var shoes: Item
 @export var legs: Item
 
+@export var opened_panel_id: int
 
+signal updated_panel(id: int)
 signal updated(item: Item) 
 
 func on_add(item: Item):

@@ -36,8 +36,10 @@ font = ExtResource("4_ol4dd")
 font_size = 20
 
 [node name="NinePatchRect" type="NinePatchRect"]
+offset_left = -115.0
 offset_right = 406.0
 offset_bottom = 652.0
+size_flags_vertical = 3
 texture = ExtResource("1_hsupl")
 patch_margin_left = 3
 patch_margin_top = 3
@@ -109,26 +111,26 @@ text = "Outfit"
 
 [node name="Equipments" type="MarginContainer" parent="NinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.243842
-anchor_top = 0.130368
-anchor_right = 0.756158
-anchor_bottom = 0.449387
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -227.0
+offset_bottom = -19.0
 grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
-metadata/_edit_use_anchors_ = true
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect/Equipments"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
 columns = 3
 
 [node name="EarLeft" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -137,7 +139,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Helmet" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -146,7 +148,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="EarRight" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -155,7 +157,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Gloves" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -164,7 +166,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Armor" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -173,7 +175,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Weapon" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -182,7 +184,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Shoes" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -191,7 +193,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="Legs" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -200,7 +202,7 @@ patch_margin_right = 1
 patch_margin_bottom = 1
 
 [node name="OffHand" type="NinePatchRect" parent="NinePatchRect/Equipments/GridContainer"]
-custom_minimum_size = Vector2(60, 60)
+custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 texture = ExtResource("1_hsupl")
 patch_margin_left = 1
@@ -219,18 +221,6 @@ offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="MarginContainer3" type="MarginContainer" parent="NinePatchRect/Inventory"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Deviders5" type="Sprite2D" parent="NinePatchRect/Inventory/MarginContainer3"]
-position = Vector2(202, 10)
-scale = Vector2(2.375, 1)
-texture = ExtResource("13_ceuub")
-
 [node name="MarginContainer2" type="MarginContainer" parent="NinePatchRect/Inventory"]
 layout_mode = 2
 theme_override_constants/margin_left = 10
@@ -242,7 +232,7 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-columns = 6
+columns = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="NinePatchRect/Inventory"]
 layout_mode = 2

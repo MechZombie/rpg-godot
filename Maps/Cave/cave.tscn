@@ -1407,7 +1407,7 @@ dummy = ExtResource("7_sv0pv")
 creature = ExtResource("11_mgvdi")
 
 [node name="Player" parent="." instance=ExtResource("2_3q3gp")]
-position = Vector2(932, -76)
+position = Vector2(477, -210)
 
 [node name="Respawn" parent="." instance=ExtResource("11_hiny4")]
 visible = false
@@ -1443,7 +1443,7 @@ offset_bottom = -95.0
 label_settings = SubResource("LabelSettings_0xd5m")
 
 [node name="Torch" parent="." instance=ExtResource("5_6afn1")]
-position = Vector2(367, -16)
+position = Vector2(340, -16)
 
 [node name="Torch2" parent="." instance=ExtResource("5_6afn1")]
 position = Vector2(595, -16)
@@ -1487,3 +1487,6 @@ label_settings = SubResource("LabelSettings_7pt5y")
 stream = ExtResource("23_67gx7")
 volume_db = -16.0
 autoplay = true
+
+[node name="Torch8" parent="." instance=ExtResource("5_6afn1")]
+position = Vector2(1280, -222)

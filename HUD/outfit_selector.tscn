@@ -41,7 +41,7 @@ patch_margin_bottom = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="MarginContainer/NinePatchRect"]
 position = Vector2(36, 38)
-animation = &"idle_down"
+animation = &""
 
 [node name="Button" type="Button" parent="MarginContainer/NinePatchRect"]
 layout_mode = 1

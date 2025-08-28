@@ -39,6 +39,7 @@ var dmg_label = null
 @onready var health_bar_backeground = $Control/Background
 
 @onready var agent: NavigationAgent2D
+@onready var creature_name: Label = $Label
 
 @onready var target = $Target
 
@@ -61,7 +62,10 @@ var info := {
 	"exp": 50
 }
 
+
+@onready var reaper_resource = preload("res://Monsters/Creature/Reaper/Reaper.tres")
 @export var drops: Array[Item] = []
+@onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
 
 func on_drop_loot():
@@ -80,6 +84,7 @@ func on_drop_loot():
 	get_parent().add_child(loot) 
 
 func _ready() -> void:
+	creature_name.text = reaper_resource.creature_name
 	target.visible = false
 	spawn_position = global_position
 	
@@ -115,18 +120,20 @@ func _physics_process(delta):
 	
 	
 func on_moviment():
+	anim.sprite_frames = reaper_resource.animations
+
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
 		if abs(last_direction.x) > abs(last_direction.y):
 			if last_direction.x > 0:
-				$AnimatedSprite2D.play("idle_right")
+				anim.play("idle_right")
 			else:
-				$AnimatedSprite2D.play("idle_left")
+				anim.play("idle_left")
 		else:
 			if last_direction.y > 0:
-				$AnimatedSprite2D.play("idle_up")
+				anim.play("idle_up")
 			else:
-				$AnimatedSprite2D.play("idle_up")
+				anim.play("idle_up")
 	else:
 		var next_position = agent.get_next_path_position()
 		var direction = (next_position - global_position).normalized()
@@ -136,14 +143,14 @@ func on_moviment():
 		
 		if abs(direction.x) > abs(direction.y):
 			if direction.x > 0:
-				$AnimatedSprite2D.play("walk_right")
+				anim.play("walk_right")
 			else:
-				$AnimatedSprite2D.play("walk_left")
+				anim.play("walk_left")
 		else:
 			if direction.y > 0:
-				$AnimatedSprite2D.play("walk_down")
+				anim.play("walk_down")
 			else:
-				$AnimatedSprite2D.play("walk_up")
+				anim.play("walk_up")
 				
 		move_and_slide()
 	

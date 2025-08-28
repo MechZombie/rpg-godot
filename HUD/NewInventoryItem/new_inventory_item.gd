@@ -8,12 +8,14 @@ extends NinePatchRect
 @onready var item_name: Label = $Panel/MarginContainer/GridContainer/Label
 @onready var description: Label = $Panel/MarginContainer/GridContainer/Description
 @onready var atk: Label = $Panel/MarginContainer/GridContainer/Atk
-
-
+@onready var player_inventory = preload("res://Resources/Inventory/player_inventory.tres")
+@onready var close_button: TextureButton = $Panel/MarginContainer/GridContainer/CloseButton
 
 var data: Item
 
 func _ready():
+	player_inventory.updated_panel.connect(on_close)
+	
 	if not data:
 		return
 	
@@ -73,15 +75,19 @@ func _ready():
 		
 		
 func on_prepare_button():
-	var button = Button.new()
-	button.text = "Equipar"
+	close_button.pressed.connect(on_click)
 	
-	var custom_font = FontFile.new()
-	custom_font.font_data = load("res://Fonts/alagard.ttf")
-
-	button.add_theme_font_override("font", custom_font)
-	grid_container.add_child(button)
-
+	
+func on_close(id: int):
+	if id != get_instance_id():
+		details.visible = false
+	
+	
+	
 func on_click():
 	details.visible = not details.visible
+	
+	if details.visible:
+		player_inventory.opened_panel_id = get_instance_id()
+		player_inventory.updated_panel.emit(player_inventory.opened_panel_id)
 	

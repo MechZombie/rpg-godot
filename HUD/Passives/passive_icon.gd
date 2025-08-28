@@ -10,10 +10,12 @@ extends NinePatchRect
 @onready var cdr: Label = $Panel/MarginContainer/GridContainer/Cdr
 
 var player_hud = preload("res://Resources/HUD/player_hud.tres")
+var player_passives = preload("res://Spells/Passives/player_passives.tres")
 
 var data: Passive
 
 func _ready():
+	player_passives.updated_panel.connect(on_close)
 	button.pressed.connect(on_click)
 	if not data:
 		background.visible = false
@@ -29,9 +31,14 @@ func _ready():
 	on_prepare_button()
 	
 	
+func on_close(id: int):
+	if id != get_instance_id():
+		details.visible = false
+	
 func on_prepare_button():
 	var button = Button.new()
 	button.text = "Equipar"
+	button.size.y= 50
 	
 	var custom_font = FontFile.new()
 	custom_font.font_data = load("res://Fonts/alagard.ttf")
@@ -50,4 +57,7 @@ func on_click():
 		return
 		
 	details.visible = not details.visible
+	if details.visible:
+		player_passives.opened_panel_id = get_instance_id()
+		player_passives.updated_panel.emit(player_passives.opened_panel_id)
 	

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=3 format=3 uid="uid://b16usv2yekjod"]
+
+[ext_resource type="SpriteFrames" uid="uid://bmxptieui7fo" path="res://Monsters/Creature/Reaper/reaper_animations.tres" id="1_h6ico"]
+[ext_resource type="Script" uid="uid://yavsfshdwhd2" path="res://Monsters/Creature/new_creature.gd" id="2_fyw8n"]
+
+[resource]
+script = ExtResource("2_fyw8n")
+creature_name = "Reaper"
+life = 100
+animations = ExtResource("1_h6ico")
+metadata/_custom_type_script = "uid://yavsfshdwhd2"
