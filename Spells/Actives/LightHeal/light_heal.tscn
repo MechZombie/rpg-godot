@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://k31p4yo5dif5"]
 
-[ext_resource type="Script" uid="uid://q3aefaoaoiuq" path="res://Spells/Actives/LightHeal/light_heal.gd" id="1_044pi"]
+[ext_resource type="Script" path="res://Spells/Actives/LightHeal/light_heal.gd" id="1_044pi"]
 [ext_resource type="Texture2D" uid="uid://b63jw5xyt4tv2" path="res://Sprites/2_indoors.png" id="1_dsg1f"]
-[ext_resource type="Texture2D" uid="uid://cnk1vftno0nnl" path="res://Sprites/light_ball_512.png" id="3_mywhb"]
+[ext_resource type="Texture2D" uid="uid://d31t2j5solyj5" path="res://Sprites/light_ball_512.png" id="3_mywhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ncwfb"]
 size = Vector2(32, 32)

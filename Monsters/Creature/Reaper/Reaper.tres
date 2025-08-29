@@ -1,11 +1,23 @@
-[gd_resource type="Resource" script_class="CreatureData" load_steps=3 format=3 uid="uid://b16usv2yekjod"]
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://b16usv2yekjod"]
 
 [ext_resource type="SpriteFrames" uid="uid://bmxptieui7fo" path="res://Monsters/Creature/Reaper/reaper_animations.tres" id="1_h6ico"]
-[ext_resource type="Script" uid="uid://yavsfshdwhd2" path="res://Monsters/Creature/new_creature.gd" id="2_fyw8n"]
+[ext_resource type="Script" path="res://Monsters/Creature/new_creature.gd" id="2_fyw8n"]
+[ext_resource type="Script" path="res://Resources/Items/item.gd" id="2_n44ee"]
 
 [resource]
 script = ExtResource("2_fyw8n")
+id = 2
 creature_name = "Reaper"
-life = 100
+life = 500
 animations = ExtResource("1_h6ico")
+exp = 350
+aggro = 200
+drops = Array[ExtResource("2_n44ee")]([])
+atk_type = "Magic"
+atk_min = 30
+atk_max = 50
+def_melee = 20
+def_magic = 30
+def_distance = 20
+speed = 100
 metadata/_custom_type_script = "uid://yavsfshdwhd2"

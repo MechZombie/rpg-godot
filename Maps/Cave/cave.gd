@@ -8,6 +8,9 @@ var respawn_timer: Timer
 @onready var title: NinePatchRect = $Title
 @onready var background_sound: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+const REAPER = preload("res://Monsters/Creature/Reaper/Reaper.tres")
+const SKELETON = preload("res://Monsters/Creature/Skeleton/Skeleton.tres")
+
 
 var dummy_instances = []
 var creature_instances = []
@@ -70,6 +73,7 @@ func clear_creatures():
 func spawn_creature():
 	for resp in resps:
 		var creature_instance = creature.instantiate()
+		creature_instance.creature_resource = SKELETON
 		creature_instance.position = resp
 		creature_instance.info.id = creature_instances.size() + 1
 		creature_instances.append(creature_instance)

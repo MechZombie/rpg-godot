@@ -9,8 +9,6 @@ const FloatingText = preload("res://Objects/Hit/hit_damage.tscn")
 
 @onready var wave: Control = $Wave
 
-var speed = 40.0
-
 var push_force := 200.0
 var push_vector := Vector2.ZERO
 var push_time := 0.15
@@ -63,7 +61,7 @@ var info := {
 }
 
 
-@onready var reaper_resource = preload("res://Monsters/Creature/Reaper/Reaper.tres")
+@onready var creature_resource
 @export var drops: Array[Item] = []
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -84,7 +82,7 @@ func on_drop_loot():
 	get_parent().add_child(loot) 
 
 func _ready() -> void:
-	creature_name.text = reaper_resource.creature_name
+	creature_name.text = creature_resource.creature_name
 	target.visible = false
 	spawn_position = global_position
 	
@@ -93,7 +91,7 @@ func _ready() -> void:
 	
 	agent.avoidance_enabled = true
 	agent.radius = 31.9  # Ajuste de acordo com o tamanho do seu CollisionShape2D
-	agent.max_speed = speed
+	agent.max_speed = creature_resource.speed
 	
 	atk_timer = Timer.new()
 	atk_timer.wait_time = 2.0
@@ -120,7 +118,7 @@ func _physics_process(delta):
 	
 	
 func on_moviment():
-	anim.sprite_frames = reaper_resource.animations
+	anim.sprite_frames = creature_resource.animations
 
 	if agent.is_navigation_finished():
 		velocity = Vector2.ZERO
@@ -137,7 +135,7 @@ func on_moviment():
 	else:
 		var next_position = agent.get_next_path_position()
 		var direction = (next_position - global_position).normalized()
-		velocity = direction * speed
+		velocity = direction * creature_resource.speed
 		
 		last_direction = direction
 		
@@ -163,12 +161,12 @@ func on_detect_player():
 	var dist_from_spawn = global_position.distance_to(spawn_position)
 	
 	# Se player está no range de aggro E criatura não passou do limite
-	if dist_to_player <= info.aggro and dist_from_spawn <= max_range and player.is_alive:
+	if dist_to_player <= creature_resource.aggro and dist_from_spawn <= max_range and player.is_alive:
 		is_folow = true
-		speed = 40.0
+		creature_resource.speed = 40
 	elif not is_target or not player.is_alive:
 		is_folow = false
-		speed = 200.0
+		creature_resource.speed = 200.0
 	
 	if is_folow:
 		var direction_player = (player.global_position - global_position).normalized()
@@ -188,7 +186,7 @@ func on_calculate_damage():
 		
 	
 	if global_position.distance_to(player.global_position) <= info.atk_range:
-		var atk = randi_range(info.atk_min, info.atk_max)
+		var atk = randi_range(creature_resource.atk_min, creature_resource.atk_max)
 		player.on_receive_damage(atk, Color.RED, 0)
 	
 	var spell_random = randi_range(info.wave_rng[0], info.wave_rng[1])
@@ -222,7 +220,7 @@ func update_health_bar():
 
 func on_dead():
 	player.clear_target()
-	player.on_gain_exp(info.exp)
+	player.on_gain_exp(creature_resource.exp)
 	queue_free()
 
 
@@ -261,6 +259,6 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 		var percent: float = float(current_health) / float(max_health)
 		
 		player.HUD.set_enemy_health(percent, current_health, max_health)
-		player.HUD.set_enemy_name(info.name)
+		player.HUD.set_enemy_name(creature_resource.creature_name)
 
 		player.on_atk()

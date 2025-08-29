@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="CreatureData" load_steps=4 format=3 uid="uid://e0lw3c7q4feq"]
+
+[ext_resource type="SpriteFrames" uid="uid://sk5a5c0ai2yf" path="res://Monsters/Creature/Skeleton/skeleton_animations.tres" id="1_c2kfy"]
+[ext_resource type="Script" path="res://Resources/Items/item.gd" id="2_nrutu"]
+[ext_resource type="Script" path="res://Monsters/Creature/new_creature.gd" id="2_yrvh3"]
+
+[resource]
+script = ExtResource("2_yrvh3")
+id = 1
+creature_name = "Skeleton"
+life = 100
+animations = ExtResource("1_c2kfy")
+exp = 50
+aggro = 200
+drops = Array[ExtResource("2_nrutu")]([])
+atk_type = "Meele"
+atk_min = 5
+atk_max = 10
+def_melee = 10
+def_magic = 5
+def_distance = 5
+speed = 40
+metadata/_custom_type_script = "uid://yavsfshdwhd2"
